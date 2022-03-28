@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lavira Merkut", "Lavira Merkut\Lavira Merkut.csproj", "{A14E6324-4A2F-4ED2-9A2C-0A311124DECB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SubForms", "SubForms", "{3A64B92B-0E0E-4171-A88C-8DD2D298AAE5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

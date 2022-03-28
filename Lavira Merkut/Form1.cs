@@ -121,5 +121,35 @@ namespace Lavira_Merkut
         {
             ActivateButton(sender);
         }
+
+        private void button_Temperature_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender);
+        }
+
+        private void button_Pressure_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender);
+        }
+
+        private void button_Moisture_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender);
+        }
+
+        private void button_acceleration_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender);
+        }
+
+        private void button_location_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender);
+        }
+
+        private void button_altitude_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender);
+        }
     }
 }

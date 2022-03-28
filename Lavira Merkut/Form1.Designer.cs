@@ -184,7 +184,7 @@ namespace Lavira_Merkut
             // 
             // label_currentTime
             // 
-            this.label_currentTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label_currentTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 23F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label_currentTime.ForeColor = System.Drawing.Color.White;
             this.label_currentTime.Location = new System.Drawing.Point(0, 32);
             this.label_currentTime.Name = "label_currentTime";
@@ -238,6 +238,7 @@ namespace Lavira_Merkut
             this.button_altitude.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_altitude.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button_altitude.UseVisualStyleBackColor = false;
+            this.button_altitude.Click += new System.EventHandler(this.button_altitude_Click);
             // 
             // button_location
             // 
@@ -257,6 +258,7 @@ namespace Lavira_Merkut
             this.button_location.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_location.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button_location.UseVisualStyleBackColor = false;
+            this.button_location.Click += new System.EventHandler(this.button_location_Click);
             // 
             // button_acceleration
             // 
@@ -276,6 +278,7 @@ namespace Lavira_Merkut
             this.button_acceleration.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_acceleration.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button_acceleration.UseVisualStyleBackColor = false;
+            this.button_acceleration.Click += new System.EventHandler(this.button_acceleration_Click);
             // 
             // button_Moisture
             // 
@@ -295,6 +298,7 @@ namespace Lavira_Merkut
             this.button_Moisture.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_Moisture.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button_Moisture.UseVisualStyleBackColor = false;
+            this.button_Moisture.Click += new System.EventHandler(this.button_Moisture_Click);
             // 
             // button_Pressure
             // 
@@ -314,6 +318,7 @@ namespace Lavira_Merkut
             this.button_Pressure.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_Pressure.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button_Pressure.UseVisualStyleBackColor = false;
+            this.button_Pressure.Click += new System.EventHandler(this.button_Pressure_Click);
             // 
             // button_Temperature
             // 
@@ -333,6 +338,7 @@ namespace Lavira_Merkut
             this.button_Temperature.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button_Temperature.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button_Temperature.UseVisualStyleBackColor = false;
+            this.button_Temperature.Click += new System.EventHandler(this.button_Temperature_Click);
             // 
             // button_velocity
             // 
