@@ -29,37 +29,39 @@ namespace Lavira_Merkut
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.Panel_TopBar = new System.Windows.Forms.Panel();
+            this.panel_logo = new System.Windows.Forms.Panel();
+            this.pictureBox_topLogo = new System.Windows.Forms.PictureBox();
             this.Label_LaviraMerkut = new System.Windows.Forms.Label();
             this.Panel_Container = new System.Windows.Forms.Panel();
             this.tableLayoutPanel_Container = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel_navigation = new System.Windows.Forms.TableLayoutPanel();
-            this.panel_logo = new System.Windows.Forms.Panel();
-            this.pictureBox_topLogo = new System.Windows.Forms.PictureBox();
             this.panel_navigationTime = new System.Windows.Forms.Panel();
-            this.label_textTime = new System.Windows.Forms.Label();
-            this.label_currentTime = new System.Windows.Forms.Label();
             this.label_launchTime = new System.Windows.Forms.Label();
+            this.label_currentTime = new System.Windows.Forms.Label();
+            this.label_textTime = new System.Windows.Forms.Label();
             this.panel_navigationButtons = new System.Windows.Forms.Panel();
-            this.button_dashboard = new System.Windows.Forms.Button();
-            this.button_velocity = new System.Windows.Forms.Button();
-            this.button_Temperature = new System.Windows.Forms.Button();
-            this.button_Pressure = new System.Windows.Forms.Button();
-            this.button_Moisture = new System.Windows.Forms.Button();
-            this.button_acceleration = new System.Windows.Forms.Button();
-            this.button_location = new System.Windows.Forms.Button();
             this.button_altitude = new System.Windows.Forms.Button();
+            this.button_location = new System.Windows.Forms.Button();
+            this.button_acceleration = new System.Windows.Forms.Button();
+            this.button_Moisture = new System.Windows.Forms.Button();
+            this.button_Pressure = new System.Windows.Forms.Button();
+            this.button_Temperature = new System.Windows.Forms.Button();
+            this.button_velocity = new System.Windows.Forms.Button();
+            this.button_dashboard = new System.Windows.Forms.Button();
             this.tableLayoutPanel_buttonStartFinish = new System.Windows.Forms.TableLayoutPanel();
-            this.button_start = new System.Windows.Forms.Button();
             this.button_finish = new System.Windows.Forms.Button();
+            this.button_start = new System.Windows.Forms.Button();
             this.panel_formContainer = new System.Windows.Forms.Panel();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.Panel_TopBar.SuspendLayout();
+            this.panel_logo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_topLogo)).BeginInit();
             this.Panel_Container.SuspendLayout();
             this.tableLayoutPanel_Container.SuspendLayout();
             this.tableLayoutPanel_navigation.SuspendLayout();
-            this.panel_logo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_topLogo)).BeginInit();
             this.panel_navigationTime.SuspendLayout();
             this.panel_navigationButtons.SuspendLayout();
             this.tableLayoutPanel_buttonStartFinish.SuspendLayout();
@@ -75,6 +77,28 @@ namespace Lavira_Merkut
             this.Panel_TopBar.Name = "Panel_TopBar";
             this.Panel_TopBar.Size = new System.Drawing.Size(1180, 70);
             this.Panel_TopBar.TabIndex = 0;
+            // 
+            // panel_logo
+            // 
+            this.panel_logo.Controls.Add(this.pictureBox_topLogo);
+            this.panel_logo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel_logo.Location = new System.Drawing.Point(0, 0);
+            this.panel_logo.Name = "panel_logo";
+            this.panel_logo.Size = new System.Drawing.Size(250, 70);
+            this.panel_logo.TabIndex = 1;
+            // 
+            // pictureBox_topLogo
+            // 
+            this.pictureBox_topLogo.BackColor = System.Drawing.Color.White;
+            this.pictureBox_topLogo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox_topLogo.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_topLogo.Image")));
+            this.pictureBox_topLogo.InitialImage = null;
+            this.pictureBox_topLogo.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox_topLogo.Name = "pictureBox_topLogo";
+            this.pictureBox_topLogo.Size = new System.Drawing.Size(250, 70);
+            this.pictureBox_topLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_topLogo.TabIndex = 0;
+            this.pictureBox_topLogo.TabStop = false;
             // 
             // Label_LaviraMerkut
             // 
@@ -135,28 +159,6 @@ namespace Lavira_Merkut
             this.tableLayoutPanel_navigation.Size = new System.Drawing.Size(250, 611);
             this.tableLayoutPanel_navigation.TabIndex = 0;
             // 
-            // panel_logo
-            // 
-            this.panel_logo.Controls.Add(this.pictureBox_topLogo);
-            this.panel_logo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel_logo.Location = new System.Drawing.Point(0, 0);
-            this.panel_logo.Name = "panel_logo";
-            this.panel_logo.Size = new System.Drawing.Size(250, 70);
-            this.panel_logo.TabIndex = 1;
-            // 
-            // pictureBox_topLogo
-            // 
-            this.pictureBox_topLogo.BackColor = System.Drawing.Color.White;
-            this.pictureBox_topLogo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox_topLogo.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_topLogo.Image")));
-            this.pictureBox_topLogo.InitialImage = null;
-            this.pictureBox_topLogo.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox_topLogo.Name = "pictureBox_topLogo";
-            this.pictureBox_topLogo.Size = new System.Drawing.Size(250, 70);
-            this.pictureBox_topLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_topLogo.TabIndex = 0;
-            this.pictureBox_topLogo.TabStop = false;
-            // 
             // panel_navigationTime
             // 
             this.panel_navigationTime.Controls.Add(this.label_launchTime);
@@ -168,16 +170,17 @@ namespace Lavira_Merkut
             this.panel_navigationTime.Size = new System.Drawing.Size(244, 124);
             this.panel_navigationTime.TabIndex = 0;
             // 
-            // label_textTime
+            // label_launchTime
             // 
-            this.label_textTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label_textTime.ForeColor = System.Drawing.Color.White;
-            this.label_textTime.Location = new System.Drawing.Point(0, 9);
-            this.label_textTime.Name = "label_textTime";
-            this.label_textTime.Size = new System.Drawing.Size(244, 23);
-            this.label_textTime.TabIndex = 0;
-            this.label_textTime.Text = "Click \'Start\' to start";
-            this.label_textTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_launchTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label_launchTime.ForeColor = System.Drawing.Color.White;
+            this.label_launchTime.Location = new System.Drawing.Point(0, 87);
+            this.label_launchTime.Name = "label_launchTime";
+            this.label_launchTime.Size = new System.Drawing.Size(244, 37);
+            this.label_launchTime.TabIndex = 2;
+            this.label_launchTime.Text = "00:00.00";
+            this.label_launchTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_launchTime.Visible = false;
             // 
             // label_currentTime
             // 
@@ -190,16 +193,16 @@ namespace Lavira_Merkut
             this.label_currentTime.Text = "00:00.00";
             this.label_currentTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label_launchTime
+            // label_textTime
             // 
-            this.label_launchTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label_launchTime.ForeColor = System.Drawing.Color.White;
-            this.label_launchTime.Location = new System.Drawing.Point(0, 87);
-            this.label_launchTime.Name = "label_launchTime";
-            this.label_launchTime.Size = new System.Drawing.Size(244, 37);
-            this.label_launchTime.TabIndex = 2;
-            this.label_launchTime.Text = "00:00.00";
-            this.label_launchTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_textTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label_textTime.ForeColor = System.Drawing.Color.White;
+            this.label_textTime.Location = new System.Drawing.Point(0, 9);
+            this.label_textTime.Name = "label_textTime";
+            this.label_textTime.Size = new System.Drawing.Size(244, 23);
+            this.label_textTime.TabIndex = 0;
+            this.label_textTime.Text = "Click \'Start\' to start";
+            this.label_textTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel_navigationButtons
             // 
@@ -216,139 +219,6 @@ namespace Lavira_Merkut
             this.panel_navigationButtons.Name = "panel_navigationButtons";
             this.panel_navigationButtons.Size = new System.Drawing.Size(244, 415);
             this.panel_navigationButtons.TabIndex = 1;
-            // 
-            // button_dashboard
-            // 
-            this.button_dashboard.BackColor = System.Drawing.Color.Navy;
-            this.button_dashboard.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button_dashboard.FlatAppearance.BorderSize = 0;
-            this.button_dashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_dashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button_dashboard.ForeColor = System.Drawing.Color.White;
-            this.button_dashboard.Image = ((System.Drawing.Image)(resources.GetObject("button_dashboard.Image")));
-            this.button_dashboard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_dashboard.Location = new System.Drawing.Point(0, 0);
-            this.button_dashboard.Name = "button_dashboard";
-            this.button_dashboard.Size = new System.Drawing.Size(244, 52);
-            this.button_dashboard.TabIndex = 0;
-            this.button_dashboard.Text = "    DashBoard";
-            this.button_dashboard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_dashboard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button_dashboard.UseVisualStyleBackColor = false;
-            // 
-            // button_velocity
-            // 
-            this.button_velocity.BackColor = System.Drawing.Color.Navy;
-            this.button_velocity.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button_velocity.FlatAppearance.BorderSize = 0;
-            this.button_velocity.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_velocity.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button_velocity.ForeColor = System.Drawing.Color.White;
-            this.button_velocity.Image = ((System.Drawing.Image)(resources.GetObject("button_velocity.Image")));
-            this.button_velocity.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_velocity.Location = new System.Drawing.Point(0, 52);
-            this.button_velocity.Name = "button_velocity";
-            this.button_velocity.Size = new System.Drawing.Size(244, 52);
-            this.button_velocity.TabIndex = 1;
-            this.button_velocity.Text = "    Velocity";
-            this.button_velocity.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_velocity.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button_velocity.UseVisualStyleBackColor = false;
-            // 
-            // button_Temperature
-            // 
-            this.button_Temperature.BackColor = System.Drawing.Color.Navy;
-            this.button_Temperature.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button_Temperature.FlatAppearance.BorderSize = 0;
-            this.button_Temperature.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Temperature.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button_Temperature.ForeColor = System.Drawing.Color.White;
-            this.button_Temperature.Image = ((System.Drawing.Image)(resources.GetObject("button_Temperature.Image")));
-            this.button_Temperature.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_Temperature.Location = new System.Drawing.Point(0, 104);
-            this.button_Temperature.Name = "button_Temperature";
-            this.button_Temperature.Size = new System.Drawing.Size(244, 52);
-            this.button_Temperature.TabIndex = 2;
-            this.button_Temperature.Text = "    Temperature";
-            this.button_Temperature.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_Temperature.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button_Temperature.UseVisualStyleBackColor = false;
-            // 
-            // button_Pressure
-            // 
-            this.button_Pressure.BackColor = System.Drawing.Color.Navy;
-            this.button_Pressure.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button_Pressure.FlatAppearance.BorderSize = 0;
-            this.button_Pressure.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Pressure.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button_Pressure.ForeColor = System.Drawing.Color.White;
-            this.button_Pressure.Image = ((System.Drawing.Image)(resources.GetObject("button_Pressure.Image")));
-            this.button_Pressure.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_Pressure.Location = new System.Drawing.Point(0, 156);
-            this.button_Pressure.Name = "button_Pressure";
-            this.button_Pressure.Size = new System.Drawing.Size(244, 52);
-            this.button_Pressure.TabIndex = 3;
-            this.button_Pressure.Text = "    Pressure";
-            this.button_Pressure.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_Pressure.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button_Pressure.UseVisualStyleBackColor = false;
-            // 
-            // button_Moisture
-            // 
-            this.button_Moisture.BackColor = System.Drawing.Color.Navy;
-            this.button_Moisture.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button_Moisture.FlatAppearance.BorderSize = 0;
-            this.button_Moisture.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Moisture.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button_Moisture.ForeColor = System.Drawing.Color.White;
-            this.button_Moisture.Image = ((System.Drawing.Image)(resources.GetObject("button_Moisture.Image")));
-            this.button_Moisture.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_Moisture.Location = new System.Drawing.Point(0, 208);
-            this.button_Moisture.Name = "button_Moisture";
-            this.button_Moisture.Size = new System.Drawing.Size(244, 52);
-            this.button_Moisture.TabIndex = 4;
-            this.button_Moisture.Text = "    Moisture";
-            this.button_Moisture.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_Moisture.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button_Moisture.UseVisualStyleBackColor = false;
-            // 
-            // button_acceleration
-            // 
-            this.button_acceleration.BackColor = System.Drawing.Color.Navy;
-            this.button_acceleration.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button_acceleration.FlatAppearance.BorderSize = 0;
-            this.button_acceleration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_acceleration.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button_acceleration.ForeColor = System.Drawing.Color.White;
-            this.button_acceleration.Image = ((System.Drawing.Image)(resources.GetObject("button_acceleration.Image")));
-            this.button_acceleration.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_acceleration.Location = new System.Drawing.Point(0, 260);
-            this.button_acceleration.Name = "button_acceleration";
-            this.button_acceleration.Size = new System.Drawing.Size(244, 52);
-            this.button_acceleration.TabIndex = 5;
-            this.button_acceleration.Text = "    Acceleration";
-            this.button_acceleration.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_acceleration.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button_acceleration.UseVisualStyleBackColor = false;
-            // 
-            // button_location
-            // 
-            this.button_location.BackColor = System.Drawing.Color.Navy;
-            this.button_location.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button_location.FlatAppearance.BorderSize = 0;
-            this.button_location.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_location.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button_location.ForeColor = System.Drawing.Color.White;
-            this.button_location.Image = ((System.Drawing.Image)(resources.GetObject("button_location.Image")));
-            this.button_location.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_location.Location = new System.Drawing.Point(0, 312);
-            this.button_location.Name = "button_location";
-            this.button_location.Size = new System.Drawing.Size(244, 52);
-            this.button_location.TabIndex = 6;
-            this.button_location.Text = "    Location";
-            this.button_location.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_location.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button_location.UseVisualStyleBackColor = false;
             // 
             // button_altitude
             // 
@@ -369,6 +239,141 @@ namespace Lavira_Merkut
             this.button_altitude.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button_altitude.UseVisualStyleBackColor = false;
             // 
+            // button_location
+            // 
+            this.button_location.BackColor = System.Drawing.Color.Navy;
+            this.button_location.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button_location.FlatAppearance.BorderSize = 0;
+            this.button_location.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_location.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button_location.ForeColor = System.Drawing.Color.White;
+            this.button_location.Image = ((System.Drawing.Image)(resources.GetObject("button_location.Image")));
+            this.button_location.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_location.Location = new System.Drawing.Point(0, 312);
+            this.button_location.Name = "button_location";
+            this.button_location.Size = new System.Drawing.Size(244, 52);
+            this.button_location.TabIndex = 6;
+            this.button_location.Text = "    Location";
+            this.button_location.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_location.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button_location.UseVisualStyleBackColor = false;
+            // 
+            // button_acceleration
+            // 
+            this.button_acceleration.BackColor = System.Drawing.Color.Navy;
+            this.button_acceleration.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button_acceleration.FlatAppearance.BorderSize = 0;
+            this.button_acceleration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_acceleration.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button_acceleration.ForeColor = System.Drawing.Color.White;
+            this.button_acceleration.Image = ((System.Drawing.Image)(resources.GetObject("button_acceleration.Image")));
+            this.button_acceleration.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_acceleration.Location = new System.Drawing.Point(0, 260);
+            this.button_acceleration.Name = "button_acceleration";
+            this.button_acceleration.Size = new System.Drawing.Size(244, 52);
+            this.button_acceleration.TabIndex = 5;
+            this.button_acceleration.Text = "    Acceleration";
+            this.button_acceleration.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_acceleration.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button_acceleration.UseVisualStyleBackColor = false;
+            // 
+            // button_Moisture
+            // 
+            this.button_Moisture.BackColor = System.Drawing.Color.Navy;
+            this.button_Moisture.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button_Moisture.FlatAppearance.BorderSize = 0;
+            this.button_Moisture.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Moisture.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button_Moisture.ForeColor = System.Drawing.Color.White;
+            this.button_Moisture.Image = ((System.Drawing.Image)(resources.GetObject("button_Moisture.Image")));
+            this.button_Moisture.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_Moisture.Location = new System.Drawing.Point(0, 208);
+            this.button_Moisture.Name = "button_Moisture";
+            this.button_Moisture.Size = new System.Drawing.Size(244, 52);
+            this.button_Moisture.TabIndex = 4;
+            this.button_Moisture.Text = "    Moisture";
+            this.button_Moisture.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_Moisture.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button_Moisture.UseVisualStyleBackColor = false;
+            // 
+            // button_Pressure
+            // 
+            this.button_Pressure.BackColor = System.Drawing.Color.Navy;
+            this.button_Pressure.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button_Pressure.FlatAppearance.BorderSize = 0;
+            this.button_Pressure.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Pressure.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button_Pressure.ForeColor = System.Drawing.Color.White;
+            this.button_Pressure.Image = ((System.Drawing.Image)(resources.GetObject("button_Pressure.Image")));
+            this.button_Pressure.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_Pressure.Location = new System.Drawing.Point(0, 156);
+            this.button_Pressure.Name = "button_Pressure";
+            this.button_Pressure.Size = new System.Drawing.Size(244, 52);
+            this.button_Pressure.TabIndex = 3;
+            this.button_Pressure.Text = "    Pressure";
+            this.button_Pressure.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_Pressure.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button_Pressure.UseVisualStyleBackColor = false;
+            // 
+            // button_Temperature
+            // 
+            this.button_Temperature.BackColor = System.Drawing.Color.Navy;
+            this.button_Temperature.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button_Temperature.FlatAppearance.BorderSize = 0;
+            this.button_Temperature.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Temperature.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button_Temperature.ForeColor = System.Drawing.Color.White;
+            this.button_Temperature.Image = ((System.Drawing.Image)(resources.GetObject("button_Temperature.Image")));
+            this.button_Temperature.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_Temperature.Location = new System.Drawing.Point(0, 104);
+            this.button_Temperature.Name = "button_Temperature";
+            this.button_Temperature.Size = new System.Drawing.Size(244, 52);
+            this.button_Temperature.TabIndex = 2;
+            this.button_Temperature.Text = "    Temperature";
+            this.button_Temperature.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_Temperature.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button_Temperature.UseVisualStyleBackColor = false;
+            // 
+            // button_velocity
+            // 
+            this.button_velocity.BackColor = System.Drawing.Color.Navy;
+            this.button_velocity.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button_velocity.FlatAppearance.BorderSize = 0;
+            this.button_velocity.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_velocity.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button_velocity.ForeColor = System.Drawing.Color.White;
+            this.button_velocity.Image = ((System.Drawing.Image)(resources.GetObject("button_velocity.Image")));
+            this.button_velocity.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_velocity.Location = new System.Drawing.Point(0, 52);
+            this.button_velocity.Name = "button_velocity";
+            this.button_velocity.Size = new System.Drawing.Size(244, 52);
+            this.button_velocity.TabIndex = 1;
+            this.button_velocity.Text = "    Velocity";
+            this.button_velocity.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_velocity.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button_velocity.UseVisualStyleBackColor = false;
+            this.button_velocity.Click += new System.EventHandler(this.button_velocity_Click);
+            // 
+            // button_dashboard
+            // 
+            this.button_dashboard.BackColor = System.Drawing.Color.Navy;
+            this.button_dashboard.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button_dashboard.FlatAppearance.BorderSize = 0;
+            this.button_dashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_dashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button_dashboard.ForeColor = System.Drawing.Color.White;
+            this.button_dashboard.Image = ((System.Drawing.Image)(resources.GetObject("button_dashboard.Image")));
+            this.button_dashboard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_dashboard.Location = new System.Drawing.Point(0, 0);
+            this.button_dashboard.Name = "button_dashboard";
+            this.button_dashboard.Size = new System.Drawing.Size(244, 52);
+            this.button_dashboard.TabIndex = 0;
+            this.button_dashboard.Text = "    DashBoard";
+            this.button_dashboard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_dashboard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button_dashboard.UseVisualStyleBackColor = false;
+            this.button_dashboard.Click += new System.EventHandler(this.button_dashboard_Click);
+            // 
             // tableLayoutPanel_buttonStartFinish
             // 
             this.tableLayoutPanel_buttonStartFinish.ColumnCount = 2;
@@ -384,17 +389,6 @@ namespace Lavira_Merkut
             this.tableLayoutPanel_buttonStartFinish.Size = new System.Drawing.Size(244, 54);
             this.tableLayoutPanel_buttonStartFinish.TabIndex = 2;
             // 
-            // button_start
-            // 
-            this.button_start.BackColor = System.Drawing.Color.Lime;
-            this.button_start.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button_start.Location = new System.Drawing.Point(3, 3);
-            this.button_start.Name = "button_start";
-            this.button_start.Size = new System.Drawing.Size(116, 48);
-            this.button_start.TabIndex = 0;
-            this.button_start.Text = "Start";
-            this.button_start.UseVisualStyleBackColor = false;
-            // 
             // button_finish
             // 
             this.button_finish.BackColor = System.Drawing.Color.Red;
@@ -405,6 +399,19 @@ namespace Lavira_Merkut
             this.button_finish.TabIndex = 1;
             this.button_finish.Text = "Finish";
             this.button_finish.UseVisualStyleBackColor = false;
+            this.button_finish.Click += new System.EventHandler(this.button_finish_Click);
+            // 
+            // button_start
+            // 
+            this.button_start.BackColor = System.Drawing.Color.Lime;
+            this.button_start.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button_start.Location = new System.Drawing.Point(3, 3);
+            this.button_start.Name = "button_start";
+            this.button_start.Size = new System.Drawing.Size(116, 48);
+            this.button_start.TabIndex = 0;
+            this.button_start.Text = "Start";
+            this.button_start.UseVisualStyleBackColor = false;
+            this.button_start.Click += new System.EventHandler(this.button_start_Click);
             // 
             // panel_formContainer
             // 
@@ -413,6 +420,11 @@ namespace Lavira_Merkut
             this.panel_formContainer.Name = "panel_formContainer";
             this.panel_formContainer.Size = new System.Drawing.Size(924, 605);
             this.panel_formContainer.TabIndex = 1;
+            // 
+            // timer
+            // 
+            this.timer.Interval = 1;
+            this.timer.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1
             // 
@@ -427,11 +439,11 @@ namespace Lavira_Merkut
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Panel_TopBar.ResumeLayout(false);
             this.Panel_TopBar.PerformLayout();
+            this.panel_logo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_topLogo)).EndInit();
             this.Panel_Container.ResumeLayout(false);
             this.tableLayoutPanel_Container.ResumeLayout(false);
             this.tableLayoutPanel_navigation.ResumeLayout(false);
-            this.panel_logo.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_topLogo)).EndInit();
             this.panel_navigationTime.ResumeLayout(false);
             this.panel_navigationButtons.ResumeLayout(false);
             this.tableLayoutPanel_buttonStartFinish.ResumeLayout(false);
@@ -465,6 +477,7 @@ namespace Lavira_Merkut
         private System.Windows.Forms.Button button_finish;
         private System.Windows.Forms.Button button_start;
         private System.Windows.Forms.Panel panel_formContainer;
+        private System.Windows.Forms.Timer timer;
     }
 }
 
