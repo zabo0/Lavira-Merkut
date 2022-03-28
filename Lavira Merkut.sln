@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lavira Merkut", "Lavira Merkut\Lavira Merkut.csproj", "{A14E6324-4A2F-4ED2-9A2C-0A311124DECB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A14E6324-4A2F-4ED2-9A2C-0A311124DECB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A14E6324-4A2F-4ED2-9A2C-0A311124DECB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A14E6324-4A2F-4ED2-9A2C-0A311124DECB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A14E6324-4A2F-4ED2-9A2C-0A311124DECB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F294B32F-45E4-4F88-A536-0C5C682DD9C1}
+	EndGlobalSection
+EndGlobal
