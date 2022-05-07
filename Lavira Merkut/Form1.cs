@@ -16,6 +16,7 @@ namespace Lavira_Merkut
         string currentTime;
 
         private Button currentButton;
+        private Form activeForm;
 
         public Form1()
         {
@@ -68,6 +69,29 @@ namespace Lavira_Merkut
         }
 
 
+        //alt formlari ana formda acar
+        private void OpenChildForm(Form childForm, object btnSender)
+        {
+
+            if (activeForm != null)
+            {
+                activeForm.Close();
+            }
+            ActivateButton(btnSender);
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            this.panel_formContainer.Controls.Add(childForm);
+            this.panel_formContainer.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+            Label_LaviraMerkut.Text = childForm.Text;
+
+        }
+
+
+
 
         public void startProcess()
         {
@@ -105,6 +129,7 @@ namespace Lavira_Merkut
         private void button_start_Click(object sender, EventArgs e)
         {
             startProcess();
+            OpenChildForm(new View.Dashboard(), sender);
         }
 
         private void button_finish_Click(object sender, EventArgs e)
@@ -114,7 +139,7 @@ namespace Lavira_Merkut
 
         private void button_dashboard_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender);
+            OpenChildForm(new View.Dashboard(), sender);
         }
 
         private void button_velocity_Click(object sender, EventArgs e)

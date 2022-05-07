@@ -55,6 +55,7 @@ namespace Lavira_Merkut
             this.button_finish = new System.Windows.Forms.Button();
             this.button_start = new System.Windows.Forms.Button();
             this.panel_formContainer = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.Panel_TopBar.SuspendLayout();
             this.panel_logo.SuspendLayout();
@@ -65,6 +66,8 @@ namespace Lavira_Merkut
             this.panel_navigationTime.SuspendLayout();
             this.panel_navigationButtons.SuspendLayout();
             this.tableLayoutPanel_buttonStartFinish.SuspendLayout();
+            this.panel_formContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // Panel_TopBar
@@ -421,11 +424,23 @@ namespace Lavira_Merkut
             // 
             // panel_formContainer
             // 
+            this.panel_formContainer.Controls.Add(this.pictureBox1);
             this.panel_formContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_formContainer.Location = new System.Drawing.Point(253, 3);
             this.panel_formContainer.Name = "panel_formContainer";
             this.panel_formContainer.Size = new System.Drawing.Size(924, 605);
             this.panel_formContainer.TabIndex = 1;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(924, 605);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // timer
             // 
@@ -453,6 +468,8 @@ namespace Lavira_Merkut
             this.panel_navigationTime.ResumeLayout(false);
             this.panel_navigationButtons.ResumeLayout(false);
             this.tableLayoutPanel_buttonStartFinish.ResumeLayout(false);
+            this.panel_formContainer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -484,6 +501,7 @@ namespace Lavira_Merkut
         private System.Windows.Forms.Button button_start;
         private System.Windows.Forms.Panel panel_formContainer;
         private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
