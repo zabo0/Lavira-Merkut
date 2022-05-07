@@ -144,7 +144,7 @@ namespace Lavira_Merkut
 
         private void button_velocity_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender);
+            OpenChildForm(new View.Velocity(), sender);
         }
 
         private void button_Temperature_Click(object sender, EventArgs e)

@@ -32,33 +32,33 @@ namespace Lavira_Merkut.View
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            this.panel_container = new System.Windows.Forms.TableLayoutPanel();
+            this.panel_dashboard_container = new System.Windows.Forms.TableLayoutPanel();
             this.chart_dashboard_altitude = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel_dashboard_stateContainer = new System.Windows.Forms.TableLayoutPanel();
             this.label_stateText = new System.Windows.Forms.Label();
             this.label_dashboard_checkText = new System.Windows.Forms.Label();
             this.textBox_dashboard_stateText = new System.Windows.Forms.TextBox();
             this.textBox_dashboard_checkText = new System.Windows.Forms.TextBox();
-            this.panel_container.SuspendLayout();
+            this.panel_dashboard_container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_dashboard_altitude)).BeginInit();
             this.panel_dashboard_stateContainer.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel_container
+            // panel_dashboard_container
             // 
-            this.panel_container.ColumnCount = 2;
-            this.panel_container.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.panel_container.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.panel_container.Controls.Add(this.chart_dashboard_altitude, 0, 0);
-            this.panel_container.Controls.Add(this.panel_dashboard_stateContainer, 0, 1);
-            this.panel_container.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_container.Location = new System.Drawing.Point(0, 0);
-            this.panel_container.Name = "panel_container";
-            this.panel_container.RowCount = 2;
-            this.panel_container.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.panel_container.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.panel_container.Size = new System.Drawing.Size(1181, 655);
-            this.panel_container.TabIndex = 0;
+            this.panel_dashboard_container.ColumnCount = 2;
+            this.panel_dashboard_container.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.panel_dashboard_container.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.panel_dashboard_container.Controls.Add(this.chart_dashboard_altitude, 0, 0);
+            this.panel_dashboard_container.Controls.Add(this.panel_dashboard_stateContainer, 0, 1);
+            this.panel_dashboard_container.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_dashboard_container.Location = new System.Drawing.Point(0, 0);
+            this.panel_dashboard_container.Name = "panel_dashboard_container";
+            this.panel_dashboard_container.RowCount = 2;
+            this.panel_dashboard_container.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.panel_dashboard_container.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.panel_dashboard_container.Size = new System.Drawing.Size(1181, 655);
+            this.panel_dashboard_container.TabIndex = 0;
             // 
             // chart_dashboard_altitude
             // 
@@ -71,6 +71,7 @@ namespace Lavira_Merkut.View
             this.chart_dashboard_altitude.Location = new System.Drawing.Point(3, 3);
             this.chart_dashboard_altitude.Name = "chart_dashboard_altitude";
             series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chart_dashboard_altitude.Series.Add(series1);
@@ -147,10 +148,10 @@ namespace Lavira_Merkut.View
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1181, 655);
-            this.Controls.Add(this.panel_container);
+            this.Controls.Add(this.panel_dashboard_container);
             this.Name = "Dashboard";
             this.Text = "Dashboard";
-            this.panel_container.ResumeLayout(false);
+            this.panel_dashboard_container.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart_dashboard_altitude)).EndInit();
             this.panel_dashboard_stateContainer.ResumeLayout(false);
             this.panel_dashboard_stateContainer.PerformLayout();
@@ -160,7 +161,7 @@ namespace Lavira_Merkut.View
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel panel_container;
+        private System.Windows.Forms.TableLayoutPanel panel_dashboard_container;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart_dashboard_altitude;
         private System.Windows.Forms.TableLayoutPanel panel_dashboard_stateContainer;
         private System.Windows.Forms.Label label_dashboard_checkText;
