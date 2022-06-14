@@ -31,12 +31,12 @@ namespace Lavira_Merkut
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea15 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend15 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea16 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend16 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series16 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.panel_topBar = new System.Windows.Forms.TableLayoutPanel();
@@ -54,17 +54,18 @@ namespace Lavira_Merkut
             this.button_start = new System.Windows.Forms.Button();
             this.button_finish = new System.Windows.Forms.Button();
             this.panel_info = new System.Windows.Forms.TableLayoutPanel();
+            this.label2 = new System.Windows.Forms.Label();
             this.label_accelerationZ = new System.Windows.Forms.Label();
             this.textBox_accelerationZ = new System.Windows.Forms.TextBox();
             this.label_accelerationY = new System.Windows.Forms.Label();
             this.textBox_accelerationY = new System.Windows.Forms.TextBox();
             this.label_accelerationX = new System.Windows.Forms.Label();
             this.textBox_accelerationX = new System.Windows.Forms.TextBox();
-            this.label_moisture = new System.Windows.Forms.Label();
+            this.label_angle = new System.Windows.Forms.Label();
             this.textBox_moisture = new System.Windows.Forms.TextBox();
-            this.label_pressure = new System.Windows.Forms.Label();
+            this.label_rocketalt = new System.Windows.Forms.Label();
             this.textBox_pressure = new System.Windows.Forms.TextBox();
-            this.label_temperature = new System.Windows.Forms.Label();
+            this.label_state = new System.Windows.Forms.Label();
             this.textBox_temperature = new System.Windows.Forms.TextBox();
             this.label_locationY = new System.Windows.Forms.Label();
             this.textBox_locationY = new System.Windows.Forms.TextBox();
@@ -87,6 +88,13 @@ namespace Lavira_Merkut
             this.textBox_state = new System.Windows.Forms.TextBox();
             this.textBox_controls = new System.Windows.Forms.TextBox();
             this.panel_3dMap = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.axMap1 = new AxMapWinGIS.AxMap();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.button_moveCursor = new System.Windows.Forms.Button();
+            this.button_zoom_in = new System.Windows.Forms.Button();
+            this.button_zoom_out = new System.Windows.Forms.Button();
+            this.button_pan = new System.Windows.Forms.Button();
             this.panel_unity = new System.Windows.Forms.Panel();
             this.tableLayoutPanel.SuspendLayout();
             this.panel_topBar.SuspendLayout();
@@ -103,6 +111,9 @@ namespace Lavira_Merkut
             ((System.ComponentModel.ISupportInitialize)(this.chart_velocity)).BeginInit();
             this.panel_stateControls.SuspendLayout();
             this.panel_3dMap.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axMap1)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // timer
@@ -335,17 +346,18 @@ namespace Lavira_Merkut
             this.panel_info.ColumnCount = 2;
             this.panel_info.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.panel_info.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.panel_info.Controls.Add(this.label2, 0, 12);
             this.panel_info.Controls.Add(this.label_accelerationZ, 0, 11);
             this.panel_info.Controls.Add(this.textBox_accelerationZ, 1, 11);
             this.panel_info.Controls.Add(this.label_accelerationY, 0, 10);
             this.panel_info.Controls.Add(this.textBox_accelerationY, 1, 10);
             this.panel_info.Controls.Add(this.label_accelerationX, 0, 9);
             this.panel_info.Controls.Add(this.textBox_accelerationX, 1, 9);
-            this.panel_info.Controls.Add(this.label_moisture, 0, 8);
+            this.panel_info.Controls.Add(this.label_angle, 0, 8);
             this.panel_info.Controls.Add(this.textBox_moisture, 1, 8);
-            this.panel_info.Controls.Add(this.label_pressure, 0, 7);
+            this.panel_info.Controls.Add(this.label_rocketalt, 0, 7);
             this.panel_info.Controls.Add(this.textBox_pressure, 1, 7);
-            this.panel_info.Controls.Add(this.label_temperature, 0, 6);
+            this.panel_info.Controls.Add(this.label_state, 0, 6);
             this.panel_info.Controls.Add(this.textBox_temperature, 1, 6);
             this.panel_info.Controls.Add(this.label_locationY, 0, 5);
             this.panel_info.Controls.Add(this.textBox_locationY, 1, 5);
@@ -362,7 +374,7 @@ namespace Lavira_Merkut
             this.panel_info.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_info.Location = new System.Drawing.Point(3, 188);
             this.panel_info.Name = "panel_info";
-            this.panel_info.RowCount = 12;
+            this.panel_info.RowCount = 13;
             this.panel_info.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333332F));
             this.panel_info.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333332F));
             this.panel_info.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333332F));
@@ -379,15 +391,27 @@ namespace Lavira_Merkut
             this.panel_info.Size = new System.Drawing.Size(168, 495);
             this.panel_info.TabIndex = 2;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(3, 468);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(78, 27);
+            this.label2.TabIndex = 24;
+            this.label2.Text = "Velocity";
+            // 
             // label_accelerationZ
             // 
             this.label_accelerationZ.AutoSize = true;
             this.label_accelerationZ.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label_accelerationZ.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label_accelerationZ.ForeColor = System.Drawing.Color.White;
-            this.label_accelerationZ.Location = new System.Drawing.Point(3, 451);
+            this.label_accelerationZ.Location = new System.Drawing.Point(3, 429);
             this.label_accelerationZ.Name = "label_accelerationZ";
-            this.label_accelerationZ.Size = new System.Drawing.Size(78, 44);
+            this.label_accelerationZ.Size = new System.Drawing.Size(78, 39);
             this.label_accelerationZ.TabIndex = 22;
             this.label_accelerationZ.Text = "AccelerationZ";
             // 
@@ -395,7 +419,7 @@ namespace Lavira_Merkut
             // 
             this.textBox_accelerationZ.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox_accelerationZ.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox_accelerationZ.Location = new System.Drawing.Point(87, 454);
+            this.textBox_accelerationZ.Location = new System.Drawing.Point(87, 432);
             this.textBox_accelerationZ.Name = "textBox_accelerationZ";
             this.textBox_accelerationZ.ReadOnly = true;
             this.textBox_accelerationZ.Size = new System.Drawing.Size(78, 23);
@@ -407,9 +431,9 @@ namespace Lavira_Merkut
             this.label_accelerationY.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label_accelerationY.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label_accelerationY.ForeColor = System.Drawing.Color.White;
-            this.label_accelerationY.Location = new System.Drawing.Point(3, 410);
+            this.label_accelerationY.Location = new System.Drawing.Point(3, 390);
             this.label_accelerationY.Name = "label_accelerationY";
-            this.label_accelerationY.Size = new System.Drawing.Size(78, 41);
+            this.label_accelerationY.Size = new System.Drawing.Size(78, 39);
             this.label_accelerationY.TabIndex = 20;
             this.label_accelerationY.Text = "AccelerationY";
             // 
@@ -417,7 +441,7 @@ namespace Lavira_Merkut
             // 
             this.textBox_accelerationY.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox_accelerationY.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox_accelerationY.Location = new System.Drawing.Point(87, 413);
+            this.textBox_accelerationY.Location = new System.Drawing.Point(87, 393);
             this.textBox_accelerationY.Name = "textBox_accelerationY";
             this.textBox_accelerationY.ReadOnly = true;
             this.textBox_accelerationY.Size = new System.Drawing.Size(78, 23);
@@ -429,9 +453,9 @@ namespace Lavira_Merkut
             this.label_accelerationX.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label_accelerationX.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label_accelerationX.ForeColor = System.Drawing.Color.White;
-            this.label_accelerationX.Location = new System.Drawing.Point(3, 369);
+            this.label_accelerationX.Location = new System.Drawing.Point(3, 351);
             this.label_accelerationX.Name = "label_accelerationX";
-            this.label_accelerationX.Size = new System.Drawing.Size(78, 41);
+            this.label_accelerationX.Size = new System.Drawing.Size(78, 39);
             this.label_accelerationX.TabIndex = 18;
             this.label_accelerationX.Text = "AccelerationX";
             // 
@@ -439,73 +463,73 @@ namespace Lavira_Merkut
             // 
             this.textBox_accelerationX.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox_accelerationX.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox_accelerationX.Location = new System.Drawing.Point(87, 372);
+            this.textBox_accelerationX.Location = new System.Drawing.Point(87, 354);
             this.textBox_accelerationX.Name = "textBox_accelerationX";
             this.textBox_accelerationX.ReadOnly = true;
             this.textBox_accelerationX.Size = new System.Drawing.Size(78, 23);
             this.textBox_accelerationX.TabIndex = 19;
             // 
-            // label_moisture
+            // label_angle
             // 
-            this.label_moisture.AutoSize = true;
-            this.label_moisture.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_moisture.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label_moisture.ForeColor = System.Drawing.Color.White;
-            this.label_moisture.Location = new System.Drawing.Point(3, 328);
-            this.label_moisture.Name = "label_moisture";
-            this.label_moisture.Size = new System.Drawing.Size(78, 41);
-            this.label_moisture.TabIndex = 16;
-            this.label_moisture.Text = "Moisture";
+            this.label_angle.AutoSize = true;
+            this.label_angle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_angle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label_angle.ForeColor = System.Drawing.Color.White;
+            this.label_angle.Location = new System.Drawing.Point(3, 312);
+            this.label_angle.Name = "label_angle";
+            this.label_angle.Size = new System.Drawing.Size(78, 39);
+            this.label_angle.TabIndex = 16;
+            this.label_angle.Text = "Angle";
             // 
             // textBox_moisture
             // 
             this.textBox_moisture.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox_moisture.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox_moisture.Location = new System.Drawing.Point(87, 331);
+            this.textBox_moisture.Location = new System.Drawing.Point(87, 315);
             this.textBox_moisture.Name = "textBox_moisture";
             this.textBox_moisture.ReadOnly = true;
             this.textBox_moisture.Size = new System.Drawing.Size(78, 23);
             this.textBox_moisture.TabIndex = 17;
             // 
-            // label_pressure
+            // label_rocketalt
             // 
-            this.label_pressure.AutoSize = true;
-            this.label_pressure.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_pressure.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label_pressure.ForeColor = System.Drawing.Color.White;
-            this.label_pressure.Location = new System.Drawing.Point(3, 287);
-            this.label_pressure.Name = "label_pressure";
-            this.label_pressure.Size = new System.Drawing.Size(78, 41);
-            this.label_pressure.TabIndex = 14;
-            this.label_pressure.Text = "Pressure";
+            this.label_rocketalt.AutoSize = true;
+            this.label_rocketalt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_rocketalt.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label_rocketalt.ForeColor = System.Drawing.Color.White;
+            this.label_rocketalt.Location = new System.Drawing.Point(3, 273);
+            this.label_rocketalt.Name = "label_rocketalt";
+            this.label_rocketalt.Size = new System.Drawing.Size(78, 39);
+            this.label_rocketalt.TabIndex = 14;
+            this.label_rocketalt.Text = "Altitude_Rocket";
             // 
             // textBox_pressure
             // 
             this.textBox_pressure.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox_pressure.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox_pressure.Location = new System.Drawing.Point(87, 290);
+            this.textBox_pressure.Location = new System.Drawing.Point(87, 276);
             this.textBox_pressure.Name = "textBox_pressure";
             this.textBox_pressure.ReadOnly = true;
             this.textBox_pressure.Size = new System.Drawing.Size(78, 23);
             this.textBox_pressure.TabIndex = 15;
             // 
-            // label_temperature
+            // label_state
             // 
-            this.label_temperature.AutoSize = true;
-            this.label_temperature.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_temperature.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label_temperature.ForeColor = System.Drawing.Color.White;
-            this.label_temperature.Location = new System.Drawing.Point(3, 246);
-            this.label_temperature.Name = "label_temperature";
-            this.label_temperature.Size = new System.Drawing.Size(78, 41);
-            this.label_temperature.TabIndex = 12;
-            this.label_temperature.Text = "Temperature";
+            this.label_state.AutoSize = true;
+            this.label_state.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_state.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label_state.ForeColor = System.Drawing.Color.White;
+            this.label_state.Location = new System.Drawing.Point(3, 234);
+            this.label_state.Name = "label_state";
+            this.label_state.Size = new System.Drawing.Size(78, 39);
+            this.label_state.TabIndex = 12;
+            this.label_state.Text = "State";
             // 
             // textBox_temperature
             // 
             this.textBox_temperature.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox_temperature.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox_temperature.Location = new System.Drawing.Point(87, 249);
+            this.textBox_temperature.Location = new System.Drawing.Point(87, 237);
             this.textBox_temperature.Name = "textBox_temperature";
             this.textBox_temperature.ReadOnly = true;
             this.textBox_temperature.Size = new System.Drawing.Size(78, 23);
@@ -517,9 +541,9 @@ namespace Lavira_Merkut
             this.label_locationY.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label_locationY.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label_locationY.ForeColor = System.Drawing.Color.White;
-            this.label_locationY.Location = new System.Drawing.Point(3, 205);
+            this.label_locationY.Location = new System.Drawing.Point(3, 195);
             this.label_locationY.Name = "label_locationY";
-            this.label_locationY.Size = new System.Drawing.Size(78, 41);
+            this.label_locationY.Size = new System.Drawing.Size(78, 39);
             this.label_locationY.TabIndex = 10;
             this.label_locationY.Text = "LocationY";
             // 
@@ -527,7 +551,7 @@ namespace Lavira_Merkut
             // 
             this.textBox_locationY.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox_locationY.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox_locationY.Location = new System.Drawing.Point(87, 208);
+            this.textBox_locationY.Location = new System.Drawing.Point(87, 198);
             this.textBox_locationY.Name = "textBox_locationY";
             this.textBox_locationY.ReadOnly = true;
             this.textBox_locationY.Size = new System.Drawing.Size(78, 23);
@@ -539,9 +563,9 @@ namespace Lavira_Merkut
             this.label_locationX.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label_locationX.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label_locationX.ForeColor = System.Drawing.Color.White;
-            this.label_locationX.Location = new System.Drawing.Point(3, 164);
+            this.label_locationX.Location = new System.Drawing.Point(3, 156);
             this.label_locationX.Name = "label_locationX";
-            this.label_locationX.Size = new System.Drawing.Size(78, 41);
+            this.label_locationX.Size = new System.Drawing.Size(78, 39);
             this.label_locationX.TabIndex = 8;
             this.label_locationX.Text = "LocationX";
             // 
@@ -549,7 +573,7 @@ namespace Lavira_Merkut
             // 
             this.textBox_locationX.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox_locationX.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox_locationX.Location = new System.Drawing.Point(87, 167);
+            this.textBox_locationX.Location = new System.Drawing.Point(87, 159);
             this.textBox_locationX.Name = "textBox_locationX";
             this.textBox_locationX.ReadOnly = true;
             this.textBox_locationX.Size = new System.Drawing.Size(78, 23);
@@ -561,9 +585,9 @@ namespace Lavira_Merkut
             this.label_altitude.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label_altitude.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label_altitude.ForeColor = System.Drawing.Color.White;
-            this.label_altitude.Location = new System.Drawing.Point(3, 123);
+            this.label_altitude.Location = new System.Drawing.Point(3, 117);
             this.label_altitude.Name = "label_altitude";
-            this.label_altitude.Size = new System.Drawing.Size(78, 41);
+            this.label_altitude.Size = new System.Drawing.Size(78, 39);
             this.label_altitude.TabIndex = 6;
             this.label_altitude.Text = "Altitude";
             // 
@@ -571,7 +595,7 @@ namespace Lavira_Merkut
             // 
             this.textBox_altitude.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox_altitude.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox_altitude.Location = new System.Drawing.Point(87, 126);
+            this.textBox_altitude.Location = new System.Drawing.Point(87, 120);
             this.textBox_altitude.Name = "textBox_altitude";
             this.textBox_altitude.ReadOnly = true;
             this.textBox_altitude.Size = new System.Drawing.Size(78, 23);
@@ -583,9 +607,9 @@ namespace Lavira_Merkut
             this.label_Vz.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label_Vz.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label_Vz.ForeColor = System.Drawing.Color.White;
-            this.label_Vz.Location = new System.Drawing.Point(3, 82);
+            this.label_Vz.Location = new System.Drawing.Point(3, 78);
             this.label_Vz.Name = "label_Vz";
-            this.label_Vz.Size = new System.Drawing.Size(78, 41);
+            this.label_Vz.Size = new System.Drawing.Size(78, 39);
             this.label_Vz.TabIndex = 4;
             this.label_Vz.Text = "Velocity_Z";
             // 
@@ -593,7 +617,7 @@ namespace Lavira_Merkut
             // 
             this.textBox_Vz.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox_Vz.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox_Vz.Location = new System.Drawing.Point(87, 85);
+            this.textBox_Vz.Location = new System.Drawing.Point(87, 81);
             this.textBox_Vz.Name = "textBox_Vz";
             this.textBox_Vz.ReadOnly = true;
             this.textBox_Vz.Size = new System.Drawing.Size(78, 23);
@@ -605,9 +629,9 @@ namespace Lavira_Merkut
             this.label_Vx.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label_Vx.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label_Vx.ForeColor = System.Drawing.Color.White;
-            this.label_Vx.Location = new System.Drawing.Point(3, 41);
+            this.label_Vx.Location = new System.Drawing.Point(3, 39);
             this.label_Vx.Name = "label_Vx";
-            this.label_Vx.Size = new System.Drawing.Size(78, 41);
+            this.label_Vx.Size = new System.Drawing.Size(78, 39);
             this.label_Vx.TabIndex = 2;
             this.label_Vx.Text = "Velocity_X";
             // 
@@ -615,7 +639,7 @@ namespace Lavira_Merkut
             // 
             this.textBox_Vx.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox_Vx.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox_Vx.Location = new System.Drawing.Point(87, 44);
+            this.textBox_Vx.Location = new System.Drawing.Point(87, 42);
             this.textBox_Vx.Name = "textBox_Vx";
             this.textBox_Vx.ReadOnly = true;
             this.textBox_Vx.Size = new System.Drawing.Size(78, 23);
@@ -629,7 +653,7 @@ namespace Lavira_Merkut
             this.label_velocity.ForeColor = System.Drawing.Color.White;
             this.label_velocity.Location = new System.Drawing.Point(3, 0);
             this.label_velocity.Name = "label_velocity";
-            this.label_velocity.Size = new System.Drawing.Size(78, 41);
+            this.label_velocity.Size = new System.Drawing.Size(78, 39);
             this.label_velocity.TabIndex = 0;
             this.label_velocity.Text = "Velocity";
             // 
@@ -664,18 +688,18 @@ namespace Lavira_Merkut
             // 
             // chart_altitude
             // 
-            chartArea15.Name = "ChartArea1";
-            this.chart_altitude.ChartAreas.Add(chartArea15);
+            chartArea1.Name = "ChartArea1";
+            this.chart_altitude.ChartAreas.Add(chartArea1);
             this.chart_altitude.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend15.Name = "Legend1";
-            this.chart_altitude.Legends.Add(legend15);
+            legend1.Name = "Legend1";
+            this.chart_altitude.Legends.Add(legend1);
             this.chart_altitude.Location = new System.Drawing.Point(3, 3);
             this.chart_altitude.Name = "chart_altitude";
-            series15.ChartArea = "ChartArea1";
-            series15.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series15.Legend = "Legend1";
-            series15.Name = "Altitude";
-            this.chart_altitude.Series.Add(series15);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Legend = "Legend1";
+            series1.Name = "Altitude";
+            this.chart_altitude.Series.Add(series1);
             this.chart_altitude.Size = new System.Drawing.Size(442, 199);
             this.chart_altitude.TabIndex = 0;
             this.chart_altitude.Text = "chart1";
@@ -683,18 +707,18 @@ namespace Lavira_Merkut
             // 
             // chart_velocity
             // 
-            chartArea16.Name = "ChartArea1";
-            this.chart_velocity.ChartAreas.Add(chartArea16);
+            chartArea2.Name = "ChartArea1";
+            this.chart_velocity.ChartAreas.Add(chartArea2);
             this.chart_velocity.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend16.Name = "Legend1";
-            this.chart_velocity.Legends.Add(legend16);
+            legend2.Name = "Legend1";
+            this.chart_velocity.Legends.Add(legend2);
             this.chart_velocity.Location = new System.Drawing.Point(3, 208);
             this.chart_velocity.Name = "chart_velocity";
-            series16.ChartArea = "ChartArea1";
-            series16.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series16.Legend = "Legend1";
-            series16.Name = "Velocity";
-            this.chart_velocity.Series.Add(series16);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Legend = "Legend1";
+            series2.Name = "Velocity";
+            this.chart_velocity.Series.Add(series2);
             this.chart_velocity.Size = new System.Drawing.Size(442, 199);
             this.chart_velocity.TabIndex = 1;
             this.chart_velocity.Text = "chart1";
@@ -768,6 +792,7 @@ namespace Lavira_Merkut
             this.panel_3dMap.ColumnCount = 1;
             this.panel_3dMap.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.panel_3dMap.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.panel_3dMap.Controls.Add(this.tableLayoutPanel1, 0, 1);
             this.panel_3dMap.Controls.Add(this.panel_unity, 0, 0);
             this.panel_3dMap.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_3dMap.Location = new System.Drawing.Point(625, 3);
@@ -777,6 +802,97 @@ namespace Lavira_Merkut
             this.panel_3dMap.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.panel_3dMap.Size = new System.Drawing.Size(617, 680);
             this.panel_3dMap.TabIndex = 2;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.Controls.Add(this.axMap1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 343);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 334F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(611, 334);
+            this.tableLayoutPanel1.TabIndex = 1;
+            // 
+            // axMap1
+            // 
+            this.axMap1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.axMap1.Enabled = true;
+            this.axMap1.Location = new System.Drawing.Point(3, 3);
+            this.axMap1.Name = "axMap1";
+            this.axMap1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axMap1.OcxState")));
+            this.axMap1.Size = new System.Drawing.Size(543, 328);
+            this.axMap1.TabIndex = 0;
+            this.axMap1.MouseDownEvent += new AxMapWinGIS._DMapEvents_MouseDownEventHandler(this.axMap1_MouseDownEvent);
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Controls.Add(this.button_moveCursor, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.button_zoom_in, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.button_zoom_out, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.button_pan, 0, 3);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(552, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 4;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(56, 328);
+            this.tableLayoutPanel2.TabIndex = 1;
+            // 
+            // button_moveCursor
+            // 
+            this.button_moveCursor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button_moveCursor.Location = new System.Drawing.Point(3, 3);
+            this.button_moveCursor.Name = "button_moveCursor";
+            this.button_moveCursor.Size = new System.Drawing.Size(50, 76);
+            this.button_moveCursor.TabIndex = 0;
+            this.button_moveCursor.Text = "Move";
+            this.button_moveCursor.UseVisualStyleBackColor = true;
+            this.button_moveCursor.Click += new System.EventHandler(this.button_moveCursor_Click);
+            // 
+            // button_zoom_in
+            // 
+            this.button_zoom_in.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button_zoom_in.Location = new System.Drawing.Point(3, 85);
+            this.button_zoom_in.Name = "button_zoom_in";
+            this.button_zoom_in.Size = new System.Drawing.Size(50, 76);
+            this.button_zoom_in.TabIndex = 1;
+            this.button_zoom_in.Text = "Measure";
+            this.button_zoom_in.UseVisualStyleBackColor = true;
+            this.button_zoom_in.Click += new System.EventHandler(this.button_zoom_in_Click);
+            // 
+            // button_zoom_out
+            // 
+            this.button_zoom_out.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button_zoom_out.Location = new System.Drawing.Point(3, 167);
+            this.button_zoom_out.Name = "button_zoom_out";
+            this.button_zoom_out.Size = new System.Drawing.Size(50, 76);
+            this.button_zoom_out.TabIndex = 2;
+            this.button_zoom_out.Text = "Measure Area";
+            this.button_zoom_out.UseVisualStyleBackColor = true;
+            this.button_zoom_out.Click += new System.EventHandler(this.button_zoom_out_Click);
+            // 
+            // button_pan
+            // 
+            this.button_pan.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button_pan.Location = new System.Drawing.Point(3, 249);
+            this.button_pan.Name = "button_pan";
+            this.button_pan.Size = new System.Drawing.Size(50, 76);
+            this.button_pan.TabIndex = 3;
+            this.button_pan.Text = "Pan";
+            this.button_pan.UseVisualStyleBackColor = true;
+            this.button_pan.Click += new System.EventHandler(this.button_pan_Click);
             // 
             // panel_unity
             // 
@@ -816,6 +932,9 @@ namespace Lavira_Merkut
             this.panel_stateControls.ResumeLayout(false);
             this.panel_stateControls.PerformLayout();
             this.panel_3dMap.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.axMap1)).EndInit();
+            this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -849,11 +968,11 @@ namespace Lavira_Merkut
         private System.Windows.Forms.TextBox textBox_accelerationY;
         private System.Windows.Forms.Label label_accelerationX;
         private System.Windows.Forms.TextBox textBox_accelerationX;
-        private System.Windows.Forms.Label label_moisture;
+        private System.Windows.Forms.Label label_angle;
         private System.Windows.Forms.TextBox textBox_moisture;
-        private System.Windows.Forms.Label label_pressure;
+        private System.Windows.Forms.Label label_rocketalt;
         private System.Windows.Forms.TextBox textBox_pressure;
-        private System.Windows.Forms.Label label_temperature;
+        private System.Windows.Forms.Label label_state;
         private System.Windows.Forms.TextBox textBox_temperature;
         private System.Windows.Forms.Label label_locationY;
         private System.Windows.Forms.TextBox textBox_locationY;
@@ -867,11 +986,19 @@ namespace Lavira_Merkut
         private System.Windows.Forms.TextBox textBox_Vx;
         private System.Windows.Forms.Label label_velocity;
         private System.Windows.Forms.TextBox textBox_velocity;
-        private System.Windows.Forms.TableLayoutPanel panel_3dMap;
-        private System.Windows.Forms.Panel panel_unity;
         private System.Windows.Forms.TableLayoutPanel panel_top;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox_settings;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TableLayoutPanel panel_3dMap;
+        private System.Windows.Forms.Panel panel_unity;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private AxMapWinGIS.AxMap axMap1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Button button_moveCursor;
+        private System.Windows.Forms.Button button_zoom_in;
+        private System.Windows.Forms.Button button_zoom_out;
+        private System.Windows.Forms.Button button_pan;
     }
 }
 
