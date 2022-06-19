@@ -216,35 +216,35 @@ namespace Lavira_Merkut
         //_0.9552  9
         //_5.08  10
         //_3  11
-        async void streamLoop()
-        {
-            start:
-            if (state)
-            {
-                try
-                {
-                    Random random = new Random(); 
-                    strReceived = stream.ReadLine();
-                    label2.Text = random.Next(1,1000).ToString();
-                    await Task.Delay(200);
-                    strData = strReceived.Split('_');
-                    label_altitude.Text = strData[0];
-                    label_rocketalt.Text = strData[1];
-                    label_locationX.Text = strData[2];
-                    label_locationY.Text = strData[3];
-                    label_accelerationX.Text = strData[4];
-                    label_accelerationY.Text = strData[5];
-                    label_accelerationZ.Text = strData[6];
-                    label_Vx.Text = strData[7];
-                    label_Vz.Text = strData[8];
-                    label_velocity.Text = strData[9];
-                    label_angle.Text = strData[10];
-                    label_state.Text = strData[11];
-                }
-                catch  { } 
-            }
-            goto start;
-        }
+        //async void streamLoop()
+        //{
+        //    start:
+        //    if (state)
+        //    {
+        //        try
+        //        {
+        //            Random random = new Random(); 
+        //            strReceived = stream.ReadLine();
+        //            label2.Text = random.Next(1,1000).ToString();
+        //            await Task.Delay(200);
+        //            strData = strReceived.Split('_');
+        //            label_altitude.Text = strData[0];
+        //            label_rocketalt.Text = strData[1];
+        //            label_locationX.Text = strData[2];
+        //            label_locationY.Text = strData[3];
+        //            label_accelerationX.Text = strData[4];
+        //            label_accelerationY.Text = strData[5];
+        //            label_accelerationZ.Text = strData[6];
+        //            label_Vx.Text = strData[7];
+        //            label_Vz.Text = strData[8];
+        //            label_velocity.Text = strData[9];
+        //            label_angle.Text = strData[10];
+        //            label_state.Text = strData[11];
+        //        }
+        //        catch  { } 
+        //    }
+        //    goto start;
+        //}
 
         public void veriOku()
         {
@@ -274,7 +274,6 @@ namespace Lavira_Merkut
 
         private void button_pan_Click(object sender, EventArgs e)
         {
-
             double xMin = 29.860;
             double yMin = 40.733;
             double xMax = 30.0;
@@ -345,6 +344,9 @@ namespace Lavira_Merkut
         }
 
 
+        private void label5_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }
