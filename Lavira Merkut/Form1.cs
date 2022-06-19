@@ -34,7 +34,7 @@ namespace Lavira_Merkut
         int hour = 0;
 
 
-        public string COMPort="COM5";
+        public string COMPort="COM6";
 
         bool state = false;
 
@@ -52,20 +52,20 @@ namespace Lavira_Merkut
         {
             InitializeComponent();
             //MarkPoints(axMap1, @"C:\Users\Sabahattin\Desktop\Lavira Rocket\Lavira Merkut Program\MapWinGIS_ShapeFile\");
-            //var settings = new CefSettings();
+            var settings = new CefSettings();
 
-            //settings.RegisterScheme(new CefCustomScheme
-            //{
-            //    SchemeName = "google",
-            //    DomainName = "map",
-            //    SchemeHandlerFactory = new FolderSchemeHandlerFactory(
-            //        rootFolder: @"C:/Users/Sabahattin/Desktop/LaviraArayuzTest",
-            //        hostName: "map",
-            //        defaultPage: "index.html" // will default to index.html
-            //    )
-            //});
+            settings.RegisterScheme(new CefCustomScheme
+            {
+                SchemeName = "google",
+                DomainName = "map",
+                SchemeHandlerFactory = new FolderSchemeHandlerFactory(
+                    rootFolder: @"C:\Users\Sabahattin\Desktop\Lavira Rocket\Lavira Merkut Program\Lavira Merkut\Lavira Merkut\bin\Debug",
+                    hostName: "map",
+                    defaultPage: "index.html" // will default to index.html
+                )
+            });
 
-            //Cef.Initialize(settings);
+            Cef.Initialize(settings);
         }
 
         public ChromiumWebBrowser browser;
@@ -73,7 +73,7 @@ namespace Lavira_Merkut
         public void InitBrowser()
         { 
             browser = new ChromiumWebBrowser("google://map/");
-            panel_3dMap.Controls.Add(browser); 
+            panel1.Controls.Add(browser); 
             browser.Dock = DockStyle.Fill;
         }
 
@@ -92,17 +92,17 @@ namespace Lavira_Merkut
 
 
         private void Form1_Load(object sender, EventArgs e)
-        {  
+        {
             //burasi 3d roket simulasyonunu baslatir
-            //Process p = Process.Start("C:\\Users\\Sabahattin\\Desktop\\LaviraMerkut3D_2.exe");
-            //Thread.Sleep(500); // Allow the process to open it's window
-            //p.WaitForInputIdle();
-            //p.WaitForInputIdle();
-            //Thread.Sleep(3000); //sleep for 3 seconds
-            //SetParent(p.MainWindowHandle, panel_unity.Handle);
-            //SetWindowLong(p.MainWindowHandle, GWL_STYLE, WS_VISIBLE);
-            //MoveWindow(p.MainWindowHandle, 0, 0, panelUnity.Width, panelUnity.Height, true);
-            //MoveWindow(p.MainWindowHandle, 0, 0, 900, 480, true);
+            Process p = Process.Start("C:\\Users\\Sabahattin\\Desktop\\LaviraMerkut3D_2.exe");
+            Thread.Sleep(500); // Allow the process to open it's window
+            p.WaitForInputIdle();
+            p.WaitForInputIdle();
+            Thread.Sleep(3000); //sleep for 3 seconds
+            SetParent(p.MainWindowHandle, panel_unity.Handle);
+            SetWindowLong(p.MainWindowHandle, GWL_STYLE, WS_VISIBLE);
+            MoveWindow(p.MainWindowHandle, 0, 0, panel_unity.Width, panel_unity.Height, true);
+            MoveWindow(p.MainWindowHandle, 0, 0, 900, 480, true);
 
 
             float f = 44.54321f;
@@ -114,18 +114,21 @@ namespace Lavira_Merkut
         public void startProcess()
         {
             ////butun sureci baslatacak fonksiyon
-            //timer.Start();
-            //state = true;
-            ////veriOku(); streamLoop();
-            //label_timeText.Text = "Time";    
-            //InitBrowser();
+            timer.Start();
+            state = true;
+            PortAc(); 
+            streamLoop();
+            label_timeText.Text = "Time";
+            textBox_state.AppendText(currentTime + "\t=====GOREV BASLATILDI=====" + Environment.NewLine);
+            InitBrowser();
         }
 
         public void finishProcess()
         {
             //butun sureci bitirecek fonksiyon
             timer.Stop();
-            textBox_state.AppendText(currentTime + "\tKurtarma sistemi baslatildi" + Environment.NewLine);
+            textBox_state.AppendText(currentTime + "\t=====GOREV BITIRILDI=====" + Environment.NewLine);
+            PortKapat();
         }
 
         private String getTime(int timer)
@@ -182,130 +185,105 @@ namespace Lavira_Merkut
         string stopwatch()
         {
             milisecond++;
-            if(milisecond == 100)
+            if (milisecond == 100)
             {
                 milisecond = 0;
                 second++;
-            }if(second == 60)
+            } if (second == 60)
             {
                 milisecond = 0;
                 second = 0;
                 minute++;
-            }if(minute == 60)
+            } if (minute == 60)
             {
                 milisecond = 0;
                 second = 0;
                 minute = 0;
                 hour++;
-                
+
             }
 
 
             string time = /*hour + ":" +*/ minute.ToString("00") + ":" + second.ToString("00") + "." + milisecond.ToString("00");
             return time;
         }
-        //"234.54  0
-        //_435.63  1
-        //_39.925019  2
-        //_32.836954  3
-        //_1.51  4
-        //_0.49  5
-        //_0.61  6
-        //_0.0411  7
-        //_0.0140  8
-        //_0.9552  9
-        //_5.08  10
-        //_3  11
-        //async void streamLoop()
-        //{
-        //    start:
-        //    if (state)
-        //    {
-        //        try
-        //        {
-        //            Random random = new Random(); 
-        //            strReceived = stream.ReadLine();
-        //            label2.Text = random.Next(1,1000).ToString();
-        //            await Task.Delay(200);
-        //            strData = strReceived.Split('_');
-        //            label_altitude.Text = strData[0];
-        //            label_rocketalt.Text = strData[1];
-        //            label_locationX.Text = strData[2];
-        //            label_locationY.Text = strData[3];
-        //            label_accelerationX.Text = strData[4];
-        //            label_accelerationY.Text = strData[5];
-        //            label_accelerationZ.Text = strData[6];
-        //            label_Vx.Text = strData[7];
-        //            label_Vz.Text = strData[8];
-        //            label_velocity.Text = strData[9];
-        //            label_angle.Text = strData[10];
-        //            label_state.Text = strData[11];
-        //        }
-        //        catch  { } 
-        //    }
-        //    goto start;
-        //}
+      
+        //00 altitude
+        //01 gps altitude
+        //02 gps latitude
+        //03 gps longitude
+        //04 payload gps altitude
+        //05 payload gps latitude
+        //06 payload pgs longitude
+        //07 air pressure
+        //08 gyroscope x
+        //09 gyroscope y
+        //10 gyroscope z
+        //11 acceleration x
+        //12 acceleration y
+        //13 acceleration z
+        //14 angle
+        //15 state
+        //16 velocity
+        async void streamLoop()
+        {
+        start:
+            if (state)
+            {
+               try{
+                    Random random = new Random();
+                    read: strReceived = stream.ReadLine();
+                    await Task.Delay(200);
+                    strData = strReceived.Split('_');
+                    while (strData.Length != 17) {goto read;  } /*MessageBox.Show(strReceived);*/
+                    textBox_altitude.Text = strData[0];
+                    textBox_gps_altitude.Text = strData[1];
+                    textBox_gps_latitude.Text = strData[2];
+                    textBox_gps_longitude.Text = strData[3];
+                    textBox_payload_gps_altidue.Text = strData[4];
+                    textBox_payload_gps_latitude.Text = strData[5];
+                    textBox_payload_gps_longitude.Text = strData[6];
+                    textBox_air_pressure.Text = strData[7];
+                    textBox_gyroscope_X.Text = strData[8];
+                    textBox_gyroscope_Y.Text = strData[9];
+                    textBox_gyroscope_Z.Text = strData[10];
+                    textBox_acceleration_X.Text = strData[11];
+                    textBox_acceleration_Y.Text = strData[12];
+                    textBox_acceleration_Z.Text = strData[13];
+                    textBox_angle.Text = strData[14];
+                    chart_velocity.Series["Velocity"].Points.AddXY(currentTime, strData[16]);
+                    chart_altitude.Series["Altitude"].Points.AddXY(currentTime, strData[0]);
 
-        public void veriOku()
+                    browser.EvaluateScriptAsync("setmark("+strData[2]+","+ strData[3] + ");");
+
+                    //CreatePointShapefile(axMap1, 0, Convert.ToDouble(strData[3]), Convert.ToDouble(strData[2]));
+
+                }
+                catch(Exception e) {
+                    MessageBox.Show(e.Message);
+                }
+            }
+            else
+            {
+                return;
+            }
+            goto start;
+        }
+
+        public void PortAc()
         {
             stream = new SerialPort(COMPort, 9600);
             stream.Open();
             state = true;  
         }
 
-        private void button_moveCursor_Click(object sender, EventArgs e)
+        public void PortKapat()
         {
-            axMap1.CursorMode = MapWinGIS.tkCursorMode.cmPan;
+            stream.Close();
+            state = false;
         }
 
-        private void button_zoom_in_Click(object sender, EventArgs e)
-        {
-            axMap1.CursorMode = MapWinGIS.tkCursorMode.cmMeasure;
-        }
-
-        private void button_zoom_out_Click(object sender, EventArgs e)
-        {
-            axMap1.CursorMode = MapWinGIS.tkCursorMode.cmMeasure;
-            axMap1.Measuring.MeasuringType = MapWinGIS.tkMeasuringType.MeasureArea;
-        }
-
-        
-
-
-        private void button_pan_Click(object sender, EventArgs e)
-        {
-            double xMin = 29.860;
-            double yMin = 40.733;
-            double xMax = 30.0;
-            double yMax = 40.790;
-
-            int shapeIndex = 0;
-
-            // the location of points will be random
-            Random rnd = new Random(DateTime.Now.Millisecond);
-
-            double langitute = xMin + (xMax - xMin) * rnd.NextDouble();
-            double latitute = yMin + (yMax - yMin) * rnd.NextDouble();
-
-
-            for(int i=0; i<1000; i++)
-            {
-                langitute += 0.0002;
-                latitute += 0.0001;
-                CreatePointShapefile(axMap1, shapeIndex, langitute, latitute);
-            }
-
-            //CreatePointShapefile(axMap1, shapeIndex, langitute, latitute);
-            //CreatePointShapefile(axMap1, shapeIndex, 32.852796, 39.910211);
-        }
-
-        // <summary>
-        // Handles mouse down event and adds the marker
-        // </summary>
-        private void axMap1_MouseDownEvent(object sender, AxMapWinGIS._DMapEvents_MouseDownEvent e)
-        {
-            
-        }
+       
 
         // <summary>
         // Creates a point shapefile by placing 1000 points randomly
