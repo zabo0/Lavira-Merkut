@@ -1180,7 +1180,7 @@ namespace Lavira_Merkut
             this.Controls.Add(this.tableLayoutPanel);
             this.MinimumSize = new System.Drawing.Size(425, 720);
             this.Name = "Form1";
-            this.Text = "klm";
+            this.Text = "Lavira Merkut Roket Takımı";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tableLayoutPanel.ResumeLayout(false);
             this.panel_topBar.ResumeLayout(false);

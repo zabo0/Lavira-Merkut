@@ -104,7 +104,6 @@ namespace Lavira_Merkut
             MoveWindow(p.MainWindowHandle, 0, 0, panel_unity.Width, panel_unity.Height, true);
             MoveWindow(p.MainWindowHandle, 0, 0, 900, 480, true);
 
-
             float f = 44.54321f;
             uint u = BitConverter.ToUInt32(BitConverter.GetBytes(f), 0);
             System.Diagnostics.Debug.Assert(u == 0x42322C3F); 
@@ -114,9 +113,16 @@ namespace Lavira_Merkut
         public void startProcess()
         {
             ////butun sureci baslatacak fonksiyon
+            try
+            {
+                PortAc();
+            }catch(Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return;
+            }
             timer.Start();
             state = true;
-            PortAc(); 
             streamLoop();
             label_timeText.Text = "Time";
             textBox_state.AppendText(currentTime + "\t=====GOREV BASLATILDI=====" + Environment.NewLine);
@@ -272,9 +278,15 @@ namespace Lavira_Merkut
 
         public void PortAc()
         {
-            stream = new SerialPort(COMPort, 9600);
-            stream.Open();
-            state = true;  
+            try
+            {
+                stream = new SerialPort(COMPort, 9600);
+                stream.Open();
+                state = true;
+            } catch(Exception e)
+            {
+                throw e;
+            }
         }
 
         public void PortKapat()
