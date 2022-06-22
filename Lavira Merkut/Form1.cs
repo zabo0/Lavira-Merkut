@@ -94,15 +94,15 @@ namespace Lavira_Merkut
         private void Form1_Load(object sender, EventArgs e)
         {
             //burasi 3d roket simulasyonunu baslatir
-            Process p = Process.Start("C:\\Users\\Sabahattin\\Desktop\\LaviraMerkut3D_2.exe");
-            Thread.Sleep(500); // Allow the process to open it's window
-            p.WaitForInputIdle();
-            p.WaitForInputIdle();
-            Thread.Sleep(3000); //sleep for 3 seconds
-            SetParent(p.MainWindowHandle, panel_unity.Handle);
-            SetWindowLong(p.MainWindowHandle, GWL_STYLE, WS_VISIBLE);
-            MoveWindow(p.MainWindowHandle, 0, 0, panel_unity.Width, panel_unity.Height, true);
-            MoveWindow(p.MainWindowHandle, 0, 0, 900, 480, true);
+            //Process p = Process.Start("C:\\Users\\Sabahattin\\Desktop\\LaviraMerkut3D_2.exe");
+            //Thread.Sleep(500); // Allow the process to open it's window
+            //p.WaitForInputIdle();
+            //p.WaitForInputIdle();
+            //Thread.Sleep(3000); //sleep for 3 seconds
+            //SetParent(p.MainWindowHandle, panel_unity.Handle);
+            //SetWindowLong(p.MainWindowHandle, GWL_STYLE, WS_VISIBLE);
+            //MoveWindow(p.MainWindowHandle, 0, 0, panel_unity.Width, panel_unity.Height, true);
+            //MoveWindow(p.MainWindowHandle, 0, 0, 900, 480, true);
 
             float f = 44.54321f;
             uint u = BitConverter.ToUInt32(BitConverter.GetBytes(f), 0);
