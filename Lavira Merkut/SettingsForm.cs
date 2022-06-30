@@ -80,5 +80,17 @@ namespace Lavira_Merkut
                 settings.IsSendData = false;
             }
         }
+
+        private void checkBox_sendDataAutomatic_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_sendDataAutomatic.Checked)
+            {
+                settings.SendDataAutomatic = true;
+            }
+            else
+            {
+                settings.SendDataAutomatic = false;
+            }
+        }
     }
 }

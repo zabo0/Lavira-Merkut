@@ -22,10 +22,12 @@ namespace Lavira_Merkut.Singleton
         string rocketSimulationPort;
         string sendingDataPort;
         bool isSendData = false;
+        bool sendDataAutomatic = false;
 
         public string IncomingDataPort { get => incomingDataPort; set => incomingDataPort = value; }
         public string SendingDataPort { get => sendingDataPort; set => sendingDataPort = value; }
         public string RocketSimulationPort { get => rocketSimulationPort; set => rocketSimulationPort = value; }
         public bool IsSendData { get => isSendData; set => isSendData = value; }
+        public bool SendDataAutomatic { get => sendDataAutomatic; set => sendDataAutomatic = value; }
     }
 }

@@ -31,13 +31,14 @@ namespace Lavira_Merkut
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkBox_isSend = new System.Windows.Forms.CheckBox();
             this.comboBox_sendingDataComPort = new System.Windows.Forms.ComboBox();
             this.label_sendingDataComPort = new System.Windows.Forms.Label();
             this.label_3dRocketSimulationComPort = new System.Windows.Forms.Label();
             this.comboBox_3dRocketSimulationComPort = new System.Windows.Forms.ComboBox();
             this.comboBox_incomingDataComPort = new System.Windows.Forms.ComboBox();
             this.label_incomingDataComPort = new System.Windows.Forms.Label();
-            this.checkBox_isSend = new System.Windows.Forms.CheckBox();
+            this.checkBox_sendDataAutomatic = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -59,6 +60,7 @@ namespace Lavira_Merkut
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.checkBox_sendDataAutomatic);
             this.groupBox1.Controls.Add(this.checkBox_isSend);
             this.groupBox1.Controls.Add(this.comboBox_sendingDataComPort);
             this.groupBox1.Controls.Add(this.label_sendingDataComPort);
@@ -73,6 +75,17 @@ namespace Lavira_Merkut
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ports";
+            // 
+            // checkBox_isSend
+            // 
+            this.checkBox_isSend.AutoSize = true;
+            this.checkBox_isSend.Location = new System.Drawing.Point(215, 193);
+            this.checkBox_isSend.Name = "checkBox_isSend";
+            this.checkBox_isSend.Size = new System.Drawing.Size(75, 17);
+            this.checkBox_isSend.TabIndex = 6;
+            this.checkBox_isSend.Text = "Send data";
+            this.checkBox_isSend.UseVisualStyleBackColor = true;
+            this.checkBox_isSend.CheckedChanged += new System.EventHandler(this.checkBox_isSend_CheckedChanged);
             // 
             // comboBox_sendingDataComPort
             // 
@@ -128,16 +141,16 @@ namespace Lavira_Merkut
             this.label_incomingDataComPort.TabIndex = 0;
             this.label_incomingDataComPort.Text = "Incoming Data COM Port";
             // 
-            // checkBox_isSend
+            // checkBox_sendDataAutomatic
             // 
-            this.checkBox_isSend.AutoSize = true;
-            this.checkBox_isSend.Location = new System.Drawing.Point(215, 193);
-            this.checkBox_isSend.Name = "checkBox_isSend";
-            this.checkBox_isSend.Size = new System.Drawing.Size(75, 17);
-            this.checkBox_isSend.TabIndex = 6;
-            this.checkBox_isSend.Text = "Send data";
-            this.checkBox_isSend.UseVisualStyleBackColor = true;
-            this.checkBox_isSend.CheckedChanged += new System.EventHandler(this.checkBox_isSend_CheckedChanged);
+            this.checkBox_sendDataAutomatic.AutoSize = true;
+            this.checkBox_sendDataAutomatic.Location = new System.Drawing.Point(215, 250);
+            this.checkBox_sendDataAutomatic.Name = "checkBox_sendDataAutomatic";
+            this.checkBox_sendDataAutomatic.Size = new System.Drawing.Size(124, 17);
+            this.checkBox_sendDataAutomatic.TabIndex = 7;
+            this.checkBox_sendDataAutomatic.Text = "Send data automatic";
+            this.checkBox_sendDataAutomatic.UseVisualStyleBackColor = true;
+            this.checkBox_sendDataAutomatic.CheckedChanged += new System.EventHandler(this.checkBox_sendDataAutomatic_CheckedChanged);
             // 
             // SettingsForm
             // 
@@ -166,5 +179,6 @@ namespace Lavira_Merkut
         private System.Windows.Forms.ComboBox comboBox_sendingDataComPort;
         private System.Windows.Forms.Label label_sendingDataComPort;
         private System.Windows.Forms.CheckBox checkBox_isSend;
+        private System.Windows.Forms.CheckBox checkBox_sendDataAutomatic;
     }
 }

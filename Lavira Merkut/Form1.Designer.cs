@@ -31,12 +31,12 @@ namespace Lavira_Merkut
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.panel_topBar = new System.Windows.Forms.TableLayoutPanel();
@@ -113,6 +113,7 @@ namespace Lavira_Merkut
             this.label__gyroscope_X = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBox_arduinoString = new System.Windows.Forms.TextBox();
+            this.button_getDataOnce = new System.Windows.Forms.Button();
             this.tableLayoutPanel.SuspendLayout();
             this.panel_topBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -262,16 +263,19 @@ namespace Lavira_Merkut
             this.panel_infoText.Controls.Add(this.panel_timer, 0, 0);
             this.panel_infoText.Controls.Add(this.panel_buttons, 0, 1);
             this.panel_infoText.Controls.Add(this.panel_info, 0, 2);
+            this.panel_infoText.Controls.Add(this.button_getDataOnce, 0, 3);
             this.panel_infoText.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_infoText.Location = new System.Drawing.Point(0, 0);
             this.panel_infoText.Margin = new System.Windows.Forms.Padding(0);
             this.panel_infoText.Name = "panel_infoText";
-            this.panel_infoText.RowCount = 3;
+            this.panel_infoText.RowCount = 4;
             this.panel_infoText.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.panel_infoText.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7F));
-            this.panel_infoText.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 73F));
+            this.panel_infoText.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 68F));
+            this.panel_infoText.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.panel_infoText.Size = new System.Drawing.Size(174, 686);
             this.panel_infoText.TabIndex = 0;
+            this.panel_infoText.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_infoText_Paint);
             // 
             // panel_timer
             // 
@@ -299,7 +303,7 @@ namespace Lavira_Merkut
             this.label_timeText.Location = new System.Drawing.Point(3, 0);
             this.label_timeText.Name = "label_timeText";
             this.label_timeText.Size = new System.Drawing.Size(162, 39);
-            this.label_timeText.TabIndex = 0;
+            this.label_timeText.TabIndex = 1;
             this.label_timeText.Text = "Click \'Start\' to start";
             this.label_timeText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -397,7 +401,7 @@ namespace Lavira_Merkut
             this.panel_info.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.panel_info.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.panel_info.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.panel_info.Size = new System.Drawing.Size(168, 495);
+            this.panel_info.Size = new System.Drawing.Size(168, 460);
             this.panel_info.TabIndex = 2;
             // 
             // tableLayoutPanel10
@@ -408,18 +412,18 @@ namespace Lavira_Merkut
             this.tableLayoutPanel10.Controls.Add(this.textBox_air_pressure, 0, 1);
             this.tableLayoutPanel10.Controls.Add(this.label_air_pressure, 0, 0);
             this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel10.Location = new System.Drawing.Point(3, 430);
+            this.tableLayoutPanel10.Location = new System.Drawing.Point(3, 402);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
             this.tableLayoutPanel10.RowCount = 2;
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel10.Size = new System.Drawing.Size(162, 62);
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(162, 55);
             this.tableLayoutPanel10.TabIndex = 7;
             // 
             // textBox_air_pressure
             // 
             this.textBox_air_pressure.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_air_pressure.Location = new System.Drawing.Point(3, 34);
+            this.textBox_air_pressure.Location = new System.Drawing.Point(3, 30);
             this.textBox_air_pressure.Name = "textBox_air_pressure";
             this.textBox_air_pressure.ReadOnly = true;
             this.textBox_air_pressure.Size = new System.Drawing.Size(156, 20);
@@ -433,7 +437,7 @@ namespace Lavira_Merkut
             this.label_air_pressure.ForeColor = System.Drawing.Color.White;
             this.label_air_pressure.Location = new System.Drawing.Point(3, 0);
             this.label_air_pressure.Name = "label_air_pressure";
-            this.label_air_pressure.Size = new System.Drawing.Size(156, 31);
+            this.label_air_pressure.Size = new System.Drawing.Size(156, 27);
             this.label_air_pressure.TabIndex = 1;
             this.label_air_pressure.Text = "Air Pressure";
             this.label_air_pressure.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -447,18 +451,18 @@ namespace Lavira_Merkut
             this.tableLayoutPanel9.Controls.Add(this.textBox_payload_gps_longitude, 0, 1);
             this.tableLayoutPanel9.Controls.Add(this.label_payload_gps_longitude, 0, 0);
             this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 369);
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 345);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 2;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(162, 55);
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(162, 51);
             this.tableLayoutPanel9.TabIndex = 6;
             // 
             // textBox_payload_gps_longitude
             // 
             this.textBox_payload_gps_longitude.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_payload_gps_longitude.Location = new System.Drawing.Point(3, 30);
+            this.textBox_payload_gps_longitude.Location = new System.Drawing.Point(3, 28);
             this.textBox_payload_gps_longitude.Name = "textBox_payload_gps_longitude";
             this.textBox_payload_gps_longitude.ReadOnly = true;
             this.textBox_payload_gps_longitude.Size = new System.Drawing.Size(156, 20);
@@ -472,7 +476,7 @@ namespace Lavira_Merkut
             this.label_payload_gps_longitude.ForeColor = System.Drawing.Color.White;
             this.label_payload_gps_longitude.Location = new System.Drawing.Point(3, 0);
             this.label_payload_gps_longitude.Name = "label_payload_gps_longitude";
-            this.label_payload_gps_longitude.Size = new System.Drawing.Size(156, 27);
+            this.label_payload_gps_longitude.Size = new System.Drawing.Size(156, 25);
             this.label_payload_gps_longitude.TabIndex = 1;
             this.label_payload_gps_longitude.Text = "Payload GPS Longitude";
             this.label_payload_gps_longitude.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -486,18 +490,18 @@ namespace Lavira_Merkut
             this.tableLayoutPanel8.Controls.Add(this.textBox_payload_gps_latitude, 0, 1);
             this.tableLayoutPanel8.Controls.Add(this.label_payload_gps_latitude, 0, 0);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 308);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 288);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 2;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(162, 55);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(162, 51);
             this.tableLayoutPanel8.TabIndex = 5;
             // 
             // textBox_payload_gps_latitude
             // 
             this.textBox_payload_gps_latitude.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_payload_gps_latitude.Location = new System.Drawing.Point(3, 30);
+            this.textBox_payload_gps_latitude.Location = new System.Drawing.Point(3, 28);
             this.textBox_payload_gps_latitude.Name = "textBox_payload_gps_latitude";
             this.textBox_payload_gps_latitude.ReadOnly = true;
             this.textBox_payload_gps_latitude.Size = new System.Drawing.Size(156, 20);
@@ -511,7 +515,7 @@ namespace Lavira_Merkut
             this.label_payload_gps_latitude.ForeColor = System.Drawing.Color.White;
             this.label_payload_gps_latitude.Location = new System.Drawing.Point(3, 0);
             this.label_payload_gps_latitude.Name = "label_payload_gps_latitude";
-            this.label_payload_gps_latitude.Size = new System.Drawing.Size(156, 27);
+            this.label_payload_gps_latitude.Size = new System.Drawing.Size(156, 25);
             this.label_payload_gps_latitude.TabIndex = 1;
             this.label_payload_gps_latitude.Text = "Payload GPS Latitude";
             this.label_payload_gps_latitude.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -525,18 +529,18 @@ namespace Lavira_Merkut
             this.tableLayoutPanel7.Controls.Add(this.textBox_payload_gps_altidue, 0, 1);
             this.tableLayoutPanel7.Controls.Add(this.label_payload_gps_altitude, 0, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 247);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 231);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 2;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(162, 55);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(162, 51);
             this.tableLayoutPanel7.TabIndex = 4;
             // 
             // textBox_payload_gps_altidue
             // 
             this.textBox_payload_gps_altidue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_payload_gps_altidue.Location = new System.Drawing.Point(3, 30);
+            this.textBox_payload_gps_altidue.Location = new System.Drawing.Point(3, 28);
             this.textBox_payload_gps_altidue.Name = "textBox_payload_gps_altidue";
             this.textBox_payload_gps_altidue.ReadOnly = true;
             this.textBox_payload_gps_altidue.Size = new System.Drawing.Size(156, 20);
@@ -550,7 +554,7 @@ namespace Lavira_Merkut
             this.label_payload_gps_altitude.ForeColor = System.Drawing.Color.White;
             this.label_payload_gps_altitude.Location = new System.Drawing.Point(3, 0);
             this.label_payload_gps_altitude.Name = "label_payload_gps_altitude";
-            this.label_payload_gps_altitude.Size = new System.Drawing.Size(156, 27);
+            this.label_payload_gps_altitude.Size = new System.Drawing.Size(156, 25);
             this.label_payload_gps_altitude.TabIndex = 1;
             this.label_payload_gps_altitude.Text = "Payload GPS Altitude";
             this.label_payload_gps_altitude.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -565,18 +569,18 @@ namespace Lavira_Merkut
             this.tableLayoutPanel6.Controls.Add(this.textBox_gps_longitude, 0, 1);
             this.tableLayoutPanel6.Controls.Add(this.label_gps_longitude, 0, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 186);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 174);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(162, 55);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(162, 51);
             this.tableLayoutPanel6.TabIndex = 3;
             // 
             // textBox_gps_longitude
             // 
             this.textBox_gps_longitude.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_gps_longitude.Location = new System.Drawing.Point(3, 30);
+            this.textBox_gps_longitude.Location = new System.Drawing.Point(3, 28);
             this.textBox_gps_longitude.Name = "textBox_gps_longitude";
             this.textBox_gps_longitude.ReadOnly = true;
             this.textBox_gps_longitude.Size = new System.Drawing.Size(156, 20);
@@ -590,7 +594,7 @@ namespace Lavira_Merkut
             this.label_gps_longitude.ForeColor = System.Drawing.Color.White;
             this.label_gps_longitude.Location = new System.Drawing.Point(3, 0);
             this.label_gps_longitude.Name = "label_gps_longitude";
-            this.label_gps_longitude.Size = new System.Drawing.Size(156, 27);
+            this.label_gps_longitude.Size = new System.Drawing.Size(156, 25);
             this.label_gps_longitude.TabIndex = 1;
             this.label_gps_longitude.Text = "GPS Longitude";
             this.label_gps_longitude.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -604,18 +608,18 @@ namespace Lavira_Merkut
             this.tableLayoutPanel5.Controls.Add(this.textBox_gps_latitude, 0, 1);
             this.tableLayoutPanel5.Controls.Add(this.label_gps_latitude, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 125);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 117);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(162, 55);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(162, 51);
             this.tableLayoutPanel5.TabIndex = 2;
             // 
             // textBox_gps_latitude
             // 
             this.textBox_gps_latitude.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_gps_latitude.Location = new System.Drawing.Point(3, 30);
+            this.textBox_gps_latitude.Location = new System.Drawing.Point(3, 28);
             this.textBox_gps_latitude.Name = "textBox_gps_latitude";
             this.textBox_gps_latitude.ReadOnly = true;
             this.textBox_gps_latitude.Size = new System.Drawing.Size(156, 20);
@@ -629,7 +633,7 @@ namespace Lavira_Merkut
             this.label_gps_latitude.ForeColor = System.Drawing.Color.White;
             this.label_gps_latitude.Location = new System.Drawing.Point(3, 0);
             this.label_gps_latitude.Name = "label_gps_latitude";
-            this.label_gps_latitude.Size = new System.Drawing.Size(156, 27);
+            this.label_gps_latitude.Size = new System.Drawing.Size(156, 25);
             this.label_gps_latitude.TabIndex = 1;
             this.label_gps_latitude.Text = "GPS Latitude";
             this.label_gps_latitude.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -643,18 +647,18 @@ namespace Lavira_Merkut
             this.tableLayoutPanel4.Controls.Add(this.textBox_gps_altitude, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.label_gps_altitude, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 64);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 60);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(162, 55);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(162, 51);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
             // textBox_gps_altitude
             // 
             this.textBox_gps_altitude.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_gps_altitude.Location = new System.Drawing.Point(3, 30);
+            this.textBox_gps_altitude.Location = new System.Drawing.Point(3, 28);
             this.textBox_gps_altitude.Name = "textBox_gps_altitude";
             this.textBox_gps_altitude.ReadOnly = true;
             this.textBox_gps_altitude.Size = new System.Drawing.Size(156, 20);
@@ -668,7 +672,7 @@ namespace Lavira_Merkut
             this.label_gps_altitude.ForeColor = System.Drawing.Color.White;
             this.label_gps_altitude.Location = new System.Drawing.Point(3, 0);
             this.label_gps_altitude.Name = "label_gps_altitude";
-            this.label_gps_altitude.Size = new System.Drawing.Size(156, 27);
+            this.label_gps_altitude.Size = new System.Drawing.Size(156, 25);
             this.label_gps_altitude.TabIndex = 1;
             this.label_gps_altitude.Text = "GPS Altitude";
             this.label_gps_altitude.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -687,7 +691,7 @@ namespace Lavira_Merkut
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(162, 55);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(162, 51);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // label_altitude
@@ -698,7 +702,7 @@ namespace Lavira_Merkut
             this.label_altitude.ForeColor = System.Drawing.Color.White;
             this.label_altitude.Location = new System.Drawing.Point(3, 0);
             this.label_altitude.Name = "label_altitude";
-            this.label_altitude.Size = new System.Drawing.Size(156, 27);
+            this.label_altitude.Size = new System.Drawing.Size(156, 25);
             this.label_altitude.TabIndex = 0;
             this.label_altitude.Text = "Altitude";
             this.label_altitude.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -707,7 +711,7 @@ namespace Lavira_Merkut
             // textBox_altitude
             // 
             this.textBox_altitude.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_altitude.Location = new System.Drawing.Point(3, 30);
+            this.textBox_altitude.Location = new System.Drawing.Point(3, 28);
             this.textBox_altitude.Name = "textBox_altitude";
             this.textBox_altitude.ReadOnly = true;
             this.textBox_altitude.Size = new System.Drawing.Size(156, 20);
@@ -734,18 +738,18 @@ namespace Lavira_Merkut
             // 
             // chart_altitude
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart_altitude.ChartAreas.Add(chartArea1);
+            chartArea3.Name = "ChartArea1";
+            this.chart_altitude.ChartAreas.Add(chartArea3);
             this.chart_altitude.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Name = "Legend1";
-            this.chart_altitude.Legends.Add(legend1);
+            legend3.Name = "Legend1";
+            this.chart_altitude.Legends.Add(legend3);
             this.chart_altitude.Location = new System.Drawing.Point(3, 3);
             this.chart_altitude.Name = "chart_altitude";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Legend = "Legend1";
-            series1.Name = "Altitude";
-            this.chart_altitude.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Legend = "Legend1";
+            series3.Name = "Altitude";
+            this.chart_altitude.Series.Add(series3);
             this.chart_altitude.Size = new System.Drawing.Size(442, 199);
             this.chart_altitude.TabIndex = 0;
             this.chart_altitude.Text = "chart1";
@@ -753,18 +757,18 @@ namespace Lavira_Merkut
             // 
             // chart_velocity
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart_velocity.ChartAreas.Add(chartArea2);
+            chartArea4.Name = "ChartArea1";
+            this.chart_velocity.ChartAreas.Add(chartArea4);
             this.chart_velocity.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend2.Name = "Legend1";
-            this.chart_velocity.Legends.Add(legend2);
+            legend4.Name = "Legend1";
+            this.chart_velocity.Legends.Add(legend4);
             this.chart_velocity.Location = new System.Drawing.Point(3, 208);
             this.chart_velocity.Name = "chart_velocity";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Legend = "Legend1";
-            series2.Name = "Velocity";
-            this.chart_velocity.Series.Add(series2);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series4.Legend = "Legend1";
+            series4.Name = "Velocity";
+            this.chart_velocity.Series.Add(series4);
             this.chart_velocity.Size = new System.Drawing.Size(442, 199);
             this.chart_velocity.TabIndex = 1;
             this.chart_velocity.Text = "chart1";
@@ -1183,6 +1187,17 @@ namespace Lavira_Merkut
             this.textBox_arduinoString.Size = new System.Drawing.Size(519, 334);
             this.textBox_arduinoString.TabIndex = 0;
             // 
+            // button_getDataOnce
+            // 
+            this.button_getDataOnce.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button_getDataOnce.Location = new System.Drawing.Point(3, 654);
+            this.button_getDataOnce.Name = "button_getDataOnce";
+            this.button_getDataOnce.Size = new System.Drawing.Size(168, 29);
+            this.button_getDataOnce.TabIndex = 3;
+            this.button_getDataOnce.Text = "Get Data Once";
+            this.button_getDataOnce.UseVisualStyleBackColor = true;
+            this.button_getDataOnce.Click += new System.EventHandler(this.button_getDataOnce_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1327,6 +1342,7 @@ namespace Lavira_Merkut
         private System.Windows.Forms.TextBox textBox_gyroscope_X;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox textBox_arduinoString;
+        private System.Windows.Forms.Button button_getDataOnce;
     }
 }
 

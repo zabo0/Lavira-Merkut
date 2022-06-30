@@ -129,7 +129,10 @@ namespace Lavira_Merkut
                 openPortToIncomingData(settings.IncomingDataPort);
                 openPortToSendData(settings.SendingDataPort);
                 timer.Start();
-                getDataFromCOMport();
+                if (settings.SendDataAutomatic)
+                {
+                    getDataFromCOMportLoop();
+                }
                 label_timeText.Text = "Time";
                 textBox_state.AppendText(currentTime + "\t=====GOREV BASLATILDI=====" + Environment.NewLine);
                 InitBrowser();
@@ -256,7 +259,7 @@ namespace Lavira_Merkut
 
         //0.2 crc
 
-        async void getDataFromCOMport()
+        async void getDataFromCOMportLoop()
         {
         start:
             if (state)
@@ -269,10 +272,13 @@ namespace Lavira_Merkut
                     strData = strReceived.Split('_');
                     while (strData.Length != 17) {goto read;}
 
+                    
+
                     if (true)
                     {
                         byte[] package = createPackage(strData);
                         stream_sendDataToHYI.Write(package, 0, package.Length);
+                        textBox_controls.AppendText(package[75].ToString() + Environment.NewLine);
                     }
 
                     incomingData.Altitude = strData[0];
@@ -327,6 +333,70 @@ namespace Lavira_Merkut
             goto start;
         }
 
+        async void getDataFromCOMport()
+        {
+
+            try
+            {
+                strReceived = stream_getIncomingData.ReadLine();
+                textBox_arduinoString.AppendText(strReceived + Environment.NewLine);
+                await Task.Delay(200);
+                strData = strReceived.Split('_');
+
+                if (settings.IsSendData)
+                {
+                    byte[] package = createPackage(strData);
+                    stream_sendDataToHYI.Write(package, 0, package.Length);
+                    textBox_controls.AppendText(package[75].ToString() + Environment.NewLine);
+                }
+
+                incomingData.Altitude = strData[0];
+                incomingData.Gps_altitude = strData[1];
+                incomingData.Gps_latitude = strData[2];
+                incomingData.Gps_longitude = strData[3];
+                incomingData.Payload_gps_altitude = strData[4];
+                incomingData.Payload_gps_latitude = strData[5];
+                incomingData.Payload_gps_longitude = strData[6];
+                incomingData.Gyroscope_X = strData[7];
+                incomingData.Gyroscope_Y = strData[8];
+                incomingData.Gyroscope_Z = strData[9];
+                incomingData.Acceleration_X = strData[10];
+                incomingData.Acceleration_Y = strData[11];
+                incomingData.Acceleration_Z = strData[12];
+                incomingData.AirPressure = strData[13];
+                incomingData.Angle = strData[14];
+                incomingData.Velocity = strData[15];
+                incomingData.State = strData[16];
+
+                textBox_altitude.Text = incomingData.Altitude;
+                textBox_gps_altitude.Text = incomingData.Gps_altitude;
+                textBox_gps_latitude.Text = incomingData.Gps_latitude;
+                textBox_gps_longitude.Text = incomingData.Gps_longitude;
+                textBox_payload_gps_altidue.Text = incomingData.Payload_gps_altitude;
+                textBox_payload_gps_latitude.Text = incomingData.Payload_gps_latitude;
+                textBox_payload_gps_longitude.Text = incomingData.Payload_gps_longitude;
+                textBox_air_pressure.Text = incomingData.AirPressure;
+                textBox_gyroscope_X.Text = incomingData.Gyroscope_X;
+                textBox_gyroscope_Y.Text = incomingData.Gyroscope_Y;
+                textBox_gyroscope_Z.Text = incomingData.Gyroscope_Z;
+                textBox_acceleration_X.Text = incomingData.Acceleration_X;
+                textBox_acceleration_Y.Text = incomingData.Acceleration_Y;
+                textBox_acceleration_Z.Text = incomingData.Acceleration_Z;
+                textBox_angle.Text = incomingData.Angle;
+                chart_velocity.Series["Velocity"].Points.AddXY(currentTime, incomingData.Velocity);
+                chart_altitude.Series["Altitude"].Points.AddXY(currentTime, incomingData.Altitude);
+
+                browser.EvaluateScriptAsync("setmark(" + incomingData.Gps_latitude + "," + incomingData.Gps_longitude + ");");
+
+                //CreatePointShapefile(axMap1, 0, Convert.ToDouble(strData[3]), Convert.ToDouble(strData[2]));
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+
 
 
         public void openPortToIncomingData(string port)
@@ -346,7 +416,7 @@ namespace Lavira_Merkut
         {
             try
             {
-                stream_sendDataToHYI = new SerialPort(port, 9600, Parity.None, 8, StopBits.One);
+                stream_sendDataToHYI = new SerialPort(port, 19200, Parity.None, 8, StopBits.One);
                 //stream_sendDataToHYI.DtrEnable = true;
                 //stream_sendDataToHYI.RtsEnable = true;
                 stream_sendDataToHYI.Open();
@@ -425,20 +495,20 @@ namespace Lavira_Merkut
             package[32] = getBytes(float.Parse(newData[6]))[2];
             package[33] = getBytes(float.Parse(newData[6]))[3];
             //kademe gps irtifa (bizde yok)
-            package[34] = 0;
-            package[35] = 0;
-            package[36] = 0;
-            package[37] = 0;
+            package[34] = 0x00;
+            package[35] = 0x00;
+            package[36] = 0x00;
+            package[37] = 0x00;
             //kademe gps enlem (bizde yok)
-            package[38] = 0;
-            package[39] = 0;
-            package[40] = 0;
-            package[41] = 0;
+            package[38] = 0x00;
+            package[39] = 0x00;
+            package[40] = 0x00;
+            package[41] = 0x00;
             //kademe gps boylam (bizde yok)
-            package[42] = 0;
-            package[43] = 0;
-            package[44] = 0;
-            package[45] = 0;
+            package[42] = 0x00;
+            package[43] = 0x00;
+            package[44] = 0x00;
+            package[45] = 0x00;
             //gyroscope x
             package[46] = getBytes(float.Parse(newData[7]))[0];
             package[47] = getBytes(float.Parse(newData[7]))[1];
@@ -504,7 +574,7 @@ namespace Lavira_Merkut
             {
                 return buffer;
             }
-            return new[] { buffer[3], buffer[2], buffer[1], buffer[0] };
+            return new[] { buffer[0], buffer[1], buffer[2], buffer[3] };
         }
 
 
@@ -550,6 +620,16 @@ namespace Lavira_Merkut
         private void label5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void panel_infoText_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button_getDataOnce_Click(object sender, EventArgs e)
+        {
+            getDataFromCOMport();
         }
     }
 }
