@@ -112,6 +112,7 @@ namespace Lavira_Merkut
             this.textBox_gyroscope_X = new System.Windows.Forms.TextBox();
             this.label__gyroscope_X = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox_arduinoString = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel.SuspendLayout();
             this.panel_topBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -136,6 +137,7 @@ namespace Lavira_Merkut
             this.panel_stateControls.SuspendLayout();
             this.panel_3dMap.SuspendLayout();
             this.tableLayoutPanel11.SuspendLayout();
+            this.panel_unity.SuspendLayout();
             this.tableLayoutPanel12.SuspendLayout();
             this.tableLayoutPanel19.SuspendLayout();
             this.tableLayoutPanel18.SuspendLayout();
@@ -864,6 +866,7 @@ namespace Lavira_Merkut
             // 
             // panel_unity
             // 
+            this.panel_unity.Controls.Add(this.textBox_arduinoString);
             this.panel_unity.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_unity.Location = new System.Drawing.Point(0, 0);
             this.panel_unity.Margin = new System.Windows.Forms.Padding(0);
@@ -1171,6 +1174,15 @@ namespace Lavira_Merkut
             this.panel1.Size = new System.Drawing.Size(611, 334);
             this.panel1.TabIndex = 3;
             // 
+            // textBox_arduinoString
+            // 
+            this.textBox_arduinoString.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_arduinoString.Location = new System.Drawing.Point(0, 0);
+            this.textBox_arduinoString.Multiline = true;
+            this.textBox_arduinoString.Name = "textBox_arduinoString";
+            this.textBox_arduinoString.Size = new System.Drawing.Size(519, 334);
+            this.textBox_arduinoString.TabIndex = 0;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1217,6 +1229,8 @@ namespace Lavira_Merkut
             this.panel_stateControls.PerformLayout();
             this.panel_3dMap.ResumeLayout(false);
             this.tableLayoutPanel11.ResumeLayout(false);
+            this.panel_unity.ResumeLayout(false);
+            this.panel_unity.PerformLayout();
             this.tableLayoutPanel12.ResumeLayout(false);
             this.tableLayoutPanel19.ResumeLayout(false);
             this.tableLayoutPanel19.PerformLayout();
@@ -1312,6 +1326,7 @@ namespace Lavira_Merkut
         private System.Windows.Forms.TextBox textBox_gyroscope_Y;
         private System.Windows.Forms.TextBox textBox_gyroscope_X;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox textBox_arduinoString;
     }
 }
 

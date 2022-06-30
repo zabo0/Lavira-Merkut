@@ -12,15 +12,11 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using AxMapWinGIS;
 using CefSharp;
 using CefSharp.SchemeHandler;
 using CefSharp.Web;
 using CefSharp.WinForms;
 using Lavira_Merkut.Singleton;
-using MapWinGIS;
-using Image = MapWinGIS.Image;
-using Point = MapWinGIS.Point;
 
 namespace Lavira_Merkut
 {
@@ -35,18 +31,25 @@ namespace Lavira_Merkut
         int hour = 0;
 
         IncomingDataSingleton incomingData;
-
-        public string COMPort="COM6";
+        SettingsSingleton settings;
 
         bool state = false;
+        bool isSendDataToHYI;
 
         public static bool resizableWindow;
-        SerialPort stream;
+        SerialPort stream_getIncomingData;
+        SerialPort stream_get3DRocketSimData;
+        SerialPort stream_sendDataToHYI;
 
         public string strReceived;
 
         public string[] strData = new string[4];
         public string[] strData_received = new string[4];
+
+        private byte TEAM_ID = 23;
+        private byte counter = 0;
+
+        
 
         //Simulation sim;
 
@@ -106,6 +109,10 @@ namespace Lavira_Merkut
             //MoveWindow(p.MainWindowHandle, 0, 0, panel_unity.Width, panel_unity.Height, true);
             //MoveWindow(p.MainWindowHandle, 0, 0, 900, 480, true);
 
+
+            settings = SettingsSingleton.GetInstance();
+            isSendDataToHYI = settings.IsSendData;
+
             float f = 44.54321f;
             uint u = BitConverter.ToUInt32(BitConverter.GetBytes(f), 0);
             System.Diagnostics.Debug.Assert(u == 0x42322C3F); 
@@ -115,21 +122,26 @@ namespace Lavira_Merkut
         public void startProcess()
         {
             ////butun sureci baslatacak fonksiyon
+            incomingData = IncomingDataSingleton.GetInstance();
+
             try
             {
-                PortAc();
-            }catch(Exception e)
+                openPortToIncomingData(settings.IncomingDataPort);
+                openPortToSendData(settings.SendingDataPort);
+                timer.Start();
+                getDataFromCOMport();
+                label_timeText.Text = "Time";
+                textBox_state.AppendText(currentTime + "\t=====GOREV BASLATILDI=====" + Environment.NewLine);
+                InitBrowser();
+
+            }
+            catch(Exception error)
             {
-                MessageBox.Show(e.Message);
+                MessageBox.Show(error.Message);
                 return;
             }
-            incomingData = IncomingDataSingleton.GetInstance();
-            timer.Start();
-            state = true;
-            streamLoop();
-            label_timeText.Text = "Time";
-            textBox_state.AppendText(currentTime + "\t=====GOREV BASLATILDI=====" + Environment.NewLine);
-            InitBrowser();
+
+            
         }
 
         public void finishProcess()
@@ -137,7 +149,8 @@ namespace Lavira_Merkut
             //butun sureci bitirecek fonksiyon
             timer.Stop();
             textBox_state.AppendText(currentTime + "\t=====GOREV BITIRILDI=====" + Environment.NewLine);
-            PortKapat();
+            closePort_incomingData();
+            closePort_sendData();
         }
 
         private String getTime(int timer)
@@ -170,7 +183,8 @@ namespace Lavira_Merkut
 
         private void pictureBox_settings_Click(object sender, EventArgs e)
         {
-
+            SettingsForm settingsForm = new SettingsForm();
+            settingsForm.Show();
         }
 
         private void chart_altitude_Click(object sender, EventArgs e)
@@ -219,58 +233,65 @@ namespace Lavira_Merkut
 
         
 
-        //00 teamID
-        //01 counter
-        //02 altitude
-        //03 gps altitude
-        //04 gps latitude
-        //05 gps longitude
-        //06 payload gps altitude
-        //07 payload gps latitude
-        //08 payload pgs longitude
-        //09 gyroscope x
-        //10 gyroscope y
-        //11 gyroscope z
-        //12 acceleration x
-        //13 acceleration y
-        //14 acceleration z
-        //15 air pressure
-        //16 angle
-        //17 velocity
-        //18 state
-        //19 crc
+        //0.0 teamID
+        //0.1 counter
 
-        async void streamLoop()
+        //00 altitude
+        //01 gps altitude
+        //02 gps latitude
+        //03 gps longitude
+        //04 payload gps altitude
+        //05 payload gps latitude
+        //06 payload pgs longitude
+        //07 gyroscope x
+        //08 gyroscope y
+        //09 gyroscope z
+        //10 acceleration x
+        //11 acceleration y
+        //12 acceleration z
+        //13 air pressure
+        //14 angle
+        //15 velocity
+        //16 state
+
+        //0.2 crc
+
+        async void getDataFromCOMport()
         {
         start:
             if (state)
             {
-               try{
-                    read: strReceived = stream.ReadLine();
+             try{
+                read:
+                    strReceived = stream_getIncomingData.ReadLine();
+                    textBox_arduinoString.AppendText(strReceived + Environment.NewLine);
                     await Task.Delay(200);
                     strData = strReceived.Split('_');
-                    while (strData.Length != 20) {goto read;}
+                    while (strData.Length != 17) {goto read;}
 
-                    incomingData.TeamID = strData[0];
-                    incomingData.Counter = strData[1];
-                    incomingData.Altitude = strData[2];
-                    incomingData.Gps_altitude = strData[3];
-                    incomingData.Gps_latitude = strData[4];
-                    incomingData.Gps_longitude = strData[5];
-                    incomingData.Payload_gps_altitude = strData[6];
-                    incomingData.Payload_gps_latitude = strData[7];
-                    incomingData.Payload_gps_longitude = strData[8];
-                    incomingData.Gyroscope_X = strData[9];
-                    incomingData.Gyroscope_Y = strData[10];
-                    incomingData.Gyroscope_Z = strData[11];
-                    incomingData.Acceleration_X = strData[12];
-                    incomingData.Acceleration_Y = strData[13];
-                    incomingData.Acceleration_Z = strData[14];
-                    incomingData.AirPressure = strData[15];
-                    incomingData.Angle = strData[16];
-                    incomingData.Velocity = strData[17];
-                    incomingData.State = strData[18];
-                    incomingData.Crc = strData[19];
+                    if (true)
+                    {
+                        byte[] package = createPackage(strData);
+                        stream_sendDataToHYI.Write(package, 0, package.Length);
+                    }
+
+                    incomingData.Altitude = strData[0];
+                    incomingData.Gps_altitude = strData[1];
+                    incomingData.Gps_latitude = strData[2];
+                    incomingData.Gps_longitude = strData[3];
+                    incomingData.Payload_gps_altitude = strData[4];
+                    incomingData.Payload_gps_latitude = strData[5];
+                    incomingData.Payload_gps_longitude = strData[6];
+                    incomingData.Gyroscope_X = strData[7];
+                    incomingData.Gyroscope_Y = strData[8];
+                    incomingData.Gyroscope_Z = strData[9];
+                    incomingData.Acceleration_X = strData[10];
+                    incomingData.Acceleration_Y = strData[11];
+                    incomingData.Acceleration_Z = strData[12];
+                    incomingData.AirPressure = strData[13];
+                    incomingData.Angle = strData[14];
+                    incomingData.Velocity = strData[15];
+                    incomingData.State = strData[16];
 
                     textBox_altitude.Text = incomingData.Altitude;
                     textBox_gps_altitude.Text = incomingData.Gps_altitude;
@@ -306,12 +327,14 @@ namespace Lavira_Merkut
             goto start;
         }
 
-        public void PortAc()
+
+
+        public void openPortToIncomingData(string port)
         {
             try
             {
-                stream = new SerialPort(COMPort, 9600);
-                stream.Open();
+                stream_getIncomingData = new SerialPort(port, 9600, Parity.None, 8, StopBits.One);
+                stream_getIncomingData.Open();
                 state = true;
             } catch(Exception e)
             {
@@ -319,49 +342,209 @@ namespace Lavira_Merkut
             }
         }
 
-        public void PortKapat()
+        public void openPortToSendData(string port)
         {
-            stream.Close();
+            try
+            {
+                stream_sendDataToHYI = new SerialPort(port, 9600, Parity.None, 8, StopBits.One);
+                //stream_sendDataToHYI.DtrEnable = true;
+                //stream_sendDataToHYI.RtsEnable = true;
+                stream_sendDataToHYI.Open();
+                state = true;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+
+        public void closePort_incomingData()
+        {
+            stream_getIncomingData.Close();
+            state = false;
+        }
+        public void closePort_sendData()
+        {
+            stream_sendDataToHYI.Close();
             state = false;
         }
 
-       
+        private byte[] createPackage(string[] data)
+        {
+            String[] newData = new String[data.Length];
+
+            for(int i=0; i<data.Length; i++)
+            {
+                newData[i] = data[i].Replace('.', ',');
+            }
+
+            byte[] package = new byte[78];
+
+            package[0] = 0xFF;
+            package[1] = 0xFF;
+            package[2] = 0x54;
+            package[3] = 0x52;
+
+            package[4] = TEAM_ID; //teamID 
+            package[5] = counter++; //counter
+
+            //altitude
+            package[6] = getBytes(float.Parse(newData[0]))[0];
+            package[7] = getBytes(float.Parse(newData[0]))[1];
+            package[8] = getBytes(float.Parse(newData[0]))[2];
+            package[9] = getBytes(float.Parse(newData[0]))[3];
+            //gps altitude
+            package[10] = getBytes(float.Parse(newData[1]))[0];
+            package[11] = getBytes(float.Parse(newData[1]))[1];
+            package[12] = getBytes(float.Parse(newData[1]))[2];
+            package[13] = getBytes(float.Parse(newData[1]))[3];
+            //gps latitude
+            package[14] = getBytes(float.Parse(newData[2]))[0];
+            package[15] = getBytes(float.Parse(newData[2]))[1];
+            package[16] = getBytes(float.Parse(newData[2]))[2];
+            package[17] = getBytes(float.Parse(newData[2]))[3];
+            //gps longitude
+            package[18] = getBytes(float.Parse(newData[3]))[0];
+            package[19] = getBytes(float.Parse(newData[3]))[1];
+            package[20] = getBytes(float.Parse(newData[3]))[2];
+            package[21] = getBytes(float.Parse(newData[3]))[3];
+            //payload gps altitude             
+            package[22] = getBytes(float.Parse(newData[4]))[0];
+            package[23] = getBytes(float.Parse(newData[4]))[1];
+            package[24] = getBytes(float.Parse(newData[4]))[2];
+            package[25] = getBytes(float.Parse(newData[4]))[3];
+            //payload gps latitude             
+            package[26] = getBytes(float.Parse(newData[5]))[0];
+            package[27] = getBytes(float.Parse(newData[5]))[1];
+            package[28] = getBytes(float.Parse(newData[5]))[2];
+            package[29] = getBytes(float.Parse(newData[5]))[3];
+            //payload gps longitude           
+            package[30] = getBytes(float.Parse(newData[6]))[0];
+            package[31] = getBytes(float.Parse(newData[6]))[1];
+            package[32] = getBytes(float.Parse(newData[6]))[2];
+            package[33] = getBytes(float.Parse(newData[6]))[3];
+            //kademe gps irtifa (bizde yok)
+            package[34] = 0;
+            package[35] = 0;
+            package[36] = 0;
+            package[37] = 0;
+            //kademe gps enlem (bizde yok)
+            package[38] = 0;
+            package[39] = 0;
+            package[40] = 0;
+            package[41] = 0;
+            //kademe gps boylam (bizde yok)
+            package[42] = 0;
+            package[43] = 0;
+            package[44] = 0;
+            package[45] = 0;
+            //gyroscope x
+            package[46] = getBytes(float.Parse(newData[7]))[0];
+            package[47] = getBytes(float.Parse(newData[7]))[1];
+            package[48] = getBytes(float.Parse(newData[7]))[2];
+            package[49] = getBytes(float.Parse(newData[7]))[3];
+            //gyroscope y                      
+            package[50] = getBytes(float.Parse(newData[8]))[0];
+            package[51] = getBytes(float.Parse(newData[8]))[1];
+            package[52] = getBytes(float.Parse(newData[8]))[2];
+            package[53] = getBytes(float.Parse(newData[8]))[3];
+            //gyroscope z                    
+            package[54] = getBytes(float.Parse(newData[9]))[0];
+            package[55] = getBytes(float.Parse(newData[9]))[1];
+            package[56] = getBytes(float.Parse(newData[9]))[2];
+            package[57] = getBytes(float.Parse(newData[9]))[3];
+            //acceleration x                  
+            package[58] = getBytes(float.Parse(newData[10]))[0];
+            package[59] = getBytes(float.Parse(newData[10]))[1];
+            package[60] = getBytes(float.Parse(newData[10]))[2];
+            package[61] = getBytes(float.Parse(newData[10]))[3];
+            //acceleration y                   
+            package[62] = getBytes(float.Parse(newData[11]))[0];
+            package[63] = getBytes(float.Parse(newData[11]))[1];
+            package[64] = getBytes(float.Parse(newData[11]))[2];
+            package[65] = getBytes(float.Parse(newData[11]))[3];
+            //acceleration z                  
+            package[66] = getBytes(float.Parse(newData[12]))[0];
+            package[67] = getBytes(float.Parse(newData[12]))[1];
+            package[68] = getBytes(float.Parse(newData[12]))[2];
+            package[69] = getBytes(float.Parse(newData[12]))[3];
+            //angle                            
+            package[70] = getBytes(float.Parse(newData[14]))[0];
+            package[71] = getBytes(float.Parse(newData[14]))[1];
+            package[72] = getBytes(float.Parse(newData[14]))[2];
+            package[73] = getBytes(float.Parse(newData[14]))[3];
+            //state                          
+            package[74] = getBytes(float.Parse(newData[16]))[0];
+            //crc
+            package[75] = calculateCRC(package);
+            package[76] = 0x0D;
+            package[77] = 0x0A;
+
+            return package;
+
+        }
+
+
+        byte calculateCRC(byte[] package)
+        {
+            int check_sum = 0;
+            for (int i = 4; i < 75; i++)
+            {
+                check_sum += package[i];
+            }
+            return Convert.ToByte(check_sum % 256);
+        }
+
+
+        private byte[] getBytes(float value)
+        {
+            var buffer = BitConverter.GetBytes(value);
+            if (!BitConverter.IsLittleEndian)
+            {
+                return buffer;
+            }
+            return new[] { buffer[3], buffer[2], buffer[1], buffer[0] };
+        }
+
 
         // <summary>
         // Creates a point shapefile by placing 1000 points randomly
         // </summary>
-        public void CreatePointShapefile(AxMap axMap1, int shapeIndex, double langitute, double latitude)
-        {
-            axMap1.Projection = tkMapProjection.PROJECTION_GOOGLE_MERCATOR;
+        //public void CreatePointShapefile(AxMap axMap1, int shapeIndex, double langitute, double latitude)
+        //{
+        //    axMap1.Projection = tkMapProjection.PROJECTION_GOOGLE_MERCATOR;
 
-            var sf = new Shapefile();
+        //    var sf = new Shapefile();
 
-            // MWShapeId field will be added to attribute table
-            bool result = sf.CreateNewWithShapeID("", ShpfileType.SHP_POINT);
+        //    // MWShapeId field will be added to attribute table
+        //    bool result = sf.CreateNewWithShapeID("", ShpfileType.SHP_POINT);
 
 
-            var pnt = new Point();
-            double x = 0.0;
-            double y = 0.0;
-            axMap1.DegreesToProj(langitute, latitude, ref x, ref y);
-            pnt.x = x;
-            pnt.y = y;
+        //    var pnt = new Point();
+        //    double x = 0.0;
+        //    double y = 0.0;
+        //    axMap1.DegreesToProj(langitute, latitude, ref x, ref y);
+        //    pnt.x = x;
+        //    pnt.y = y;
 
-            Shape shp = new Shape();
-            shp.Create(ShpfileType.SHP_POINT);
+        //    Shape shp = new Shape();
+        //    shp.Create(ShpfileType.SHP_POINT);
 
-            int index = 0;
-            shp.InsertPoint(pnt, ref index);
-            sf.EditInsertShape(shp, ref shapeIndex);
+        //    int index = 0;
+        //    shp.InsertPoint(pnt, ref index);
+        //    sf.EditInsertShape(shp, ref shapeIndex);
 
-            sf.DefaultDrawingOptions.SetDefaultPointSymbol(tkDefaultPointSymbol.dpsStar);
+        //    sf.DefaultDrawingOptions.SetDefaultPointSymbol(tkDefaultPointSymbol.dpsStar);
 
-            // adds shapefile to the map
-            axMap1.AddLayer(sf, true);
+        //    // adds shapefile to the map
+        //    axMap1.AddLayer(sf, true);
 
-            // save if needed
-            //sf.SaveAs(@"c:\points.shp", null);
-        }
+        //    // save if needed
+        //    //sf.SaveAs(@"c:\points.shp", null);
+        //}
+
+   
 
 
         private void label5_Click(object sender, EventArgs e)
