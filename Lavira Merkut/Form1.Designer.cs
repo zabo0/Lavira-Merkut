@@ -31,12 +31,12 @@ namespace Lavira_Merkut
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.panel_topBar = new System.Windows.Forms.TableLayoutPanel();
@@ -78,6 +78,7 @@ namespace Lavira_Merkut
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label_altitude = new System.Windows.Forms.Label();
             this.textBox_altitude = new System.Windows.Forms.TextBox();
+            this.button_getDataOnce = new System.Windows.Forms.Button();
             this.panel_charts = new System.Windows.Forms.TableLayoutPanel();
             this.chart_altitude = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chart_velocity = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -89,6 +90,8 @@ namespace Lavira_Merkut
             this.panel_3dMap = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
             this.panel_unity = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button_open3DRocket = new System.Windows.Forms.Button();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel19 = new System.Windows.Forms.TableLayoutPanel();
             this.textBox_angle = new System.Windows.Forms.TextBox();
@@ -112,8 +115,6 @@ namespace Lavira_Merkut
             this.textBox_gyroscope_X = new System.Windows.Forms.TextBox();
             this.label__gyroscope_X = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox_arduinoString = new System.Windows.Forms.TextBox();
-            this.button_getDataOnce = new System.Windows.Forms.Button();
             this.tableLayoutPanel.SuspendLayout();
             this.panel_topBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -717,6 +718,17 @@ namespace Lavira_Merkut
             this.textBox_altitude.Size = new System.Drawing.Size(156, 20);
             this.textBox_altitude.TabIndex = 1;
             // 
+            // button_getDataOnce
+            // 
+            this.button_getDataOnce.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button_getDataOnce.Location = new System.Drawing.Point(3, 654);
+            this.button_getDataOnce.Name = "button_getDataOnce";
+            this.button_getDataOnce.Size = new System.Drawing.Size(168, 29);
+            this.button_getDataOnce.TabIndex = 3;
+            this.button_getDataOnce.Text = "Get Data Once";
+            this.button_getDataOnce.UseVisualStyleBackColor = true;
+            this.button_getDataOnce.Click += new System.EventHandler(this.button_getDataOnce_Click);
+            // 
             // panel_charts
             // 
             this.panel_charts.ColumnCount = 1;
@@ -738,18 +750,18 @@ namespace Lavira_Merkut
             // 
             // chart_altitude
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chart_altitude.ChartAreas.Add(chartArea3);
+            chartArea1.Name = "ChartArea1";
+            this.chart_altitude.ChartAreas.Add(chartArea1);
             this.chart_altitude.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend3.Name = "Legend1";
-            this.chart_altitude.Legends.Add(legend3);
+            legend1.Name = "Legend1";
+            this.chart_altitude.Legends.Add(legend1);
             this.chart_altitude.Location = new System.Drawing.Point(3, 3);
             this.chart_altitude.Name = "chart_altitude";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.Legend = "Legend1";
-            series3.Name = "Altitude";
-            this.chart_altitude.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Legend = "Legend1";
+            series1.Name = "Altitude";
+            this.chart_altitude.Series.Add(series1);
             this.chart_altitude.Size = new System.Drawing.Size(442, 199);
             this.chart_altitude.TabIndex = 0;
             this.chart_altitude.Text = "chart1";
@@ -757,18 +769,18 @@ namespace Lavira_Merkut
             // 
             // chart_velocity
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chart_velocity.ChartAreas.Add(chartArea4);
+            chartArea2.Name = "ChartArea1";
+            this.chart_velocity.ChartAreas.Add(chartArea2);
             this.chart_velocity.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend4.Name = "Legend1";
-            this.chart_velocity.Legends.Add(legend4);
+            legend2.Name = "Legend1";
+            this.chart_velocity.Legends.Add(legend2);
             this.chart_velocity.Location = new System.Drawing.Point(3, 208);
             this.chart_velocity.Name = "chart_velocity";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series4.Legend = "Legend1";
-            series4.Name = "Velocity";
-            this.chart_velocity.Series.Add(series4);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Legend = "Legend1";
+            series2.Name = "Velocity";
+            this.chart_velocity.Series.Add(series2);
             this.chart_velocity.Size = new System.Drawing.Size(442, 199);
             this.chart_velocity.TabIndex = 1;
             this.chart_velocity.Text = "chart1";
@@ -870,13 +882,32 @@ namespace Lavira_Merkut
             // 
             // panel_unity
             // 
-            this.panel_unity.Controls.Add(this.textBox_arduinoString);
+            this.panel_unity.Controls.Add(this.textBox1);
+            this.panel_unity.Controls.Add(this.button_open3DRocket);
             this.panel_unity.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_unity.Location = new System.Drawing.Point(0, 0);
             this.panel_unity.Margin = new System.Windows.Forms.Padding(0);
             this.panel_unity.Name = "panel_unity";
             this.panel_unity.Size = new System.Drawing.Size(519, 334);
             this.panel_unity.TabIndex = 0;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(24, 108);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(469, 216);
+            this.textBox1.TabIndex = 1;
+            // 
+            // button_open3DRocket
+            // 
+            this.button_open3DRocket.Location = new System.Drawing.Point(197, 72);
+            this.button_open3DRocket.Name = "button_open3DRocket";
+            this.button_open3DRocket.Size = new System.Drawing.Size(122, 23);
+            this.button_open3DRocket.TabIndex = 0;
+            this.button_open3DRocket.Text = "Open 3D Rocket";
+            this.button_open3DRocket.UseVisualStyleBackColor = true;
+            this.button_open3DRocket.Click += new System.EventHandler(this.button_open3DRocket_Click);
             // 
             // tableLayoutPanel12
             // 
@@ -1178,26 +1209,6 @@ namespace Lavira_Merkut
             this.panel1.Size = new System.Drawing.Size(611, 334);
             this.panel1.TabIndex = 3;
             // 
-            // textBox_arduinoString
-            // 
-            this.textBox_arduinoString.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_arduinoString.Location = new System.Drawing.Point(0, 0);
-            this.textBox_arduinoString.Multiline = true;
-            this.textBox_arduinoString.Name = "textBox_arduinoString";
-            this.textBox_arduinoString.Size = new System.Drawing.Size(519, 334);
-            this.textBox_arduinoString.TabIndex = 0;
-            // 
-            // button_getDataOnce
-            // 
-            this.button_getDataOnce.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button_getDataOnce.Location = new System.Drawing.Point(3, 654);
-            this.button_getDataOnce.Name = "button_getDataOnce";
-            this.button_getDataOnce.Size = new System.Drawing.Size(168, 29);
-            this.button_getDataOnce.TabIndex = 3;
-            this.button_getDataOnce.Text = "Get Data Once";
-            this.button_getDataOnce.UseVisualStyleBackColor = true;
-            this.button_getDataOnce.Click += new System.EventHandler(this.button_getDataOnce_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1341,8 +1352,9 @@ namespace Lavira_Merkut
         private System.Windows.Forms.TextBox textBox_gyroscope_Y;
         private System.Windows.Forms.TextBox textBox_gyroscope_X;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox_arduinoString;
         private System.Windows.Forms.Button button_getDataOnce;
+        private System.Windows.Forms.Button button_open3DRocket;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

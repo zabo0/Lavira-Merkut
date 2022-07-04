@@ -31,6 +31,7 @@ namespace Lavira_Merkut
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkBox_sendDataAutomatic = new System.Windows.Forms.CheckBox();
             this.checkBox_isSend = new System.Windows.Forms.CheckBox();
             this.comboBox_sendingDataComPort = new System.Windows.Forms.ComboBox();
             this.label_sendingDataComPort = new System.Windows.Forms.Label();
@@ -38,9 +39,12 @@ namespace Lavira_Merkut
             this.comboBox_3dRocketSimulationComPort = new System.Windows.Forms.ComboBox();
             this.comboBox_incomingDataComPort = new System.Windows.Forms.ComboBox();
             this.label_incomingDataComPort = new System.Windows.Forms.Label();
-            this.checkBox_sendDataAutomatic = new System.Windows.Forms.CheckBox();
+            this.checkBox_sendDataToRocket = new System.Windows.Forms.CheckBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.button_save = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -49,6 +53,7 @@ namespace Lavira_Merkut
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -60,6 +65,7 @@ namespace Lavira_Merkut
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.checkBox_sendDataToRocket);
             this.groupBox1.Controls.Add(this.checkBox_sendDataAutomatic);
             this.groupBox1.Controls.Add(this.checkBox_isSend);
             this.groupBox1.Controls.Add(this.comboBox_sendingDataComPort);
@@ -75,6 +81,17 @@ namespace Lavira_Merkut
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ports";
+            // 
+            // checkBox_sendDataAutomatic
+            // 
+            this.checkBox_sendDataAutomatic.AutoSize = true;
+            this.checkBox_sendDataAutomatic.Location = new System.Drawing.Point(215, 250);
+            this.checkBox_sendDataAutomatic.Name = "checkBox_sendDataAutomatic";
+            this.checkBox_sendDataAutomatic.Size = new System.Drawing.Size(124, 17);
+            this.checkBox_sendDataAutomatic.TabIndex = 7;
+            this.checkBox_sendDataAutomatic.Text = "Send data automatic";
+            this.checkBox_sendDataAutomatic.UseVisualStyleBackColor = true;
+            this.checkBox_sendDataAutomatic.CheckedChanged += new System.EventHandler(this.checkBox_sendDataAutomatic_CheckedChanged);
             // 
             // checkBox_isSend
             // 
@@ -141,16 +158,35 @@ namespace Lavira_Merkut
             this.label_incomingDataComPort.TabIndex = 0;
             this.label_incomingDataComPort.Text = "Incoming Data COM Port";
             // 
-            // checkBox_sendDataAutomatic
+            // checkBox_sendDataToRocket
             // 
-            this.checkBox_sendDataAutomatic.AutoSize = true;
-            this.checkBox_sendDataAutomatic.Location = new System.Drawing.Point(215, 250);
-            this.checkBox_sendDataAutomatic.Name = "checkBox_sendDataAutomatic";
-            this.checkBox_sendDataAutomatic.Size = new System.Drawing.Size(124, 17);
-            this.checkBox_sendDataAutomatic.TabIndex = 7;
-            this.checkBox_sendDataAutomatic.Text = "Send data automatic";
-            this.checkBox_sendDataAutomatic.UseVisualStyleBackColor = true;
-            this.checkBox_sendDataAutomatic.CheckedChanged += new System.EventHandler(this.checkBox_sendDataAutomatic_CheckedChanged);
+            this.checkBox_sendDataToRocket.AutoSize = true;
+            this.checkBox_sendDataToRocket.Location = new System.Drawing.Point(215, 109);
+            this.checkBox_sendDataToRocket.Name = "checkBox_sendDataToRocket";
+            this.checkBox_sendDataToRocket.Size = new System.Drawing.Size(77, 17);
+            this.checkBox_sendDataToRocket.TabIndex = 8;
+            this.checkBox_sendDataToRocket.Text = "Send Data";
+            this.checkBox_sendDataToRocket.UseVisualStyleBackColor = true;
+            this.checkBox_sendDataToRocket.CheckedChanged += new System.EventHandler(this.checkBox_sendDataToRocket_CheckedChanged);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.button_save);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(579, 381);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(571, 372);
+            this.panel1.TabIndex = 1;
+            // 
+            // button_save
+            // 
+            this.button_save.Location = new System.Drawing.Point(487, 340);
+            this.button_save.Name = "button_save";
+            this.button_save.Size = new System.Drawing.Size(75, 23);
+            this.button_save.TabIndex = 0;
+            this.button_save.Text = "Save";
+            this.button_save.UseVisualStyleBackColor = true;
+            this.button_save.Click += new System.EventHandler(this.button_save_Click);
             // 
             // SettingsForm
             // 
@@ -164,6 +200,7 @@ namespace Lavira_Merkut
             this.tableLayoutPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -180,5 +217,8 @@ namespace Lavira_Merkut
         private System.Windows.Forms.Label label_sendingDataComPort;
         private System.Windows.Forms.CheckBox checkBox_isSend;
         private System.Windows.Forms.CheckBox checkBox_sendDataAutomatic;
+        private System.Windows.Forms.CheckBox checkBox_sendDataToRocket;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button button_save;
     }
 }

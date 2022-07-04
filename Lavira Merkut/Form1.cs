@@ -31,10 +31,9 @@ namespace Lavira_Merkut
         int hour = 0;
 
         IncomingDataSingleton incomingData;
-        SettingsSingleton settings;
+        static SettingsSingleton settings;
 
         bool state = false;
-        bool isSendDataToHYI;
 
         public static bool resizableWindow;
         SerialPort stream_getIncomingData;
@@ -98,26 +97,29 @@ namespace Lavira_Merkut
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //burasi 3d roket simulasyonunu baslatir
-            //Process p = Process.Start("C:\\Users\\Sabahattin\\Desktop\\LaviraMerkut3D_2.exe");
-            //Thread.Sleep(500); // Allow the process to open it's window
-            //p.WaitForInputIdle();
-            //p.WaitForInputIdle();
-            //Thread.Sleep(3000); //sleep for 3 seconds
-            //SetParent(p.MainWindowHandle, panel_unity.Handle);
-            //SetWindowLong(p.MainWindowHandle, GWL_STYLE, WS_VISIBLE);
-            //MoveWindow(p.MainWindowHandle, 0, 0, panel_unity.Width, panel_unity.Height, true);
-            //MoveWindow(p.MainWindowHandle, 0, 0, 900, 480, true);
+           
 
 
             settings = SettingsSingleton.GetInstance();
-            isSendDataToHYI = settings.IsSendData;
 
             float f = 44.54321f;
             uint u = BitConverter.ToUInt32(BitConverter.GetBytes(f), 0);
             System.Diagnostics.Debug.Assert(u == 0x42322C3F); 
         }
 
+        private void button_open3DRocket_Click(object sender, EventArgs e)
+        {
+            //burasi 3d roket simulasyonunu baslatir
+            Process p = Process.Start("C:\\Users\\Sabahattin\\Desktop\\LaviraMerkut3D_2.exe");
+            Thread.Sleep(500); // Allow the process to open it's window
+            p.WaitForInputIdle();
+            p.WaitForInputIdle();
+            Thread.Sleep(3000); //sleep for 3 seconds
+            SetParent(p.MainWindowHandle, panel_unity.Handle);
+            SetWindowLong(p.MainWindowHandle, GWL_STYLE, WS_VISIBLE);
+            MoveWindow(p.MainWindowHandle, 0, 0, panel_unity.Width, panel_unity.Height, true);
+            MoveWindow(p.MainWindowHandle, 0, 0, 900, 480, true);
+        }
 
         public void startProcess()
         {
@@ -127,7 +129,14 @@ namespace Lavira_Merkut
             try
             {
                 openPortToIncomingData(settings.IncomingDataPort);
-                openPortToSendData(settings.SendingDataPort);
+                if (settings.IsSendDataToRocket)
+                {
+                    openPortTo3DRocketSim(settings.RocketSimulationPort);
+                }
+                if (settings.IsSendData)
+                {
+                    openPortToSendData(settings.SendingDataPort);
+                }
                 timer.Start();
                 if (settings.SendDataAutomatic)
                 {
@@ -154,6 +163,7 @@ namespace Lavira_Merkut
             textBox_state.AppendText(currentTime + "\t=====GOREV BITIRILDI=====" + Environment.NewLine);
             closePort_incomingData();
             closePort_sendData();
+            closePort_3DRocketSim();
         }
 
         private String getTime(int timer)
@@ -267,18 +277,22 @@ namespace Lavira_Merkut
              try{
                 read:
                     strReceived = stream_getIncomingData.ReadLine();
-                    textBox_arduinoString.AppendText(strReceived + Environment.NewLine);
                     await Task.Delay(200);
                     strData = strReceived.Split('_');
                     while (strData.Length != 17) {goto read;}
 
-                    
-
-                    if (true)
+                   
+                    if (settings.IsSendData)
                     {
                         byte[] package = createPackage(strData);
-                        stream_sendDataToHYI.Write(package, 0, package.Length);
+                        //stream_sendDataToHYI.Write(package, 0, package.Length);
                         textBox_controls.AppendText(package[75].ToString() + Environment.NewLine);
+                    }
+
+                    if (settings.IsSendDataToRocket)
+                    {
+                        byte[] package = createPackageTo3DRocket(strData);
+                        stream_get3DRocketSimData.Write(package, 0, package.Length);
                     }
 
                     incomingData.Altitude = strData[0];
@@ -339,15 +353,20 @@ namespace Lavira_Merkut
             try
             {
                 strReceived = stream_getIncomingData.ReadLine();
-                textBox_arduinoString.AppendText(strReceived + Environment.NewLine);
                 await Task.Delay(200);
                 strData = strReceived.Split('_');
 
                 if (settings.IsSendData)
                 {
                     byte[] package = createPackage(strData);
-                    stream_sendDataToHYI.Write(package, 0, package.Length);
+                    //stream_sendDataToHYI.Write(package, 0, package.Length);
                     textBox_controls.AppendText(package[75].ToString() + Environment.NewLine);
+                }
+
+                if (settings.IsSendDataToRocket)
+                {
+                    byte[] package = createPackageTo3DRocket(strData);
+                    stream_get3DRocketSimData.Write(package, 0, package.Length);
                 }
 
                 incomingData.Altitude = strData[0];
@@ -417,10 +436,21 @@ namespace Lavira_Merkut
             try
             {
                 stream_sendDataToHYI = new SerialPort(port, 19200, Parity.None, 8, StopBits.One);
-                //stream_sendDataToHYI.DtrEnable = true;
-                //stream_sendDataToHYI.RtsEnable = true;
                 stream_sendDataToHYI.Open();
                 state = true;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public void openPortTo3DRocketSim(string port)
+        {
+            try
+            {
+                stream_get3DRocketSimData = new SerialPort(port, 19200, Parity.None, 8, StopBits.One);
+                stream_get3DRocketSimData.Open();
             }
             catch (Exception e)
             {
@@ -437,7 +467,13 @@ namespace Lavira_Merkut
         public void closePort_sendData()
         {
             stream_sendDataToHYI.Close();
-            state = false;
+            settings.IsSendData = false;
+        }
+
+        public void closePort_3DRocketSim()
+        {
+            stream_get3DRocketSimData.Close();
+            settings.IsSendDataToRocket = false;
         }
 
         private byte[] createPackage(string[] data)
@@ -555,6 +591,37 @@ namespace Lavira_Merkut
 
         }
 
+        public byte[] createPackageTo3DRocket(string[] data)
+        {
+            String[] newData = new String[data.Length];
+
+            for (int i = 0; i < data.Length; i++)
+            {
+                newData[i] = data[i].Replace('.', ',');
+            }
+
+            byte[] package = new byte[12];
+
+
+            //gyroscope x
+            package[0] = getBytes(float.Parse(newData[7]))[0];
+            package[1] = getBytes(float.Parse(newData[7]))[1];
+            package[2] = getBytes(float.Parse(newData[7]))[2];
+            package[3] = getBytes(float.Parse(newData[7]))[3];
+            //gyroscope y                      
+            package[4] = getBytes(float.Parse(newData[8]))[0];
+            package[5] = getBytes(float.Parse(newData[8]))[1];
+            package[6] = getBytes(float.Parse(newData[8]))[2];
+            package[7] = getBytes(float.Parse(newData[8]))[3];
+            //gyroscope z                    
+            package[8] = getBytes(float.Parse(newData[9]))[0];
+            package[9] = getBytes(float.Parse(newData[9]))[1];
+            package[10] = getBytes(float.Parse(newData[9]))[2];
+            package[11] = getBytes(float.Parse(newData[9]))[3];
+
+            return package;
+        }
+
 
         byte calculateCRC(byte[] package)
         {
@@ -578,45 +645,6 @@ namespace Lavira_Merkut
         }
 
 
-        // <summary>
-        // Creates a point shapefile by placing 1000 points randomly
-        // </summary>
-        //public void CreatePointShapefile(AxMap axMap1, int shapeIndex, double langitute, double latitude)
-        //{
-        //    axMap1.Projection = tkMapProjection.PROJECTION_GOOGLE_MERCATOR;
-
-        //    var sf = new Shapefile();
-
-        //    // MWShapeId field will be added to attribute table
-        //    bool result = sf.CreateNewWithShapeID("", ShpfileType.SHP_POINT);
-
-
-        //    var pnt = new Point();
-        //    double x = 0.0;
-        //    double y = 0.0;
-        //    axMap1.DegreesToProj(langitute, latitude, ref x, ref y);
-        //    pnt.x = x;
-        //    pnt.y = y;
-
-        //    Shape shp = new Shape();
-        //    shp.Create(ShpfileType.SHP_POINT);
-
-        //    int index = 0;
-        //    shp.InsertPoint(pnt, ref index);
-        //    sf.EditInsertShape(shp, ref shapeIndex);
-
-        //    sf.DefaultDrawingOptions.SetDefaultPointSymbol(tkDefaultPointSymbol.dpsStar);
-
-        //    // adds shapefile to the map
-        //    axMap1.AddLayer(sf, true);
-
-        //    // save if needed
-        //    //sf.SaveAs(@"c:\points.shp", null);
-        //}
-
-   
-
-
         private void label5_Click(object sender, EventArgs e)
         {
 
@@ -631,5 +659,7 @@ namespace Lavira_Merkut
         {
             getDataFromCOMport();
         }
+
+       
     }
 }
