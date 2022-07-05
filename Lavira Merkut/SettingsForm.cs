@@ -38,6 +38,8 @@ namespace Lavira_Merkut
             checkBox_sendDataAutomatic.Checked = settings.SendDataAutomatic;
             checkBox_sendDataToRocket.Checked = settings.IsSendDataToRocket;
 
+            textBox_teamID.Text = settings.TeamID.ToString();
+
         }
 
         private void setComboBoxItems()
@@ -66,71 +68,26 @@ namespace Lavira_Merkut
 
         private void comboBox_incomingDataComPort_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(comboBox_incomingDataComPort.Text != "none")
-            {
-                string selectedPort = comboBox_incomingDataComPort.Text.Split('(')[1].TrimEnd(')');
-                settings.IncomingDataPort = selectedPort;
-                settings.IncomingDataPortInfo = comboBox_incomingDataComPort.Text;
-            }
-            
         }
 
         private void comboBox_3dRocketSimulationComPort_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox_3dRocketSimulationComPort.Text != "none")
-            {
-                string selectedPort = comboBox_3dRocketSimulationComPort.Text.Split('(')[1].TrimEnd(')');
-                settings.RocketSimulationPort = selectedPort;
-                settings.RocketSimulationPortInfo = comboBox_3dRocketSimulationComPort.Text;
-            }
-            
         }
 
         private void comboBox_sendingDataComPort_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox_sendingDataComPort.Text != "none")
-            {
-                string selectedPort = comboBox_sendingDataComPort.Text.Split('(')[1].TrimEnd(')');
-                settings.SendingDataPort = selectedPort;
-                settings.SendingDataPortInfo = comboBox_sendingDataComPort.Text;
-            }
-           
         }
 
         private void checkBox_isSend_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox_isSend.Checked)
-            {
-                settings.IsSendData = true;
-            }
-            else
-            {
-                settings.IsSendData = false;
-            }
         }
 
         private void checkBox_sendDataAutomatic_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox_sendDataAutomatic.Checked)
-            {
-                settings.SendDataAutomatic = true;
-            }
-            else
-            {
-                settings.SendDataAutomatic = false;
-            }
         }
 
         private void checkBox_sendDataToRocket_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox_isSend.Checked)
-            {
-                settings.IsSendDataToRocket = true;
-            }
-            else
-            {
-                settings.IsSendDataToRocket = false;
-            }
         }
 
         private void button_save_Click(object sender, EventArgs e)
@@ -170,10 +127,6 @@ namespace Lavira_Merkut
                 settings.SendingDataPortInfo = null;
                 checkBox_isSend.Checked = false;
             }
-
-
-            
-
             if (checkBox_isSend.Checked)
             {
                 settings.IsSendData = true;
@@ -201,7 +154,21 @@ namespace Lavira_Merkut
                 settings.IsSendDataToRocket = false;
             }
 
+
+            settings.TeamID = getBytes(float.Parse(textBox_teamID.Text))[3];
+
             this.Close();
+        }
+
+
+        private byte[] getBytes(float value)
+        {
+            var buffer = BitConverter.GetBytes(value);
+            if (!BitConverter.IsLittleEndian)
+            {
+                return buffer;
+            }
+            return new[] { buffer[0], buffer[1], buffer[2], buffer[3] };
         }
     }
 }

@@ -36,16 +36,16 @@ namespace Lavira_Merkut
         bool state = false;
 
         public static bool resizableWindow;
-        SerialPort stream_getIncomingData;
-        SerialPort stream_get3DRocketSimData;
-        SerialPort stream_sendDataToHYI;
+        SerialPort stream_getIncomingData = new SerialPort();
+        SerialPort stream_get3DRocketSimData = new SerialPort();
+        SerialPort stream_sendDataToHYI = new SerialPort();
 
         public string strReceived;
 
         public string[] strData = new string[4];
         public string[] strData_received = new string[4];
 
-        private byte TEAM_ID = 23;
+        //private byte TEAM_ID = settings.TeamID;
         private byte counter = 0;
 
         
@@ -191,7 +191,15 @@ namespace Lavira_Merkut
 
         private void button_finish_Click_1(object sender, EventArgs e)
         {
-            finishProcess();
+            DialogResult dialogResult = MessageBox.Show("Are you sure?", "Finish", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (dialogResult == DialogResult.Yes)
+            {
+                finishProcess();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                //do something else
+            }
         }
 
         private void pictureBox_settings_Click(object sender, EventArgs e)
@@ -244,7 +252,7 @@ namespace Lavira_Merkut
             return time;
         }
 
-        
+
 
         //0.0 teamID
         //0.1 counter
@@ -269,6 +277,10 @@ namespace Lavira_Merkut
 
         //0.2 crc
 
+
+        //P BASINCYUKSEKLIK X X_ACISI Y Y_ACISI E ENLEM B BOYLAM Y YUKSEKLIK_GPS
+        //P123456 X-15.1456 Y174.5236 E4044.4863 B2953.4156 Y9.8
+
         async void getDataFromCOMportLoop()
         {
         start:
@@ -276,17 +288,21 @@ namespace Lavira_Merkut
             {
              try{
                 read:
-                    strReceived = stream_getIncomingData.ReadLine();
+                    strReceived = stream_getIncomingData.ReadLine().TrimEnd('\r');
+                    textBox1.AppendText(strReceived + Environment.NewLine);
+
+                    string data = stringConvert(strReceived);
+                    textBox_controls.AppendText(data + Environment.NewLine);
+
                     await Task.Delay(200);
-                    strData = strReceived.Split('_');
+                    strData = data.Split('_');
                     while (strData.Length != 17) {goto read;}
 
                    
                     if (settings.IsSendData)
                     {
                         byte[] package = createPackage(strData);
-                        //stream_sendDataToHYI.Write(package, 0, package.Length);
-                        textBox_controls.AppendText(package[75].ToString() + Environment.NewLine);
+                        stream_sendDataToHYI.Write(package, 0, package.Length);
                     }
 
                     if (settings.IsSendDataToRocket)
@@ -331,7 +347,7 @@ namespace Lavira_Merkut
                     chart_velocity.Series["Velocity"].Points.AddXY(currentTime, incomingData.Velocity);
                     chart_altitude.Series["Altitude"].Points.AddXY(currentTime, incomingData.Altitude);
 
-                    browser.EvaluateScriptAsync("setmark("+ incomingData.Gps_latitude + ","+ incomingData.Gps_longitude + ");");
+                    browser.EvaluateScriptAsync("setmark(" + incomingData.Gps_latitude + "," + incomingData.Gps_longitude + ");");
 
                     //CreatePointShapefile(axMap1, 0, Convert.ToDouble(strData[3]), Convert.ToDouble(strData[2]));
 
@@ -353,21 +369,29 @@ namespace Lavira_Merkut
             try
             {
                 strReceived = stream_getIncomingData.ReadLine();
+                
+
+                string data = stringConvert(strReceived);
+                textBox_controls.AppendText(data + Environment.NewLine);
+
                 await Task.Delay(200);
-                strData = strReceived.Split('_');
+                strData = data.Split('_');
 
                 if (settings.IsSendData)
                 {
                     byte[] package = createPackage(strData);
-                    //stream_sendDataToHYI.Write(package, 0, package.Length);
-                    textBox_controls.AppendText(package[75].ToString() + Environment.NewLine);
+                    stream_sendDataToHYI.Write(package, 0, package.Length);
                 }
 
                 if (settings.IsSendDataToRocket)
                 {
                     byte[] package = createPackageTo3DRocket(strData);
                     stream_get3DRocketSimData.Write(package, 0, package.Length);
+
+                    textBox1.AppendText(package[0] + "_" + package[1] + "_" + package[2] + "_" + package[3] + "_" + package[4] + "_" + package[5] + "_" + package[6] + "_" +
+                package[7] + "_" + package[8] + "_" + package[9] + "_" + package[10] + "_" + package[11] + Environment.NewLine);
                 }
+
 
                 incomingData.Altitude = strData[0];
                 incomingData.Gps_altitude = strData[1];
@@ -422,7 +446,12 @@ namespace Lavira_Merkut
         {
             try
             {
-                stream_getIncomingData = new SerialPort(port, 9600, Parity.None, 8, StopBits.One);
+                //stream_getIncomingData = new SerialPort(port, 9600, Parity.None, 8, StopBits.One);
+                stream_getIncomingData.PortName = port;
+                stream_getIncomingData.BaudRate = 9600;
+                stream_getIncomingData.Parity = Parity.None;
+                stream_getIncomingData.DataBits = 8;
+                stream_getIncomingData.StopBits = StopBits.One;
                 stream_getIncomingData.Open();
                 state = true;
             } catch(Exception e)
@@ -435,7 +464,12 @@ namespace Lavira_Merkut
         {
             try
             {
-                stream_sendDataToHYI = new SerialPort(port, 19200, Parity.None, 8, StopBits.One);
+                //stream_sendDataToHYI = new SerialPort(port, 19200, Parity.None, 8, StopBits.One);
+                stream_sendDataToHYI.PortName = port;
+                stream_sendDataToHYI.BaudRate = 9600;
+                stream_sendDataToHYI.Parity = Parity.None;
+                stream_sendDataToHYI.DataBits = 8;
+                stream_sendDataToHYI.StopBits = StopBits.One;
                 stream_sendDataToHYI.Open();
                 state = true;
             }
@@ -449,7 +483,12 @@ namespace Lavira_Merkut
         {
             try
             {
-                stream_get3DRocketSimData = new SerialPort(port, 19200, Parity.None, 8, StopBits.One);
+                //stream_get3DRocketSimData = new SerialPort(port, 19200, Parity.None, 8, StopBits.One);
+                stream_get3DRocketSimData.PortName = port;
+                stream_get3DRocketSimData.BaudRate = 9600;
+                stream_get3DRocketSimData.Parity = Parity.None;
+                stream_get3DRocketSimData.DataBits = 8;
+                stream_get3DRocketSimData.StopBits = StopBits.One;
                 stream_get3DRocketSimData.Open();
             }
             catch (Exception e)
@@ -461,19 +500,29 @@ namespace Lavira_Merkut
 
         public void closePort_incomingData()
         {
-            stream_getIncomingData.Close();
-            state = false;
+            if (stream_getIncomingData.IsOpen)
+            {
+                stream_getIncomingData.Close();
+                state = false;
+            }
         }
         public void closePort_sendData()
         {
-            stream_sendDataToHYI.Close();
-            settings.IsSendData = false;
+            if (stream_sendDataToHYI.IsOpen)
+            {
+                stream_sendDataToHYI.Close();
+                settings.IsSendData = false;
+            }
+            
         }
 
         public void closePort_3DRocketSim()
         {
-            stream_get3DRocketSimData.Close();
-            settings.IsSendDataToRocket = false;
+            if (stream_get3DRocketSimData.IsOpen)
+            {
+                stream_get3DRocketSimData.Close();
+                settings.IsSendDataToRocket = false;
+            }
         }
 
         private byte[] createPackage(string[] data)
@@ -492,7 +541,7 @@ namespace Lavira_Merkut
             package[2] = 0x54;
             package[3] = 0x52;
 
-            package[4] = TEAM_ID; //teamID 
+            package[4] = settings.TeamID; //teamID 
             package[5] = counter++; //counter
 
             //altitude
@@ -642,6 +691,68 @@ namespace Lavira_Merkut
                 return buffer;
             }
             return new[] { buffer[0], buffer[1], buffer[2], buffer[3] };
+        }
+
+        //00 altitude
+        //01 gps altitude
+        //02 gps latitude
+        //03 gps longitude
+        //04 payload gps altitude
+        //05 payload gps latitude
+        //06 payload pgs longitude
+        //07 gyroscope x
+        //08 gyroscope y
+        //09 gyroscope z
+        //10 acceleration x
+        //11 acceleration y
+        //12 acceleration z
+        //13 air pressure
+        //14 angle
+        //15 velocity
+        //16 state
+
+        //P BASINCYUKSEKLIK X X_ACISI Y Y_ACISI E ENLEM B BOYLAM Y YUKSEKLIK_GPS
+        //P123456 X-15.1456 Y174.5236 E4044.4863 B2953.4156 Y9.8
+
+        private string stringConvert(string data)
+        {
+
+            int P = data.IndexOf("P");
+            int X = data.IndexOf("X");
+            int Y = data.IndexOf("Y");
+            int E = data.IndexOf("E");
+            int B = data.IndexOf("B");
+            int A = data.IndexOf("A");
+
+
+            string altitude = data.Substring(P + 1, X-P-1);
+            string gyroX = data.Substring(X + 1, Y-X-1);
+            string gyroY = data.Substring(Y + 1, E-Y-1);
+            string gps_latitude = data.Substring(E + 1, B-E-1);
+            string gps_longitude = data.Substring(B + 1, A-B-1);
+            string gps_altitude = data.Substring(A + 1, data.Length-A-1);
+
+            string result = 
+                altitude+"_" + 
+                gps_altitude + "_" +
+                gps_latitude + "_" + 
+                gps_longitude + "_" + 
+                "0" + "_" + //payload gps altitude
+                "0" + "_" + //payload gps latitude
+                "0" + "_" + //06 payload pgs longitude
+                gyroX + "_"+
+                gyroY + "_"+
+                "0" + "_" + //09 gyroscope z
+                "0" + "_" + //10 acceleration x
+                "0" + "_" + //11 acceleration y
+                "0" + "_" + //12 acceleration z
+                "0" + "_" + //13 air pressure
+                "0" + "_" + //14 angle
+                "0" + "_" + //15 velocity
+                "0";        //16 state
+
+            return result;
+
         }
 
 
