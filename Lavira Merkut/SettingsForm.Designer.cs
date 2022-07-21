@@ -43,8 +43,8 @@ namespace Lavira_Merkut
             this.panel1 = new System.Windows.Forms.Panel();
             this.button_save = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label_teamID = new System.Windows.Forms.Label();
             this.textBox_teamID = new System.Windows.Forms.TextBox();
+            this.label_teamID = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -203,6 +203,14 @@ namespace Lavira_Merkut
             this.panel2.Size = new System.Drawing.Size(571, 372);
             this.panel2.TabIndex = 2;
             // 
+            // textBox_teamID
+            // 
+            this.textBox_teamID.Location = new System.Drawing.Point(156, 34);
+            this.textBox_teamID.Name = "textBox_teamID";
+            this.textBox_teamID.Size = new System.Drawing.Size(122, 20);
+            this.textBox_teamID.TabIndex = 1;
+            this.textBox_teamID.TextChanged += new System.EventHandler(this.textBox_teamID_TextChanged);
+            // 
             // label_teamID
             // 
             this.label_teamID.AutoSize = true;
@@ -211,13 +219,6 @@ namespace Lavira_Merkut
             this.label_teamID.Size = new System.Drawing.Size(84, 13);
             this.label_teamID.TabIndex = 0;
             this.label_teamID.Text = "TeamID For HYI";
-            // 
-            // textBox_teamID
-            // 
-            this.textBox_teamID.Location = new System.Drawing.Point(156, 34);
-            this.textBox_teamID.Name = "textBox_teamID";
-            this.textBox_teamID.Size = new System.Drawing.Size(122, 20);
-            this.textBox_teamID.TabIndex = 1;
             // 
             // SettingsForm
             // 

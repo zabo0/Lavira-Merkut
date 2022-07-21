@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.IO.Ports;
 using System.Linq;
 using System.Management;
@@ -17,6 +18,8 @@ namespace Lavira_Merkut
     {
 
         string[] ports = SerialPort.GetPortNames();
+        static string fullPath = "C:\\Users\\Sabahattin\\Desktop\\Lavira Rocket\\Lavira Merkut Program\\Lavira Merkut\\Lavira Merkut\\settings.txt";
+        string[] savedSettings = File.ReadAllLines(fullPath);
 
         SettingsSingleton settings;
 
@@ -27,14 +30,26 @@ namespace Lavira_Merkut
 
         private void SettingsForm_Load(object sender, EventArgs e)
         {
+
             settings = SettingsSingleton.GetInstance();
             setComboBoxItems();
+
+            if(savedSettings.Length == 14)
+            {
+                settings.IncomingDataPortInfo = savedSettings[1];
+                settings.RocketSimulationPortInfo = savedSettings[3];
+                settings.SendingDataPortInfo = savedSettings[5];
+                settings.SendDataAutomatic = Convert.ToBoolean(savedSettings[7]);
+                settings.IsSendDataToRocket = Convert.ToBoolean(savedSettings[9]);
+                settings.IsSendDataToHYI = Convert.ToBoolean(savedSettings[11]);
+                settings.TeamID = Convert.ToByte(savedSettings[13]);
+            }
 
             comboBox_incomingDataComPort.Text = settings.IncomingDataPortInfo;
             comboBox_3dRocketSimulationComPort.Text = settings.RocketSimulationPortInfo;
             comboBox_sendingDataComPort.Text = settings.SendingDataPortInfo;
 
-            checkBox_isSend.Checked = settings.IsSendData;
+            checkBox_isSend.Checked = settings.IsSendDataToHYI;
             checkBox_sendDataAutomatic.Checked = settings.SendDataAutomatic;
             checkBox_sendDataToRocket.Checked = settings.IsSendDataToRocket;
 
@@ -129,11 +144,11 @@ namespace Lavira_Merkut
             }
             if (checkBox_isSend.Checked)
             {
-                settings.IsSendData = true;
+                settings.IsSendDataToHYI = true;
             }
             else
             {
-                settings.IsSendData = false;
+                settings.IsSendDataToHYI = false;
             }
 
             if (checkBox_sendDataAutomatic.Checked)
@@ -154,21 +169,53 @@ namespace Lavira_Merkut
                 settings.IsSendDataToRocket = false;
             }
 
+            settings.TeamID = byte.Parse(textBox_teamID.Text);
 
-            settings.TeamID = getBytes(float.Parse(textBox_teamID.Text))[3];
+            saveAllPorts();
 
             this.Close();
         }
 
 
-        private byte[] getBytes(float value)
+        private void textBox_teamID_TextChanged(object sender, EventArgs e)
         {
-            var buffer = BitConverter.GetBytes(value);
-            if (!BitConverter.IsLittleEndian)
+            try
             {
-                return buffer;
+                byte.Parse(textBox_teamID.Text);
             }
-            return new[] { buffer[0], buffer[1], buffer[2], buffer[3] };
+            catch(Exception error)
+            {
+                MessageBox.Show("you can only type numbers between 0 and 255\n" + error.Message);
+                textBox_teamID.Text = "0";
+                textBox_teamID.SelectAll();
+            }
         }
+
+
+        private void saveAllPorts()
+        {
+            // Write file using StreamWriter  
+            using (StreamWriter writer = new StreamWriter(fullPath))
+            {
+                writer.WriteLine("incomingDataPort");
+                writer.WriteLine(comboBox_incomingDataComPort.Text);
+                writer.WriteLine("rocketDataPort");
+                writer.WriteLine(comboBox_3dRocketSimulationComPort.Text);
+                writer.WriteLine("sendToHYIPort");
+                writer.WriteLine(comboBox_sendingDataComPort.Text);
+                writer.WriteLine("getDataAutomaticCheckBox");
+                writer.WriteLine(checkBox_sendDataAutomatic.Checked.ToString());
+                writer.WriteLine("sendToRocketCheckBox");
+                writer.WriteLine(checkBox_sendDataToRocket.Checked.ToString());
+                writer.WriteLine("sendDataToHYICheckBox");
+                writer.WriteLine(checkBox_isSend.Checked.ToString());
+                writer.WriteLine("teamID");
+                writer.WriteLine(settings.TeamID.ToString());
+            }
+            // Read a file  
+            string readText = File.ReadAllText(fullPath);
+            Console.WriteLine(readText);
+        }
+
     }
 }
