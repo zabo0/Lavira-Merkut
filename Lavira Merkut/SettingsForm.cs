@@ -55,6 +55,11 @@ namespace Lavira_Merkut
 
             textBox_teamID.Text = settings.TeamID.ToString();
 
+
+            //tabControl1.Appearance = TabAppearance.FlatButtons;
+            //tabControl1.ItemSize = new Size(0, 1);
+            //tabControl1.SizeMode = TabSizeMode.Fixed;
+            //tabControl1.SelectedTab = tabPage2;
         }
 
         private void setComboBoxItems()
@@ -168,6 +173,7 @@ namespace Lavira_Merkut
             {
                 settings.IsSendDataToRocket = false;
             }
+            
 
             settings.TeamID = byte.Parse(textBox_teamID.Text);
 

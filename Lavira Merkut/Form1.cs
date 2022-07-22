@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.IO.Ports;
 using System.Runtime.InteropServices;
@@ -16,12 +17,10 @@ namespace Lavira_Merkut
     public partial class Form1 : Form
     {
         int counterTime = 0;
-        string currentTime;
-
-        int milisecond = 0;
-        int second = 0;
-        int minute = 0;
-        int hour = 0;
+        TimeSpan currentTime;
+        TimeSpan startTime;
+        TimeSpan finishTime;
+        TimeSpan elapsedTime;
 
         static SettingsSingleton settings;
 
@@ -92,23 +91,46 @@ namespace Lavira_Merkut
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
+            //tabControl1.Appearance = TabAppearance.FlatButtons;
+            //tabControl1.ItemSize = new Size(0, 1);
+            //tabControl1.SizeMode = TabSizeMode.Fixed;
+
             settings = SettingsSingleton.GetInstance();
 
             if (savedSettings.Length == 14)
             {
-                settings.IncomingDataPort = savedSettings[1].Split('(')[1].TrimEnd(')'); ;
-                settings.RocketSimulationPort = savedSettings[3].Split('(')[1].TrimEnd(')'); ;
-                settings.SendingDataPort = savedSettings[5].Split('(')[1].TrimEnd(')'); ;
+                if(savedSettings[1] != "" && savedSettings[1] != "none")
+                {
+                    settings.IncomingDataPort = savedSettings[1].Split('(')[1].TrimEnd(')');
+                }
+                if (savedSettings[3] != "" && savedSettings[1] != "none")
+                {
+                    settings.RocketSimulationPort = savedSettings[3].Split('(')[1].TrimEnd(')');
+                }
+                if (savedSettings[5] != "" && savedSettings[1] != "none")
+                {
+                    settings.SendingDataPort = savedSettings[5].Split('(')[1].TrimEnd(')');
+                }
                 settings.SendDataAutomatic = Convert.ToBoolean(savedSettings[7]);
                 settings.IsSendDataToRocket = Convert.ToBoolean(savedSettings[9]);
                 settings.IsSendDataToHYI = Convert.ToBoolean(savedSettings[11]);
                 settings.TeamID = Convert.ToByte(savedSettings[13]);
             }
 
+            settings.WhichAcionic = Prompt.ShowDialog("Select An Avionic System", "Avionic System");
+
+            switch (settings.WhichAcionic)
+            {
+                case 0: label1.Text = "Lavira Merkut (Main Avionic)"; tabControl1.SelectedTab = tabPage1; break;
+                case 1: label1.Text = "Lavira Merkut (Second Avionic)"; tabControl1.SelectedTab = tabPage2; break;
+                case 2: label1.Text = "Lavira Merkut (Payload)"; tabControl1.SelectedTab = tabPage3; break;
+            }
 
             float f = 44.54321f;
             uint u = BitConverter.ToUInt32(BitConverter.GetBytes(f), 0);
-            System.Diagnostics.Debug.Assert(u == 0x42322C3F); 
+            System.Diagnostics.Debug.Assert(u == 0x42322C3F);
+
         }
 
         private void button_open3DRocket_Click(object sender, EventArgs e)
@@ -128,6 +150,12 @@ namespace Lavira_Merkut
         public void startProcess()
         {
             ////butun sureci baslatacak fonksiyon
+            
+            startTime = DateTime.Now.TimeOfDay;
+            label_timeText.Text = "Time";
+            timer.Start();
+            textBox_state.AppendText(elapsedTime.ToString(@"hh\:mm\:ss\.ff") + "-" + startTime.ToString(@"hh\:mm\:ss\.ff") + "\t=====GOREV BASLATILDI=====" + Environment.NewLine);
+            InitBrowser();
 
             try
             {
@@ -140,15 +168,10 @@ namespace Lavira_Merkut
                 {
                     openPortToSendData(settings.SendingDataPort);
                 }
-                timer.Start();
                 if (settings.SendDataAutomatic)
                 {
                     getDataFromCOMportLoop();
                 }
-                label_timeText.Text = "Time";
-                textBox_state.AppendText(currentTime + "\t=====GOREV BASLATILDI=====" + Environment.NewLine);
-                InitBrowser();
-
             }
             catch(Exception error)
             {
@@ -162,29 +185,21 @@ namespace Lavira_Merkut
         public void finishProcess()
         {
             //butun sureci bitirecek fonksiyon
+            finishTime = DateTime.Now.TimeOfDay;
             timer.Stop();
-            textBox_state.AppendText(currentTime + "\t=====GOREV BITIRILDI=====" + Environment.NewLine);
+            textBox_state.AppendText(elapsedTime.ToString(@"hh\:mm\:ss\.ff") +"-"+ finishTime.ToString(@"hh\:mm\:ss\.ff") + "\t=====GOREV BITIRILDI=====" + Environment.NewLine);
             closePort_incomingData();
             closePort_sendData();
             closePort_3DRocketSim();
         }
 
-        private String getTime(int timer)
-        {
-            //gercek sure ile arasinda ufak fark olabiliyor
-            TimeSpan time = TimeSpan.FromMilliseconds(timer);
-            string str = time.ToString(@"mm\:ss\.ff"); 
-            return str;
-        }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             counterTime++;
-            //currentTime = getTime(counterTime);
-            currentTime = stopwatch();
-            label_timer.Text = currentTime;
-            
-            setValues(counterTime);
+            currentTime = DateTime.Now.TimeOfDay;
+            elapsedTime = currentTime.Subtract(startTime);
+            label_timer.Text = elapsedTime.ToString(@"hh\:mm\:ss\.ff");
         }
 
         private void button_start_Click_1(object sender, EventArgs e)
@@ -214,45 +229,6 @@ namespace Lavira_Merkut
         private void chart_altitude_Click(object sender, EventArgs e)
         {
 
-        } 
-
-        private void setValues(int iteration)
-        {
-            //ayarlarda simule et etkinlestirilirse veritabanindan cektigi verileri yazar ayarlar henuz yapilmadi
-            if (false)
-            {
-
-            }
-            else
-            {
-                //simulation(iteration);
-            } 
-        }
-
-        string stopwatch()
-        {
-            milisecond++;
-            if (milisecond == 100)
-            {
-                milisecond = 0;
-                second++;
-            } if (second == 60)
-            {
-                milisecond = 0;
-                second = 0;
-                minute++;
-            } if (minute == 60)
-            {
-                milisecond = 0;
-                second = 0;
-                minute = 0;
-                hour++;
-
-            }
-
-
-            string time = /*hour + ":" +*/ minute.ToString("00") + ":" + second.ToString("00") + "." + milisecond.ToString("00");
-            return time;
         }
 
 
@@ -273,10 +249,11 @@ namespace Lavira_Merkut
         //10 acceleration x
         //11 acceleration y
         //12 acceleration z
-        //13 air pressure
-        //14 angle
-        //15 velocity
-        //16 state
+        //13 air pressure 1
+        //14 air pressure 2
+        //15 angle
+        //16 velocity
+        //17 state
 
         //0.2 crc
 
@@ -299,7 +276,7 @@ namespace Lavira_Merkut
 
                     strData = data.Split('_');
 
-                    while (strData.Length != 17) {goto read;}
+                    while (strData.Length != 18) {goto read;}
 
                    
                     if (settings.IsSendDataToHYI)
@@ -318,25 +295,26 @@ namespace Lavira_Merkut
                     textBox_gps_altitude.Text = strData[1];
                     textBox_gps_latitude.Text = strData[2];
                     textBox_gps_longitude.Text = strData[3];
-                    textBox_payload_gps_altidue.Text = strData[4];
-                    textBox_payload_gps_latitude.Text = strData[5];
-                    textBox_payload_gps_longitude.Text = strData[6];
-                    textBox_air_pressure.Text = strData[7];
-                    textBox_gyroscope_X.Text = strData[8];
-                    textBox_gyroscope_Y.Text = strData[9];
-                    textBox_gyroscope_Z.Text = strData[10];
-                    textBox_acceleration_X.Text = strData[11];
-                    textBox_acceleration_Y.Text = strData[12];
-                    textBox_acceleration_Z.Text = strData[13];
-                    textBox_angle.Text = strData[14];
-                    chart_velocity.Series["Velocity"].Points.AddXY(currentTime, strData[15]);
-                    chart_altitude.Series["Altitude"].Points.AddXY(currentTime, strData[0]);
+                    //textBox_payload_gps_altidue.Text = strData[4];
+                    //textBox_payload_gps_latitude.Text = strData[5];
+                    //textBox_payload_gps_longitude.Text = strData[6];
+                    textBox_gyroscope_X.Text = strData[7];
+                    textBox_gyroscope_Y.Text = strData[8];
+                    textBox_gyroscope_Z.Text = strData[9];
+                    textBox_acceleration_X.Text = strData[10];
+                    textBox_acceleration_Y.Text = strData[11];
+                    textBox_acceleration_Z.Text = strData[12];
+                    textBox_pressure1.Text = strData[13];
+                    textBox_pressure2.Text = strData[14];
+                    textBox_angle.Text = strData[15];
+                    chart_velocity.Series["Velocity"].Points.AddXY(elapsedTime.ToString(@"hh\:mm\:ss\.ff"), strData[16]);
+                    chart_altitude.Series["Altitude"].Points.AddXY(elapsedTime.ToString(@"hh\:mm\:ss\.ff"), strData[0]);
 
                     browser.EvaluateScriptAsync("setmark(" + strData[2] + "," + strData[3] + ");");
 
                     //CreatePointShapefile(axMap1, 0, Convert.ToDouble(strData[3]), Convert.ToDouble(strData[2]));
 
-                }
+                 }
                 catch(Exception e) {
                     MessageBox.Show(e.Message);
                 }
@@ -533,12 +511,12 @@ namespace Lavira_Merkut
             package[68] = getBytes(float.Parse(newData[12]))[2];
             package[69] = getBytes(float.Parse(newData[12]))[3];
             //angle                            
-            package[70] = getBytes(float.Parse(newData[14]))[0];
-            package[71] = getBytes(float.Parse(newData[14]))[1];
-            package[72] = getBytes(float.Parse(newData[14]))[2];
-            package[73] = getBytes(float.Parse(newData[14]))[3];
+            package[70] = getBytes(float.Parse(newData[15]))[0];
+            package[71] = getBytes(float.Parse(newData[15]))[1];
+            package[72] = getBytes(float.Parse(newData[15]))[2];
+            package[73] = getBytes(float.Parse(newData[15]))[3];
             //state                          
-            package[74] = getBytes(float.Parse(newData[16]))[0];
+            package[74] = getBytes(float.Parse(newData[17]))[0];
             //crc
             package[75] = calculateCRC(package);
             package[76] = 0x0D;
@@ -614,54 +592,65 @@ namespace Lavira_Merkut
         //10 acceleration x
         //11 acceleration y
         //12 acceleration z
-        //13 air pressure
-        //14 angle
-        //15 velocity
-        //16 state
+        //13 air pressure 1
+        //14 air pressure 2
+        //15 angle
+        //16 velocity
+        //17 state
 
         //P BASINCYUKSEKLIK X X_ACISI Y Y_ACISI E ENLEM B BOYLAM Y YUKSEKLIK_GPS
         //P123456 X-15.1456 Y174.5236 E4044.4863 B2953.4156 Y9.8
 
+        //*P1:1.01 P2:1.00 $GPGGA,052605.000,4044.6038,N,02956.5326,E,1,06,1.24,93.9,M,39.8,M,,*5B
         private string stringConvert(string data)
         {
 
-            data = data.TrimEnd('\r');
+            //data = data.TrimEnd('\r');
+            string[] splittedData = data.Split('$');
 
-            int P = data.IndexOf("P");
-            int X = data.IndexOf("X");
-            int Y = data.IndexOf("Y");
-            int E = data.IndexOf("E");
-            int B = data.IndexOf("B");
-            int A = data.IndexOf("A");
+            string[] pressures = splittedData[0].TrimEnd().Split(' ');
+            string[] gpggaDatas = splittedData[1].TrimEnd().Split(',');
+
+            string pressure1 = pressures[0].Split(':')[1];
+            string pressure2 = pressures[1].Split(':')[1];
+
+            string gps_latitude = convertToDegree(gpggaDatas[2]);
+            string gps_longitude = convertToDegree(gpggaDatas[4]);
+            string gps_altitude = convertToDegree(gpggaDatas[9]);
 
 
-            string altitude = data.Substring(P + 1, X-P-1);
-            string gyroX = data.Substring(X + 1, Y-X-1);
-            string gyroY = data.Substring(Y + 1, E-Y-1);
-            string gps_latitude = data.Substring(E + 1, B-E-1);
-            string gps_longitude = data.Substring(B + 1, A-B-1);
-            string gps_altitude = data.Substring(A + 1, data.Length-A-1);
 
             string result = 
-                altitude +"_" + 
-                gps_altitude + "_" +
-                gps_latitude + "_" + 
-                gps_longitude + "_" + 
-                "0" + "_" + //payload gps altitude
-                "0" + "_" + //payload gps latitude
+                "0" +"_" + //00 altitude
+                gps_altitude + "_" + //01 gps altitude
+                gps_latitude + "_" + //02 gps latitude
+                gps_longitude + "_" + //03 gps longitude
+                "0" + "_" + //04 payload gps altitude
+                "0" + "_" + //05 payload gps latitude
                 "0" + "_" + //06 payload pgs longitude
-                gyroX + "_"+
-                gyroY + "_"+
+                "0" + "_" + //07 gyroscope x
+                "0" + "_" + //08 gyroscope y
                 "0" + "_" + //09 gyroscope z
                 "0" + "_" + //10 acceleration x
                 "0" + "_" + //11 acceleration y
                 "0" + "_" + //12 acceleration z
-                "0" + "_" + //13 air pressure
-                "0" + "_" + //14 angle
-                "0" + "_" + //15 velocity
-                "0";        //16 state
+                pressure1 + "_" + //13 air pressure 1
+                pressure2 + "_" + //14 air pressure 2
+                "0" + "_" + //15 angle
+                "0" + "_" + //16 velocity
+                "0";        //17 state
 
             return result;
+        }
+
+        private string convertToDegree(string value)
+        {
+            value = value.Replace('.', ','); //floata cevirebilmek icin noktalar virgule cevrilir
+            value = value.TrimStart(new Char[] { '0' }); //bastaki sifirlari sil
+            double degree = float.Parse(value.Substring(0, 2)); //tam derece kismini ayir
+            double minute = float.Parse(value.Substring(2, value.Length - 2)); // dakika kismini ayir
+            double result = degree + minute * 0.0166666667; //dakikayi dereceye cevir ve tam dereceyle topla
+            return result.ToString().Replace(',','.'); //haritada dogru bir sekilde gosterilmesi icin virguller noktaya cevrilir
         }
 
 
@@ -673,6 +662,46 @@ namespace Lavira_Merkut
         private void panel_infoText_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+
+
+        //burasi baslangicta hangi aviyonik secilecegini gosteren kod
+        public static class Prompt
+        {
+            public static byte ShowDialog(string text, string caption)
+            {
+                Form prompt = new Form();
+                prompt.Width = 500;
+                prompt.Height = 300;
+                prompt.Text = caption;
+                Label textLabel = new Label() { Left = 50, Top = 20, Text = text };
+                RadioButton radio1 = new RadioButton() { Left = 50, Top = 20, Text = "Main Avionic" , Checked =true};
+                RadioButton radio2 = new RadioButton() { Left = 50, Top = 40, Text = "Second Avionic" , Checked =false};
+                RadioButton radio3 = new RadioButton() { Left = 50, Top = 60, Text = "Payload" , Checked =false};
+                Button confirmation = new Button() { Text = "Ok", Left = 350, Width = 100, Top = 70 };
+                confirmation.Click += (sender, e) => { prompt.Close(); };
+                prompt.Controls.Add(radio1);
+                prompt.Controls.Add(radio2);
+                prompt.Controls.Add(radio3);
+                prompt.Controls.Add(confirmation);
+                prompt.Controls.Add(textLabel);
+                prompt.ShowDialog();
+                byte result = 0;
+                if (radio1.Checked)
+                {
+                    result = 0;
+                }
+                if (radio2.Checked)
+                {
+                    result = 1;
+                }
+                if (radio3.Checked)
+                {
+                    result = 2;
+                }
+                return result;
+            }
         }
 
     }

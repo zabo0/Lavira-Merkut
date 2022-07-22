@@ -90,7 +90,7 @@ namespace Lavira_Merkut
             // checkBox_sendDataToRocket
             // 
             this.checkBox_sendDataToRocket.AutoSize = true;
-            this.checkBox_sendDataToRocket.Location = new System.Drawing.Point(215, 144);
+            this.checkBox_sendDataToRocket.Location = new System.Drawing.Point(215, 145);
             this.checkBox_sendDataToRocket.Name = "checkBox_sendDataToRocket";
             this.checkBox_sendDataToRocket.Size = new System.Drawing.Size(77, 17);
             this.checkBox_sendDataToRocket.TabIndex = 8;
@@ -112,7 +112,7 @@ namespace Lavira_Merkut
             // checkBox_isSend
             // 
             this.checkBox_isSend.AutoSize = true;
-            this.checkBox_isSend.Location = new System.Drawing.Point(215, 228);
+            this.checkBox_isSend.Location = new System.Drawing.Point(215, 229);
             this.checkBox_isSend.Name = "checkBox_isSend";
             this.checkBox_isSend.Size = new System.Drawing.Size(75, 17);
             this.checkBox_isSend.TabIndex = 6;
@@ -123,7 +123,7 @@ namespace Lavira_Merkut
             // comboBox_sendingDataComPort
             // 
             this.comboBox_sendingDataComPort.FormattingEnabled = true;
-            this.comboBox_sendingDataComPort.Location = new System.Drawing.Point(215, 200);
+            this.comboBox_sendingDataComPort.Location = new System.Drawing.Point(215, 201);
             this.comboBox_sendingDataComPort.Name = "comboBox_sendingDataComPort";
             this.comboBox_sendingDataComPort.Size = new System.Drawing.Size(349, 21);
             this.comboBox_sendingDataComPort.TabIndex = 5;
@@ -132,7 +132,7 @@ namespace Lavira_Merkut
             // label_sendingDataComPort
             // 
             this.label_sendingDataComPort.AutoSize = true;
-            this.label_sendingDataComPort.Location = new System.Drawing.Point(49, 203);
+            this.label_sendingDataComPort.Location = new System.Drawing.Point(49, 204);
             this.label_sendingDataComPort.Name = "label_sendingDataComPort";
             this.label_sendingDataComPort.Size = new System.Drawing.Size(121, 13);
             this.label_sendingDataComPort.TabIndex = 4;
@@ -141,7 +141,7 @@ namespace Lavira_Merkut
             // label_3dRocketSimulationComPort
             // 
             this.label_3dRocketSimulationComPort.AutoSize = true;
-            this.label_3dRocketSimulationComPort.Location = new System.Drawing.Point(46, 119);
+            this.label_3dRocketSimulationComPort.Location = new System.Drawing.Point(46, 120);
             this.label_3dRocketSimulationComPort.Name = "label_3dRocketSimulationComPort";
             this.label_3dRocketSimulationComPort.Size = new System.Drawing.Size(159, 13);
             this.label_3dRocketSimulationComPort.TabIndex = 3;
@@ -150,7 +150,7 @@ namespace Lavira_Merkut
             // comboBox_3dRocketSimulationComPort
             // 
             this.comboBox_3dRocketSimulationComPort.FormattingEnabled = true;
-            this.comboBox_3dRocketSimulationComPort.Location = new System.Drawing.Point(215, 116);
+            this.comboBox_3dRocketSimulationComPort.Location = new System.Drawing.Point(215, 117);
             this.comboBox_3dRocketSimulationComPort.Name = "comboBox_3dRocketSimulationComPort";
             this.comboBox_3dRocketSimulationComPort.Size = new System.Drawing.Size(349, 21);
             this.comboBox_3dRocketSimulationComPort.TabIndex = 2;

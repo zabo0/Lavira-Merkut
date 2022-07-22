@@ -32,6 +32,8 @@ namespace Lavira_Merkut.Singleton
 
         byte teamID;
 
+        byte whichAcionic;
+
         public string IncomingDataPort { get => incomingDataPort; set => incomingDataPort = value; }
         public string SendingDataPort { get => sendingDataPort; set => sendingDataPort = value; }
         public string RocketSimulationPort { get => rocketSimulationPort; set => rocketSimulationPort = value; }
@@ -42,5 +44,6 @@ namespace Lavira_Merkut.Singleton
         public string RocketSimulationPortInfo { get => rocketSimulationPortInfo; set => rocketSimulationPortInfo = value; }
         public string SendingDataPortInfo { get => sendingDataPortInfo; set => sendingDataPortInfo = value; }
         public byte TeamID { get => teamID; set => teamID = value; }
+        public byte WhichAcionic { get => whichAcionic; set => whichAcionic = value; }
     }
 }
