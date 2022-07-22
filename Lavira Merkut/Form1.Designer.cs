@@ -31,12 +31,12 @@ namespace Lavira_Merkut
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.panel_topBar = new System.Windows.Forms.TableLayoutPanel();
@@ -413,7 +413,7 @@ namespace Lavira_Merkut
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(160, 469);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.Text = "Main Avionic";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel1
@@ -627,7 +627,7 @@ namespace Lavira_Merkut
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(160, 469);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "Second Avionic";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel7
@@ -839,7 +839,7 @@ namespace Lavira_Merkut
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(160, 469);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.Text = "Payload";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // panel_charts
@@ -863,18 +863,18 @@ namespace Lavira_Merkut
             // 
             // chart_altitude
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chart_altitude.ChartAreas.Add(chartArea3);
+            chartArea5.Name = "ChartArea1";
+            this.chart_altitude.ChartAreas.Add(chartArea5);
             this.chart_altitude.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend3.Name = "Legend1";
-            this.chart_altitude.Legends.Add(legend3);
+            legend5.Name = "Legend1";
+            this.chart_altitude.Legends.Add(legend5);
             this.chart_altitude.Location = new System.Drawing.Point(3, 3);
             this.chart_altitude.Name = "chart_altitude";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.Legend = "Legend1";
-            series3.Name = "Altitude";
-            this.chart_altitude.Series.Add(series3);
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series5.Legend = "Legend1";
+            series5.Name = "Altitude";
+            this.chart_altitude.Series.Add(series5);
             this.chart_altitude.Size = new System.Drawing.Size(442, 199);
             this.chart_altitude.TabIndex = 0;
             this.chart_altitude.Text = "chart1";
@@ -882,18 +882,18 @@ namespace Lavira_Merkut
             // 
             // chart_velocity
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chart_velocity.ChartAreas.Add(chartArea4);
+            chartArea6.Name = "ChartArea1";
+            this.chart_velocity.ChartAreas.Add(chartArea6);
             this.chart_velocity.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend4.Name = "Legend1";
-            this.chart_velocity.Legends.Add(legend4);
+            legend6.Name = "Legend1";
+            this.chart_velocity.Legends.Add(legend6);
             this.chart_velocity.Location = new System.Drawing.Point(3, 208);
             this.chart_velocity.Name = "chart_velocity";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series4.Legend = "Legend1";
-            series4.Name = "Velocity";
-            this.chart_velocity.Series.Add(series4);
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series6.Legend = "Legend1";
+            series6.Name = "Velocity";
+            this.chart_velocity.Series.Add(series6);
             this.chart_velocity.Size = new System.Drawing.Size(442, 199);
             this.chart_velocity.TabIndex = 1;
             this.chart_velocity.Text = "chart1";

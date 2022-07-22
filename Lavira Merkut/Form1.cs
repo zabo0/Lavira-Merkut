@@ -308,14 +308,19 @@ namespace Lavira_Merkut
                     textBox_pressure2.Text = strData[14];
                     textBox_angle.Text = strData[15];
                     chart_velocity.Series["Velocity"].Points.AddXY(elapsedTime.ToString(@"hh\:mm\:ss\.ff"), strData[16]);
-                    chart_altitude.Series["Altitude"].Points.AddXY(elapsedTime.ToString(@"hh\:mm\:ss\.ff"), strData[0]);
+                    chart_altitude.Series["Altitude"].Points.AddXY(elapsedTime.ToString(@"hh\:mm\:ss\.ff"), strData[1]);
 
                     browser.EvaluateScriptAsync("setmark(" + strData[2] + "," + strData[3] + ");");
 
                     //CreatePointShapefile(axMap1, 0, Convert.ToDouble(strData[3]), Convert.ToDouble(strData[2]));
 
                  }
-                catch(Exception e) {
+                catch (IndexOutOfRangeException e)
+                {
+                    Console.WriteLine("Exception must have been handled");
+                }
+                catch (Exception e) {
+                     
                     MessageBox.Show(e.Message);
                 }
             }
