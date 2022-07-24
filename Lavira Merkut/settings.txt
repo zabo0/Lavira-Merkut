@@ -1,14 +1,12 @@
 incomingDataPort
-COM6 - Arduino Mega 2560 (COM6)
+COM17 - Arduino Mega 2560 (COM17)
 rocketDataPort
 
 sendToHYIPort
-COM10 - Silicon Labs CP210x USB to UART Bridge (COM10)
-getDataAutomaticCheckBox
-True
+
 sendToRocketCheckBox
 False
 sendDataToHYICheckBox
-True
+False
 teamID
 36

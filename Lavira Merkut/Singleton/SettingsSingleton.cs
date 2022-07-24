@@ -27,7 +27,6 @@ namespace Lavira_Merkut.Singleton
         string sendingDataPortInfo;
 
         bool isSendDataToHYI = false;
-        bool sendDataAutomatic = false;
         bool isSendDataToRocket = false;
 
         byte teamID;
@@ -38,7 +37,6 @@ namespace Lavira_Merkut.Singleton
         public string SendingDataPort { get => sendingDataPort; set => sendingDataPort = value; }
         public string RocketSimulationPort { get => rocketSimulationPort; set => rocketSimulationPort = value; }
         public bool IsSendDataToHYI { get => isSendDataToHYI; set => isSendDataToHYI = value; }
-        public bool SendDataAutomatic { get => sendDataAutomatic; set => sendDataAutomatic = value; }
         public bool IsSendDataToRocket { get => isSendDataToRocket; set => isSendDataToRocket = value; }
         public string IncomingDataPortInfo { get => incomingDataPortInfo; set => incomingDataPortInfo = value; }
         public string RocketSimulationPortInfo { get => rocketSimulationPortInfo; set => rocketSimulationPortInfo = value; }

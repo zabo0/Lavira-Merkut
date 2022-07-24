@@ -32,7 +32,6 @@ namespace Lavira_Merkut
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.checkBox_sendDataToRocket = new System.Windows.Forms.CheckBox();
-            this.checkBox_sendDataAutomatic = new System.Windows.Forms.CheckBox();
             this.checkBox_isSend = new System.Windows.Forms.CheckBox();
             this.comboBox_sendingDataComPort = new System.Windows.Forms.ComboBox();
             this.label_sendingDataComPort = new System.Windows.Forms.Label();
@@ -71,7 +70,6 @@ namespace Lavira_Merkut
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.checkBox_sendDataToRocket);
-            this.groupBox1.Controls.Add(this.checkBox_sendDataAutomatic);
             this.groupBox1.Controls.Add(this.checkBox_isSend);
             this.groupBox1.Controls.Add(this.comboBox_sendingDataComPort);
             this.groupBox1.Controls.Add(this.label_sendingDataComPort);
@@ -97,17 +95,6 @@ namespace Lavira_Merkut
             this.checkBox_sendDataToRocket.Text = "Send Data";
             this.checkBox_sendDataToRocket.UseVisualStyleBackColor = true;
             this.checkBox_sendDataToRocket.CheckedChanged += new System.EventHandler(this.checkBox_sendDataToRocket_CheckedChanged);
-            // 
-            // checkBox_sendDataAutomatic
-            // 
-            this.checkBox_sendDataAutomatic.AutoSize = true;
-            this.checkBox_sendDataAutomatic.Location = new System.Drawing.Point(215, 61);
-            this.checkBox_sendDataAutomatic.Name = "checkBox_sendDataAutomatic";
-            this.checkBox_sendDataAutomatic.Size = new System.Drawing.Size(116, 17);
-            this.checkBox_sendDataAutomatic.TabIndex = 7;
-            this.checkBox_sendDataAutomatic.Text = "Get data automatic";
-            this.checkBox_sendDataAutomatic.UseVisualStyleBackColor = true;
-            this.checkBox_sendDataAutomatic.CheckedChanged += new System.EventHandler(this.checkBox_sendDataAutomatic_CheckedChanged);
             // 
             // checkBox_isSend
             // 
@@ -250,7 +237,6 @@ namespace Lavira_Merkut
         private System.Windows.Forms.ComboBox comboBox_sendingDataComPort;
         private System.Windows.Forms.Label label_sendingDataComPort;
         private System.Windows.Forms.CheckBox checkBox_isSend;
-        private System.Windows.Forms.CheckBox checkBox_sendDataAutomatic;
         private System.Windows.Forms.CheckBox checkBox_sendDataToRocket;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button_save;

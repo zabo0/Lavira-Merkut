@@ -31,12 +31,20 @@ namespace Lavira_Merkut
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.Label label_payload_altitude;
+            System.Windows.Forms.Label label_gps_payload_altitude;
+            System.Windows.Forms.Label label_gps_payload_latitude;
+            System.Windows.Forms.Label label_gps_payload_longitude;
+            System.Windows.Forms.Label label_payload_velocityV;
+            System.Windows.Forms.Label label_payload_moisture;
+            System.Windows.Forms.Label label_payload_temperature;
+            System.Windows.Forms.Label label_payload_pressure;
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.panel_topBar = new System.Windows.Forms.TableLayoutPanel();
@@ -55,76 +63,85 @@ namespace Lavira_Merkut
             this.button_finish = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.label_airPressure = new System.Windows.Forms.Label();
-            this.textBox_air_pressure = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.label_gps_longitude = new System.Windows.Forms.Label();
-            this.textBox_gps_longitude = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.label_gps_latitude = new System.Windows.Forms.Label();
-            this.textBox_gps_latitude = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.label_gps_altitude = new System.Windows.Forms.Label();
-            this.textBox_gps_altitude = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.label_altitue = new System.Windows.Forms.Label();
-            this.textBox_altitude = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
-            this.label_secondAvionic_gps_longitude = new System.Windows.Forms.Label();
-            this.textBox_secondAvionic_gps_longitude = new System.Windows.Forms.TextBox();
+            this.label_spare_gps_longitude = new System.Windows.Forms.Label();
+            this.textBox_spare_gps_longitude = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
-            this.label_secondAvionic_gps_latitude = new System.Windows.Forms.Label();
-            this.textBox_secondAvionic_gps_latitude = new System.Windows.Forms.TextBox();
+            this.label_spare_gps_latitude = new System.Windows.Forms.Label();
+            this.textBox_spare_gps_latitude = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
-            this.label_secondAvionic_gps_altitude = new System.Windows.Forms.Label();
-            this.textBox_seconAvionic_gps_altitude = new System.Windows.Forms.TextBox();
+            this.label_spare_gps_altitude = new System.Windows.Forms.Label();
+            this.textBox_spare_gps_altitude = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel20 = new System.Windows.Forms.TableLayoutPanel();
-            this.label_pressure2 = new System.Windows.Forms.Label();
-            this.textBox_pressure2 = new System.Windows.Forms.TextBox();
+            this.label_spare_pressure2 = new System.Windows.Forms.Label();
+            this.textBox_spare_pressure2 = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel21 = new System.Windows.Forms.TableLayoutPanel();
-            this.label_pressure1 = new System.Windows.Forms.Label();
-            this.textBox_pressure1 = new System.Windows.Forms.TextBox();
+            this.label_spare_pressure1 = new System.Windows.Forms.Label();
+            this.textBox_spare_pressure1 = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel_charts = new System.Windows.Forms.TableLayoutPanel();
             this.chart_altitude = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chart_velocity = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel_stateControls = new System.Windows.Forms.TableLayoutPanel();
-            this.label_controlsText = new System.Windows.Forms.Label();
             this.label_stateText = new System.Windows.Forms.Label();
             this.textBox_state = new System.Windows.Forms.TextBox();
-            this.textBox_controls = new System.Windows.Forms.TextBox();
             this.panel_3dMap = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel_unity = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button_open3DRocket = new System.Windows.Forms.Button();
-            this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel19 = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox_angle = new System.Windows.Forms.TextBox();
-            this.label_angle = new System.Windows.Forms.Label();
-            this.tableLayoutPanel18 = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox_acceleration_Z = new System.Windows.Forms.TextBox();
-            this.label_acceleration_Z = new System.Windows.Forms.Label();
-            this.tableLayoutPanel17 = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox_acceleration_Y = new System.Windows.Forms.TextBox();
-            this.label_acceleration_Y = new System.Windows.Forms.Label();
-            this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox_acceleration_X = new System.Windows.Forms.TextBox();
-            this.label_acceleration_X = new System.Windows.Forms.Label();
-            this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox_gyroscope_Z = new System.Windows.Forms.TextBox();
-            this.label_gyroscope_Z = new System.Windows.Forms.Label();
-            this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox_gyroscope_Y = new System.Windows.Forms.TextBox();
-            this.label__gyroscope_Y = new System.Windows.Forms.Label();
-            this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox_gyroscope_X = new System.Windows.Forms.TextBox();
-            this.label__gyroscope_X = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button_openMAP = new System.Windows.Forms.Button();
+            this.tableLayoutPanel22 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel23 = new System.Windows.Forms.TableLayoutPanel();
+            this.textBox_payload_altitude = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel24 = new System.Windows.Forms.TableLayoutPanel();
+            this.textBox_gps_payload_altitude = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel25 = new System.Windows.Forms.TableLayoutPanel();
+            this.textBox_gps_payload_latitude = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel26 = new System.Windows.Forms.TableLayoutPanel();
+            this.textBox_gps_payload_longitude = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel27 = new System.Windows.Forms.TableLayoutPanel();
+            this.textBox_payload_velocityV = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel28 = new System.Windows.Forms.TableLayoutPanel();
+            this.textBox_payload_moisture = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel29 = new System.Windows.Forms.TableLayoutPanel();
+            this.textBox_payload_temperature = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel30 = new System.Windows.Forms.TableLayoutPanel();
+            this.textBox_payload_pressure = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.label_main_altitude = new System.Windows.Forms.Label();
+            this.textBox_main_altitude = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.label_main_gps_altitude = new System.Windows.Forms.Label();
+            this.textBox_main_gps_altitude = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.label_main_gps_latitude = new System.Windows.Forms.Label();
+            this.textBox_main_gps_latitude = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.label_main_gps_longitude = new System.Windows.Forms.Label();
+            this.textBox_main_gps_longitude = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.label_main_velocityV = new System.Windows.Forms.Label();
+            this.textBox_main_velocityV = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel31 = new System.Windows.Forms.TableLayoutPanel();
+            this.label_main_gyroX = new System.Windows.Forms.Label();
+            this.textBox_main_gyroX = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel32 = new System.Windows.Forms.TableLayoutPanel();
+            this.label_main_gyroY = new System.Windows.Forms.Label();
+            this.textBox_main_gyroY = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
+            this.button_open3DRocket = new System.Windows.Forms.Button();
+            this.panel_unity = new System.Windows.Forms.Panel();
+            this.label_log = new System.Windows.Forms.Label();
+            this.textBox_logs = new System.Windows.Forms.TextBox();
+            label_payload_altitude = new System.Windows.Forms.Label();
+            label_gps_payload_altitude = new System.Windows.Forms.Label();
+            label_gps_payload_latitude = new System.Windows.Forms.Label();
+            label_gps_payload_longitude = new System.Windows.Forms.Label();
+            label_payload_velocityV = new System.Windows.Forms.Label();
+            label_payload_moisture = new System.Windows.Forms.Label();
+            label_payload_temperature = new System.Windows.Forms.Label();
+            label_payload_pressure = new System.Windows.Forms.Label();
             this.tableLayoutPanel.SuspendLayout();
             this.panel_topBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -136,12 +153,6 @@ namespace Lavira_Merkut
             this.panel_buttons.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel6.SuspendLayout();
-            this.tableLayoutPanel5.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
@@ -149,21 +160,32 @@ namespace Lavira_Merkut
             this.tableLayoutPanel10.SuspendLayout();
             this.tableLayoutPanel20.SuspendLayout();
             this.tableLayoutPanel21.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.panel_charts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_altitude)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart_velocity)).BeginInit();
             this.panel_stateControls.SuspendLayout();
             this.panel_3dMap.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.tableLayoutPanel22.SuspendLayout();
+            this.tableLayoutPanel23.SuspendLayout();
+            this.tableLayoutPanel24.SuspendLayout();
+            this.tableLayoutPanel25.SuspendLayout();
+            this.tableLayoutPanel26.SuspendLayout();
+            this.tableLayoutPanel27.SuspendLayout();
+            this.tableLayoutPanel28.SuspendLayout();
+            this.tableLayoutPanel29.SuspendLayout();
+            this.tableLayoutPanel30.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
+            this.tableLayoutPanel6.SuspendLayout();
+            this.tableLayoutPanel31.SuspendLayout();
+            this.tableLayoutPanel32.SuspendLayout();
             this.tableLayoutPanel11.SuspendLayout();
             this.panel_unity.SuspendLayout();
-            this.tableLayoutPanel12.SuspendLayout();
-            this.tableLayoutPanel19.SuspendLayout();
-            this.tableLayoutPanel18.SuspendLayout();
-            this.tableLayoutPanel17.SuspendLayout();
-            this.tableLayoutPanel16.SuspendLayout();
-            this.tableLayoutPanel15.SuspendLayout();
-            this.tableLayoutPanel14.SuspendLayout();
-            this.tableLayoutPanel13.SuspendLayout();
             this.SuspendLayout();
             // 
             // timer
@@ -413,211 +435,8 @@ namespace Lavira_Merkut
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(160, 469);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Main Avionic";
+            this.tabPage1.Text = "Main";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel6, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel5, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 6;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(154, 463);
-            this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // tableLayoutPanel6
-            // 
-            this.tableLayoutPanel6.ColumnCount = 1;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.Controls.Add(this.label_airPressure, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.textBox_air_pressure, 0, 1);
-            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 243);
-            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.RowCount = 2;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(148, 54);
-            this.tableLayoutPanel6.TabIndex = 4;
-            // 
-            // label_airPressure
-            // 
-            this.label_airPressure.AutoSize = true;
-            this.label_airPressure.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_airPressure.Location = new System.Drawing.Point(3, 0);
-            this.label_airPressure.Name = "label_airPressure";
-            this.label_airPressure.Size = new System.Drawing.Size(142, 27);
-            this.label_airPressure.TabIndex = 0;
-            this.label_airPressure.Text = "Air Pressure";
-            this.label_airPressure.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // textBox_air_pressure
-            // 
-            this.textBox_air_pressure.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_air_pressure.Location = new System.Drawing.Point(3, 30);
-            this.textBox_air_pressure.Name = "textBox_air_pressure";
-            this.textBox_air_pressure.ReadOnly = true;
-            this.textBox_air_pressure.Size = new System.Drawing.Size(142, 20);
-            this.textBox_air_pressure.TabIndex = 1;
-            // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.ColumnCount = 1;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Controls.Add(this.label_gps_longitude, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.textBox_gps_longitude, 0, 1);
-            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 183);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 2;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(148, 54);
-            this.tableLayoutPanel5.TabIndex = 3;
-            // 
-            // label_gps_longitude
-            // 
-            this.label_gps_longitude.AutoSize = true;
-            this.label_gps_longitude.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_gps_longitude.Location = new System.Drawing.Point(3, 0);
-            this.label_gps_longitude.Name = "label_gps_longitude";
-            this.label_gps_longitude.Size = new System.Drawing.Size(142, 27);
-            this.label_gps_longitude.TabIndex = 0;
-            this.label_gps_longitude.Text = "GPS Longitude";
-            this.label_gps_longitude.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // textBox_gps_longitude
-            // 
-            this.textBox_gps_longitude.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_gps_longitude.Location = new System.Drawing.Point(3, 30);
-            this.textBox_gps_longitude.Name = "textBox_gps_longitude";
-            this.textBox_gps_longitude.ReadOnly = true;
-            this.textBox_gps_longitude.Size = new System.Drawing.Size(142, 20);
-            this.textBox_gps_longitude.TabIndex = 1;
-            // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.ColumnCount = 1;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel4.Controls.Add(this.label_gps_latitude, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.textBox_gps_latitude, 0, 1);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 123);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 2;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(148, 54);
-            this.tableLayoutPanel4.TabIndex = 2;
-            // 
-            // label_gps_latitude
-            // 
-            this.label_gps_latitude.AutoSize = true;
-            this.label_gps_latitude.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_gps_latitude.Location = new System.Drawing.Point(3, 0);
-            this.label_gps_latitude.Name = "label_gps_latitude";
-            this.label_gps_latitude.Size = new System.Drawing.Size(142, 27);
-            this.label_gps_latitude.TabIndex = 0;
-            this.label_gps_latitude.Text = "GPS Latitude";
-            this.label_gps_latitude.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // textBox_gps_latitude
-            // 
-            this.textBox_gps_latitude.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_gps_latitude.Location = new System.Drawing.Point(3, 30);
-            this.textBox_gps_latitude.Name = "textBox_gps_latitude";
-            this.textBox_gps_latitude.ReadOnly = true;
-            this.textBox_gps_latitude.Size = new System.Drawing.Size(142, 20);
-            this.textBox_gps_latitude.TabIndex = 1;
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 1;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Controls.Add(this.label_gps_altitude, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.textBox_gps_altitude, 0, 1);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 63);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(148, 54);
-            this.tableLayoutPanel3.TabIndex = 1;
-            // 
-            // label_gps_altitude
-            // 
-            this.label_gps_altitude.AutoSize = true;
-            this.label_gps_altitude.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_gps_altitude.Location = new System.Drawing.Point(3, 0);
-            this.label_gps_altitude.Name = "label_gps_altitude";
-            this.label_gps_altitude.Size = new System.Drawing.Size(142, 27);
-            this.label_gps_altitude.TabIndex = 0;
-            this.label_gps_altitude.Text = "GPS Altitude";
-            this.label_gps_altitude.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // textBox_gps_altitude
-            // 
-            this.textBox_gps_altitude.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_gps_altitude.Location = new System.Drawing.Point(3, 30);
-            this.textBox_gps_altitude.Name = "textBox_gps_altitude";
-            this.textBox_gps_altitude.ReadOnly = true;
-            this.textBox_gps_altitude.Size = new System.Drawing.Size(142, 20);
-            this.textBox_gps_altitude.TabIndex = 1;
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 1;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Controls.Add(this.label_altitue, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.textBox_altitude, 0, 1);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(148, 54);
-            this.tableLayoutPanel2.TabIndex = 0;
-            // 
-            // label_altitue
-            // 
-            this.label_altitue.AutoSize = true;
-            this.label_altitue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_altitue.Location = new System.Drawing.Point(3, 0);
-            this.label_altitue.Name = "label_altitue";
-            this.label_altitue.Size = new System.Drawing.Size(142, 27);
-            this.label_altitue.TabIndex = 0;
-            this.label_altitue.Text = "Altitude";
-            this.label_altitue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // textBox_altitude
-            // 
-            this.textBox_altitude.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_altitude.Location = new System.Drawing.Point(3, 30);
-            this.textBox_altitude.Name = "textBox_altitude";
-            this.textBox_altitude.ReadOnly = true;
-            this.textBox_altitude.Size = new System.Drawing.Size(142, 20);
-            this.textBox_altitude.TabIndex = 1;
             // 
             // tabPage2
             // 
@@ -627,11 +446,12 @@ namespace Lavira_Merkut
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(160, 469);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Second Avionic";
+            this.tabPage2.Text = "Spare";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel7
             // 
+            this.tableLayoutPanel7.AutoScroll = true;
             this.tableLayoutPanel7.ColumnCount = 1;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel8, 0, 4);
@@ -657,8 +477,8 @@ namespace Lavira_Merkut
             this.tableLayoutPanel8.ColumnCount = 1;
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel8.Controls.Add(this.label_secondAvionic_gps_longitude, 0, 0);
-            this.tableLayoutPanel8.Controls.Add(this.textBox_secondAvionic_gps_longitude, 0, 1);
+            this.tableLayoutPanel8.Controls.Add(this.label_spare_gps_longitude, 0, 0);
+            this.tableLayoutPanel8.Controls.Add(this.textBox_spare_gps_longitude, 0, 1);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 243);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
@@ -668,33 +488,33 @@ namespace Lavira_Merkut
             this.tableLayoutPanel8.Size = new System.Drawing.Size(148, 54);
             this.tableLayoutPanel8.TabIndex = 4;
             // 
-            // label_secondAvionic_gps_longitude
+            // label_spare_gps_longitude
             // 
-            this.label_secondAvionic_gps_longitude.AutoSize = true;
-            this.label_secondAvionic_gps_longitude.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_secondAvionic_gps_longitude.Location = new System.Drawing.Point(3, 0);
-            this.label_secondAvionic_gps_longitude.Name = "label_secondAvionic_gps_longitude";
-            this.label_secondAvionic_gps_longitude.Size = new System.Drawing.Size(142, 27);
-            this.label_secondAvionic_gps_longitude.TabIndex = 0;
-            this.label_secondAvionic_gps_longitude.Text = "GPS Longitude";
-            this.label_secondAvionic_gps_longitude.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label_spare_gps_longitude.AutoSize = true;
+            this.label_spare_gps_longitude.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_spare_gps_longitude.Location = new System.Drawing.Point(3, 0);
+            this.label_spare_gps_longitude.Name = "label_spare_gps_longitude";
+            this.label_spare_gps_longitude.Size = new System.Drawing.Size(142, 27);
+            this.label_spare_gps_longitude.TabIndex = 0;
+            this.label_spare_gps_longitude.Text = "GPS Longitude";
+            this.label_spare_gps_longitude.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBox_secondAvionic_gps_longitude
+            // textBox_spare_gps_longitude
             // 
-            this.textBox_secondAvionic_gps_longitude.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_secondAvionic_gps_longitude.Location = new System.Drawing.Point(3, 30);
-            this.textBox_secondAvionic_gps_longitude.Name = "textBox_secondAvionic_gps_longitude";
-            this.textBox_secondAvionic_gps_longitude.ReadOnly = true;
-            this.textBox_secondAvionic_gps_longitude.Size = new System.Drawing.Size(142, 20);
-            this.textBox_secondAvionic_gps_longitude.TabIndex = 1;
+            this.textBox_spare_gps_longitude.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_spare_gps_longitude.Location = new System.Drawing.Point(3, 30);
+            this.textBox_spare_gps_longitude.Name = "textBox_spare_gps_longitude";
+            this.textBox_spare_gps_longitude.ReadOnly = true;
+            this.textBox_spare_gps_longitude.Size = new System.Drawing.Size(142, 20);
+            this.textBox_spare_gps_longitude.TabIndex = 1;
             // 
             // tableLayoutPanel9
             // 
             this.tableLayoutPanel9.ColumnCount = 1;
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel9.Controls.Add(this.label_secondAvionic_gps_latitude, 0, 0);
-            this.tableLayoutPanel9.Controls.Add(this.textBox_secondAvionic_gps_latitude, 0, 1);
+            this.tableLayoutPanel9.Controls.Add(this.label_spare_gps_latitude, 0, 0);
+            this.tableLayoutPanel9.Controls.Add(this.textBox_spare_gps_latitude, 0, 1);
             this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 183);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
@@ -704,33 +524,33 @@ namespace Lavira_Merkut
             this.tableLayoutPanel9.Size = new System.Drawing.Size(148, 54);
             this.tableLayoutPanel9.TabIndex = 3;
             // 
-            // label_secondAvionic_gps_latitude
+            // label_spare_gps_latitude
             // 
-            this.label_secondAvionic_gps_latitude.AutoSize = true;
-            this.label_secondAvionic_gps_latitude.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_secondAvionic_gps_latitude.Location = new System.Drawing.Point(3, 0);
-            this.label_secondAvionic_gps_latitude.Name = "label_secondAvionic_gps_latitude";
-            this.label_secondAvionic_gps_latitude.Size = new System.Drawing.Size(142, 27);
-            this.label_secondAvionic_gps_latitude.TabIndex = 0;
-            this.label_secondAvionic_gps_latitude.Text = "GPS Latitude";
-            this.label_secondAvionic_gps_latitude.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label_spare_gps_latitude.AutoSize = true;
+            this.label_spare_gps_latitude.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_spare_gps_latitude.Location = new System.Drawing.Point(3, 0);
+            this.label_spare_gps_latitude.Name = "label_spare_gps_latitude";
+            this.label_spare_gps_latitude.Size = new System.Drawing.Size(142, 27);
+            this.label_spare_gps_latitude.TabIndex = 0;
+            this.label_spare_gps_latitude.Text = "GPS Latitude";
+            this.label_spare_gps_latitude.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBox_secondAvionic_gps_latitude
+            // textBox_spare_gps_latitude
             // 
-            this.textBox_secondAvionic_gps_latitude.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_secondAvionic_gps_latitude.Location = new System.Drawing.Point(3, 30);
-            this.textBox_secondAvionic_gps_latitude.Name = "textBox_secondAvionic_gps_latitude";
-            this.textBox_secondAvionic_gps_latitude.ReadOnly = true;
-            this.textBox_secondAvionic_gps_latitude.Size = new System.Drawing.Size(142, 20);
-            this.textBox_secondAvionic_gps_latitude.TabIndex = 1;
+            this.textBox_spare_gps_latitude.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_spare_gps_latitude.Location = new System.Drawing.Point(3, 30);
+            this.textBox_spare_gps_latitude.Name = "textBox_spare_gps_latitude";
+            this.textBox_spare_gps_latitude.ReadOnly = true;
+            this.textBox_spare_gps_latitude.Size = new System.Drawing.Size(142, 20);
+            this.textBox_spare_gps_latitude.TabIndex = 1;
             // 
             // tableLayoutPanel10
             // 
             this.tableLayoutPanel10.ColumnCount = 1;
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel10.Controls.Add(this.label_secondAvionic_gps_altitude, 0, 0);
-            this.tableLayoutPanel10.Controls.Add(this.textBox_seconAvionic_gps_altitude, 0, 1);
+            this.tableLayoutPanel10.Controls.Add(this.label_spare_gps_altitude, 0, 0);
+            this.tableLayoutPanel10.Controls.Add(this.textBox_spare_gps_altitude, 0, 1);
             this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel10.Location = new System.Drawing.Point(3, 123);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
@@ -740,33 +560,33 @@ namespace Lavira_Merkut
             this.tableLayoutPanel10.Size = new System.Drawing.Size(148, 54);
             this.tableLayoutPanel10.TabIndex = 2;
             // 
-            // label_secondAvionic_gps_altitude
+            // label_spare_gps_altitude
             // 
-            this.label_secondAvionic_gps_altitude.AutoSize = true;
-            this.label_secondAvionic_gps_altitude.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_secondAvionic_gps_altitude.Location = new System.Drawing.Point(3, 0);
-            this.label_secondAvionic_gps_altitude.Name = "label_secondAvionic_gps_altitude";
-            this.label_secondAvionic_gps_altitude.Size = new System.Drawing.Size(142, 27);
-            this.label_secondAvionic_gps_altitude.TabIndex = 0;
-            this.label_secondAvionic_gps_altitude.Text = "GPS Altitude";
-            this.label_secondAvionic_gps_altitude.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label_spare_gps_altitude.AutoSize = true;
+            this.label_spare_gps_altitude.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_spare_gps_altitude.Location = new System.Drawing.Point(3, 0);
+            this.label_spare_gps_altitude.Name = "label_spare_gps_altitude";
+            this.label_spare_gps_altitude.Size = new System.Drawing.Size(142, 27);
+            this.label_spare_gps_altitude.TabIndex = 0;
+            this.label_spare_gps_altitude.Text = "GPS Altitude";
+            this.label_spare_gps_altitude.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBox_seconAvionic_gps_altitude
+            // textBox_spare_gps_altitude
             // 
-            this.textBox_seconAvionic_gps_altitude.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_seconAvionic_gps_altitude.Location = new System.Drawing.Point(3, 30);
-            this.textBox_seconAvionic_gps_altitude.Name = "textBox_seconAvionic_gps_altitude";
-            this.textBox_seconAvionic_gps_altitude.ReadOnly = true;
-            this.textBox_seconAvionic_gps_altitude.Size = new System.Drawing.Size(142, 20);
-            this.textBox_seconAvionic_gps_altitude.TabIndex = 1;
+            this.textBox_spare_gps_altitude.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_spare_gps_altitude.Location = new System.Drawing.Point(3, 30);
+            this.textBox_spare_gps_altitude.Name = "textBox_spare_gps_altitude";
+            this.textBox_spare_gps_altitude.ReadOnly = true;
+            this.textBox_spare_gps_altitude.Size = new System.Drawing.Size(142, 20);
+            this.textBox_spare_gps_altitude.TabIndex = 1;
             // 
             // tableLayoutPanel20
             // 
             this.tableLayoutPanel20.ColumnCount = 1;
             this.tableLayoutPanel20.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel20.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel20.Controls.Add(this.label_pressure2, 0, 0);
-            this.tableLayoutPanel20.Controls.Add(this.textBox_pressure2, 0, 1);
+            this.tableLayoutPanel20.Controls.Add(this.label_spare_pressure2, 0, 0);
+            this.tableLayoutPanel20.Controls.Add(this.textBox_spare_pressure2, 0, 1);
             this.tableLayoutPanel20.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel20.Location = new System.Drawing.Point(3, 63);
             this.tableLayoutPanel20.Name = "tableLayoutPanel20";
@@ -776,33 +596,33 @@ namespace Lavira_Merkut
             this.tableLayoutPanel20.Size = new System.Drawing.Size(148, 54);
             this.tableLayoutPanel20.TabIndex = 1;
             // 
-            // label_pressure2
+            // label_spare_pressure2
             // 
-            this.label_pressure2.AutoSize = true;
-            this.label_pressure2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_pressure2.Location = new System.Drawing.Point(3, 0);
-            this.label_pressure2.Name = "label_pressure2";
-            this.label_pressure2.Size = new System.Drawing.Size(142, 27);
-            this.label_pressure2.TabIndex = 0;
-            this.label_pressure2.Text = "Pressure 2";
-            this.label_pressure2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label_spare_pressure2.AutoSize = true;
+            this.label_spare_pressure2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_spare_pressure2.Location = new System.Drawing.Point(3, 0);
+            this.label_spare_pressure2.Name = "label_spare_pressure2";
+            this.label_spare_pressure2.Size = new System.Drawing.Size(142, 27);
+            this.label_spare_pressure2.TabIndex = 0;
+            this.label_spare_pressure2.Text = "Pressure 2";
+            this.label_spare_pressure2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBox_pressure2
+            // textBox_spare_pressure2
             // 
-            this.textBox_pressure2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_pressure2.Location = new System.Drawing.Point(3, 30);
-            this.textBox_pressure2.Name = "textBox_pressure2";
-            this.textBox_pressure2.ReadOnly = true;
-            this.textBox_pressure2.Size = new System.Drawing.Size(142, 20);
-            this.textBox_pressure2.TabIndex = 1;
+            this.textBox_spare_pressure2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_spare_pressure2.Location = new System.Drawing.Point(3, 30);
+            this.textBox_spare_pressure2.Name = "textBox_spare_pressure2";
+            this.textBox_spare_pressure2.ReadOnly = true;
+            this.textBox_spare_pressure2.Size = new System.Drawing.Size(142, 20);
+            this.textBox_spare_pressure2.TabIndex = 1;
             // 
             // tableLayoutPanel21
             // 
             this.tableLayoutPanel21.ColumnCount = 1;
             this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel21.Controls.Add(this.label_pressure1, 0, 0);
-            this.tableLayoutPanel21.Controls.Add(this.textBox_pressure1, 0, 1);
+            this.tableLayoutPanel21.Controls.Add(this.label_spare_pressure1, 0, 0);
+            this.tableLayoutPanel21.Controls.Add(this.textBox_spare_pressure1, 0, 1);
             this.tableLayoutPanel21.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel21.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel21.Name = "tableLayoutPanel21";
@@ -812,28 +632,29 @@ namespace Lavira_Merkut
             this.tableLayoutPanel21.Size = new System.Drawing.Size(148, 54);
             this.tableLayoutPanel21.TabIndex = 0;
             // 
-            // label_pressure1
+            // label_spare_pressure1
             // 
-            this.label_pressure1.AutoSize = true;
-            this.label_pressure1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_pressure1.Location = new System.Drawing.Point(3, 0);
-            this.label_pressure1.Name = "label_pressure1";
-            this.label_pressure1.Size = new System.Drawing.Size(142, 27);
-            this.label_pressure1.TabIndex = 0;
-            this.label_pressure1.Text = "Pressure 1";
-            this.label_pressure1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label_spare_pressure1.AutoSize = true;
+            this.label_spare_pressure1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_spare_pressure1.Location = new System.Drawing.Point(3, 0);
+            this.label_spare_pressure1.Name = "label_spare_pressure1";
+            this.label_spare_pressure1.Size = new System.Drawing.Size(142, 27);
+            this.label_spare_pressure1.TabIndex = 0;
+            this.label_spare_pressure1.Text = "Pressure 1";
+            this.label_spare_pressure1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBox_pressure1
+            // textBox_spare_pressure1
             // 
-            this.textBox_pressure1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_pressure1.Location = new System.Drawing.Point(3, 30);
-            this.textBox_pressure1.Name = "textBox_pressure1";
-            this.textBox_pressure1.ReadOnly = true;
-            this.textBox_pressure1.Size = new System.Drawing.Size(142, 20);
-            this.textBox_pressure1.TabIndex = 1;
+            this.textBox_spare_pressure1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_spare_pressure1.Location = new System.Drawing.Point(3, 30);
+            this.textBox_spare_pressure1.Name = "textBox_spare_pressure1";
+            this.textBox_spare_pressure1.ReadOnly = true;
+            this.textBox_spare_pressure1.Size = new System.Drawing.Size(142, 20);
+            this.textBox_spare_pressure1.TabIndex = 1;
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.tableLayoutPanel22);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -863,18 +684,18 @@ namespace Lavira_Merkut
             // 
             // chart_altitude
             // 
-            chartArea5.Name = "ChartArea1";
-            this.chart_altitude.ChartAreas.Add(chartArea5);
+            chartArea1.Name = "ChartArea1";
+            this.chart_altitude.ChartAreas.Add(chartArea1);
             this.chart_altitude.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend5.Name = "Legend1";
-            this.chart_altitude.Legends.Add(legend5);
+            legend1.Name = "Legend1";
+            this.chart_altitude.Legends.Add(legend1);
             this.chart_altitude.Location = new System.Drawing.Point(3, 3);
             this.chart_altitude.Name = "chart_altitude";
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series5.Legend = "Legend1";
-            series5.Name = "Altitude";
-            this.chart_altitude.Series.Add(series5);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Legend = "Legend1";
+            series1.Name = "Altitude";
+            this.chart_altitude.Series.Add(series1);
             this.chart_altitude.Size = new System.Drawing.Size(442, 199);
             this.chart_altitude.TabIndex = 0;
             this.chart_altitude.Text = "chart1";
@@ -882,52 +703,40 @@ namespace Lavira_Merkut
             // 
             // chart_velocity
             // 
-            chartArea6.Name = "ChartArea1";
-            this.chart_velocity.ChartAreas.Add(chartArea6);
+            chartArea2.Name = "ChartArea1";
+            this.chart_velocity.ChartAreas.Add(chartArea2);
             this.chart_velocity.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend6.Name = "Legend1";
-            this.chart_velocity.Legends.Add(legend6);
+            legend2.Name = "Legend1";
+            this.chart_velocity.Legends.Add(legend2);
             this.chart_velocity.Location = new System.Drawing.Point(3, 208);
             this.chart_velocity.Name = "chart_velocity";
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series6.Legend = "Legend1";
-            series6.Name = "Velocity";
-            this.chart_velocity.Series.Add(series6);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Legend = "Legend1";
+            series2.Name = "Velocity";
+            this.chart_velocity.Series.Add(series2);
             this.chart_velocity.Size = new System.Drawing.Size(442, 199);
             this.chart_velocity.TabIndex = 1;
             this.chart_velocity.Text = "chart1";
             // 
             // panel_stateControls
             // 
-            this.panel_stateControls.ColumnCount = 2;
-            this.panel_stateControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.panel_stateControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.panel_stateControls.Controls.Add(this.label_controlsText, 1, 0);
+            this.panel_stateControls.ColumnCount = 1;
+            this.panel_stateControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.panel_stateControls.Controls.Add(this.label_stateText, 0, 0);
             this.panel_stateControls.Controls.Add(this.textBox_state, 0, 1);
-            this.panel_stateControls.Controls.Add(this.textBox_controls, 1, 1);
+            this.panel_stateControls.Controls.Add(this.label_log, 0, 2);
+            this.panel_stateControls.Controls.Add(this.textBox_logs, 0, 3);
             this.panel_stateControls.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_stateControls.Location = new System.Drawing.Point(3, 413);
             this.panel_stateControls.Name = "panel_stateControls";
-            this.panel_stateControls.RowCount = 2;
+            this.panel_stateControls.RowCount = 4;
             this.panel_stateControls.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.panel_stateControls.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
+            this.panel_stateControls.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.panel_stateControls.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7F));
+            this.panel_stateControls.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23F));
             this.panel_stateControls.Size = new System.Drawing.Size(442, 270);
             this.panel_stateControls.TabIndex = 2;
-            // 
-            // label_controlsText
-            // 
-            this.label_controlsText.AutoSize = true;
-            this.label_controlsText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_controlsText.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label_controlsText.ForeColor = System.Drawing.Color.White;
-            this.label_controlsText.Location = new System.Drawing.Point(224, 0);
-            this.label_controlsText.Name = "label_controlsText";
-            this.label_controlsText.Size = new System.Drawing.Size(215, 27);
-            this.label_controlsText.TabIndex = 1;
-            this.label_controlsText.Text = "Controls";
-            this.label_controlsText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label_stateText
             // 
@@ -937,10 +746,10 @@ namespace Lavira_Merkut
             this.label_stateText.ForeColor = System.Drawing.Color.White;
             this.label_stateText.Location = new System.Drawing.Point(3, 0);
             this.label_stateText.Name = "label_stateText";
-            this.label_stateText.Size = new System.Drawing.Size(215, 27);
+            this.label_stateText.Size = new System.Drawing.Size(436, 27);
             this.label_stateText.TabIndex = 0;
             this.label_stateText.Text = "State";
-            this.label_stateText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_stateText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // textBox_state
             // 
@@ -949,18 +758,8 @@ namespace Lavira_Merkut
             this.textBox_state.Multiline = true;
             this.textBox_state.Name = "textBox_state";
             this.textBox_state.ReadOnly = true;
-            this.textBox_state.Size = new System.Drawing.Size(215, 237);
+            this.textBox_state.Size = new System.Drawing.Size(436, 156);
             this.textBox_state.TabIndex = 2;
-            // 
-            // textBox_controls
-            // 
-            this.textBox_controls.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_controls.Location = new System.Drawing.Point(224, 30);
-            this.textBox_controls.Multiline = true;
-            this.textBox_controls.Name = "textBox_controls";
-            this.textBox_controls.ReadOnly = true;
-            this.textBox_controls.Size = new System.Drawing.Size(215, 237);
-            this.textBox_controls.TabIndex = 3;
             // 
             // panel_3dMap
             // 
@@ -975,16 +774,632 @@ namespace Lavira_Merkut
             this.panel_3dMap.RowCount = 2;
             this.panel_3dMap.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.panel_3dMap.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.panel_3dMap.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.panel_3dMap.Size = new System.Drawing.Size(617, 680);
             this.panel_3dMap.TabIndex = 2;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.button_openMAP);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 343);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(611, 334);
+            this.panel1.TabIndex = 3;
+            // 
+            // button_openMAP
+            // 
+            this.button_openMAP.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button_openMAP.Location = new System.Drawing.Point(0, 0);
+            this.button_openMAP.Name = "button_openMAP";
+            this.button_openMAP.Size = new System.Drawing.Size(611, 334);
+            this.button_openMAP.TabIndex = 0;
+            this.button_openMAP.Text = "Open MAP";
+            this.button_openMAP.UseVisualStyleBackColor = true;
+            this.button_openMAP.Click += new System.EventHandler(this.button_openMAP_Click);
+            // 
+            // tableLayoutPanel22
+            // 
+            this.tableLayoutPanel22.AutoScroll = true;
+            this.tableLayoutPanel22.ColumnCount = 1;
+            this.tableLayoutPanel22.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel22.Controls.Add(this.tableLayoutPanel30, 0, 7);
+            this.tableLayoutPanel22.Controls.Add(this.tableLayoutPanel29, 0, 6);
+            this.tableLayoutPanel22.Controls.Add(this.tableLayoutPanel28, 0, 5);
+            this.tableLayoutPanel22.Controls.Add(this.tableLayoutPanel27, 0, 4);
+            this.tableLayoutPanel22.Controls.Add(this.tableLayoutPanel26, 0, 3);
+            this.tableLayoutPanel22.Controls.Add(this.tableLayoutPanel25, 0, 2);
+            this.tableLayoutPanel22.Controls.Add(this.tableLayoutPanel24, 0, 1);
+            this.tableLayoutPanel22.Controls.Add(this.tableLayoutPanel23, 0, 0);
+            this.tableLayoutPanel22.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel22.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel22.Name = "tableLayoutPanel22";
+            this.tableLayoutPanel22.RowCount = 9;
+            this.tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel22.Size = new System.Drawing.Size(154, 463);
+            this.tableLayoutPanel22.TabIndex = 0;
+            // 
+            // tableLayoutPanel23
+            // 
+            this.tableLayoutPanel23.ColumnCount = 1;
+            this.tableLayoutPanel23.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel23.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel23.Controls.Add(label_payload_altitude, 0, 0);
+            this.tableLayoutPanel23.Controls.Add(this.textBox_payload_altitude, 0, 1);
+            this.tableLayoutPanel23.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel23.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel23.Name = "tableLayoutPanel23";
+            this.tableLayoutPanel23.RowCount = 2;
+            this.tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel23.Size = new System.Drawing.Size(148, 54);
+            this.tableLayoutPanel23.TabIndex = 0;
+            // 
+            // label_payload_altitude
+            // 
+            label_payload_altitude.AutoSize = true;
+            label_payload_altitude.Dock = System.Windows.Forms.DockStyle.Fill;
+            label_payload_altitude.Location = new System.Drawing.Point(3, 0);
+            label_payload_altitude.Name = "label_payload_altitude";
+            label_payload_altitude.Size = new System.Drawing.Size(142, 27);
+            label_payload_altitude.TabIndex = 0;
+            label_payload_altitude.Text = "Altitude";
+            label_payload_altitude.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // textBox_payload_altitude
+            // 
+            this.textBox_payload_altitude.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_payload_altitude.Location = new System.Drawing.Point(3, 30);
+            this.textBox_payload_altitude.Name = "textBox_payload_altitude";
+            this.textBox_payload_altitude.ReadOnly = true;
+            this.textBox_payload_altitude.Size = new System.Drawing.Size(142, 20);
+            this.textBox_payload_altitude.TabIndex = 1;
+            // 
+            // tableLayoutPanel24
+            // 
+            this.tableLayoutPanel24.ColumnCount = 1;
+            this.tableLayoutPanel24.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel24.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel24.Controls.Add(label_gps_payload_altitude, 0, 0);
+            this.tableLayoutPanel24.Controls.Add(this.textBox_gps_payload_altitude, 0, 1);
+            this.tableLayoutPanel24.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel24.Location = new System.Drawing.Point(3, 63);
+            this.tableLayoutPanel24.Name = "tableLayoutPanel24";
+            this.tableLayoutPanel24.RowCount = 2;
+            this.tableLayoutPanel24.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel24.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel24.Size = new System.Drawing.Size(148, 54);
+            this.tableLayoutPanel24.TabIndex = 1;
+            // 
+            // label_gps_payload_altitude
+            // 
+            label_gps_payload_altitude.AutoSize = true;
+            label_gps_payload_altitude.Dock = System.Windows.Forms.DockStyle.Fill;
+            label_gps_payload_altitude.Location = new System.Drawing.Point(3, 0);
+            label_gps_payload_altitude.Name = "label_gps_payload_altitude";
+            label_gps_payload_altitude.Size = new System.Drawing.Size(142, 27);
+            label_gps_payload_altitude.TabIndex = 0;
+            label_gps_payload_altitude.Text = "GPS Altitude";
+            label_gps_payload_altitude.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // textBox_gps_payload_altitude
+            // 
+            this.textBox_gps_payload_altitude.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_gps_payload_altitude.Location = new System.Drawing.Point(3, 30);
+            this.textBox_gps_payload_altitude.Name = "textBox_gps_payload_altitude";
+            this.textBox_gps_payload_altitude.ReadOnly = true;
+            this.textBox_gps_payload_altitude.Size = new System.Drawing.Size(142, 20);
+            this.textBox_gps_payload_altitude.TabIndex = 1;
+            // 
+            // tableLayoutPanel25
+            // 
+            this.tableLayoutPanel25.ColumnCount = 1;
+            this.tableLayoutPanel25.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel25.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel25.Controls.Add(label_gps_payload_latitude, 0, 0);
+            this.tableLayoutPanel25.Controls.Add(this.textBox_gps_payload_latitude, 0, 1);
+            this.tableLayoutPanel25.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel25.Location = new System.Drawing.Point(3, 123);
+            this.tableLayoutPanel25.Name = "tableLayoutPanel25";
+            this.tableLayoutPanel25.RowCount = 2;
+            this.tableLayoutPanel25.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel25.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel25.Size = new System.Drawing.Size(148, 54);
+            this.tableLayoutPanel25.TabIndex = 2;
+            // 
+            // label_gps_payload_latitude
+            // 
+            label_gps_payload_latitude.AutoSize = true;
+            label_gps_payload_latitude.Dock = System.Windows.Forms.DockStyle.Fill;
+            label_gps_payload_latitude.Location = new System.Drawing.Point(3, 0);
+            label_gps_payload_latitude.Name = "label_gps_payload_latitude";
+            label_gps_payload_latitude.Size = new System.Drawing.Size(142, 27);
+            label_gps_payload_latitude.TabIndex = 0;
+            label_gps_payload_latitude.Text = "GPS Latitude";
+            label_gps_payload_latitude.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // textBox_gps_payload_latitude
+            // 
+            this.textBox_gps_payload_latitude.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_gps_payload_latitude.Location = new System.Drawing.Point(3, 30);
+            this.textBox_gps_payload_latitude.Name = "textBox_gps_payload_latitude";
+            this.textBox_gps_payload_latitude.ReadOnly = true;
+            this.textBox_gps_payload_latitude.Size = new System.Drawing.Size(142, 20);
+            this.textBox_gps_payload_latitude.TabIndex = 1;
+            // 
+            // tableLayoutPanel26
+            // 
+            this.tableLayoutPanel26.ColumnCount = 1;
+            this.tableLayoutPanel26.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel26.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel26.Controls.Add(label_gps_payload_longitude, 0, 0);
+            this.tableLayoutPanel26.Controls.Add(this.textBox_gps_payload_longitude, 0, 1);
+            this.tableLayoutPanel26.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel26.Location = new System.Drawing.Point(3, 183);
+            this.tableLayoutPanel26.Name = "tableLayoutPanel26";
+            this.tableLayoutPanel26.RowCount = 2;
+            this.tableLayoutPanel26.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel26.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel26.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel26.Size = new System.Drawing.Size(148, 54);
+            this.tableLayoutPanel26.TabIndex = 3;
+            // 
+            // label_gps_payload_longitude
+            // 
+            label_gps_payload_longitude.AutoSize = true;
+            label_gps_payload_longitude.Dock = System.Windows.Forms.DockStyle.Fill;
+            label_gps_payload_longitude.Location = new System.Drawing.Point(3, 0);
+            label_gps_payload_longitude.Name = "label_gps_payload_longitude";
+            label_gps_payload_longitude.Size = new System.Drawing.Size(142, 27);
+            label_gps_payload_longitude.TabIndex = 0;
+            label_gps_payload_longitude.Text = "GPS Longitude";
+            label_gps_payload_longitude.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // textBox_gps_payload_longitude
+            // 
+            this.textBox_gps_payload_longitude.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_gps_payload_longitude.Location = new System.Drawing.Point(3, 30);
+            this.textBox_gps_payload_longitude.Name = "textBox_gps_payload_longitude";
+            this.textBox_gps_payload_longitude.ReadOnly = true;
+            this.textBox_gps_payload_longitude.Size = new System.Drawing.Size(142, 20);
+            this.textBox_gps_payload_longitude.TabIndex = 1;
+            // 
+            // tableLayoutPanel27
+            // 
+            this.tableLayoutPanel27.ColumnCount = 1;
+            this.tableLayoutPanel27.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel27.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel27.Controls.Add(label_payload_velocityV, 0, 0);
+            this.tableLayoutPanel27.Controls.Add(this.textBox_payload_velocityV, 0, 1);
+            this.tableLayoutPanel27.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel27.Location = new System.Drawing.Point(3, 243);
+            this.tableLayoutPanel27.Name = "tableLayoutPanel27";
+            this.tableLayoutPanel27.RowCount = 2;
+            this.tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel27.Size = new System.Drawing.Size(148, 54);
+            this.tableLayoutPanel27.TabIndex = 4;
+            // 
+            // label_payload_velocityV
+            // 
+            label_payload_velocityV.AutoSize = true;
+            label_payload_velocityV.Dock = System.Windows.Forms.DockStyle.Fill;
+            label_payload_velocityV.Location = new System.Drawing.Point(3, 0);
+            label_payload_velocityV.Name = "label_payload_velocityV";
+            label_payload_velocityV.Size = new System.Drawing.Size(142, 27);
+            label_payload_velocityV.TabIndex = 0;
+            label_payload_velocityV.Text = "Velocity (Vertical)";
+            label_payload_velocityV.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // textBox_payload_velocityV
+            // 
+            this.textBox_payload_velocityV.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_payload_velocityV.Location = new System.Drawing.Point(3, 30);
+            this.textBox_payload_velocityV.Name = "textBox_payload_velocityV";
+            this.textBox_payload_velocityV.ReadOnly = true;
+            this.textBox_payload_velocityV.Size = new System.Drawing.Size(142, 20);
+            this.textBox_payload_velocityV.TabIndex = 1;
+            // 
+            // tableLayoutPanel28
+            // 
+            this.tableLayoutPanel28.ColumnCount = 1;
+            this.tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel28.Controls.Add(label_payload_moisture, 0, 0);
+            this.tableLayoutPanel28.Controls.Add(this.textBox_payload_moisture, 0, 1);
+            this.tableLayoutPanel28.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel28.Location = new System.Drawing.Point(3, 303);
+            this.tableLayoutPanel28.Name = "tableLayoutPanel28";
+            this.tableLayoutPanel28.RowCount = 2;
+            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel28.Size = new System.Drawing.Size(148, 54);
+            this.tableLayoutPanel28.TabIndex = 5;
+            // 
+            // label_payload_moisture
+            // 
+            label_payload_moisture.AutoSize = true;
+            label_payload_moisture.Dock = System.Windows.Forms.DockStyle.Fill;
+            label_payload_moisture.Location = new System.Drawing.Point(3, 0);
+            label_payload_moisture.Name = "label_payload_moisture";
+            label_payload_moisture.Size = new System.Drawing.Size(142, 27);
+            label_payload_moisture.TabIndex = 0;
+            label_payload_moisture.Text = "Moisture";
+            label_payload_moisture.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // textBox_payload_moisture
+            // 
+            this.textBox_payload_moisture.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_payload_moisture.Location = new System.Drawing.Point(3, 30);
+            this.textBox_payload_moisture.Name = "textBox_payload_moisture";
+            this.textBox_payload_moisture.ReadOnly = true;
+            this.textBox_payload_moisture.Size = new System.Drawing.Size(142, 20);
+            this.textBox_payload_moisture.TabIndex = 1;
+            // 
+            // tableLayoutPanel29
+            // 
+            this.tableLayoutPanel29.ColumnCount = 1;
+            this.tableLayoutPanel29.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel29.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel29.Controls.Add(label_payload_temperature, 0, 0);
+            this.tableLayoutPanel29.Controls.Add(this.textBox_payload_temperature, 0, 1);
+            this.tableLayoutPanel29.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel29.Location = new System.Drawing.Point(3, 363);
+            this.tableLayoutPanel29.Name = "tableLayoutPanel29";
+            this.tableLayoutPanel29.RowCount = 2;
+            this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel29.Size = new System.Drawing.Size(148, 54);
+            this.tableLayoutPanel29.TabIndex = 6;
+            // 
+            // label_payload_temperature
+            // 
+            label_payload_temperature.AutoSize = true;
+            label_payload_temperature.Dock = System.Windows.Forms.DockStyle.Fill;
+            label_payload_temperature.Location = new System.Drawing.Point(3, 0);
+            label_payload_temperature.Name = "label_payload_temperature";
+            label_payload_temperature.Size = new System.Drawing.Size(142, 27);
+            label_payload_temperature.TabIndex = 0;
+            label_payload_temperature.Text = "Temperature";
+            label_payload_temperature.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // textBox_payload_temperature
+            // 
+            this.textBox_payload_temperature.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_payload_temperature.Location = new System.Drawing.Point(3, 30);
+            this.textBox_payload_temperature.Name = "textBox_payload_temperature";
+            this.textBox_payload_temperature.ReadOnly = true;
+            this.textBox_payload_temperature.Size = new System.Drawing.Size(142, 20);
+            this.textBox_payload_temperature.TabIndex = 1;
+            // 
+            // tableLayoutPanel30
+            // 
+            this.tableLayoutPanel30.ColumnCount = 1;
+            this.tableLayoutPanel30.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel30.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel30.Controls.Add(label_payload_pressure, 0, 0);
+            this.tableLayoutPanel30.Controls.Add(this.textBox_payload_pressure, 0, 1);
+            this.tableLayoutPanel30.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel30.Location = new System.Drawing.Point(3, 423);
+            this.tableLayoutPanel30.Name = "tableLayoutPanel30";
+            this.tableLayoutPanel30.RowCount = 2;
+            this.tableLayoutPanel30.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel30.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel30.Size = new System.Drawing.Size(148, 54);
+            this.tableLayoutPanel30.TabIndex = 7;
+            // 
+            // label_payload_pressure
+            // 
+            label_payload_pressure.AutoSize = true;
+            label_payload_pressure.Dock = System.Windows.Forms.DockStyle.Fill;
+            label_payload_pressure.Location = new System.Drawing.Point(3, 0);
+            label_payload_pressure.Name = "label_payload_pressure";
+            label_payload_pressure.Size = new System.Drawing.Size(142, 27);
+            label_payload_pressure.TabIndex = 0;
+            label_payload_pressure.Text = "Pressure";
+            label_payload_pressure.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // textBox_payload_pressure
+            // 
+            this.textBox_payload_pressure.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_payload_pressure.Location = new System.Drawing.Point(3, 30);
+            this.textBox_payload_pressure.Name = "textBox_payload_pressure";
+            this.textBox_payload_pressure.ReadOnly = true;
+            this.textBox_payload_pressure.Size = new System.Drawing.Size(142, 20);
+            this.textBox_payload_pressure.TabIndex = 1;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel32, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel31, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel6, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel5, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 8;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(154, 463);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Controls.Add(this.label_main_altitude, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.textBox_main_altitude, 0, 1);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(148, 54);
+            this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // label_main_altitude
+            // 
+            this.label_main_altitude.AutoSize = true;
+            this.label_main_altitude.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_main_altitude.Location = new System.Drawing.Point(3, 0);
+            this.label_main_altitude.Name = "label_main_altitude";
+            this.label_main_altitude.Size = new System.Drawing.Size(142, 27);
+            this.label_main_altitude.TabIndex = 0;
+            this.label_main_altitude.Text = "Altitude";
+            this.label_main_altitude.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // textBox_main_altitude
+            // 
+            this.textBox_main_altitude.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_main_altitude.Location = new System.Drawing.Point(3, 30);
+            this.textBox_main_altitude.Name = "textBox_main_altitude";
+            this.textBox_main_altitude.ReadOnly = true;
+            this.textBox_main_altitude.Size = new System.Drawing.Size(142, 20);
+            this.textBox_main_altitude.TabIndex = 1;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 1;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.Controls.Add(this.label_main_gps_altitude, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.textBox_main_gps_altitude, 0, 1);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 63);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 2;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(148, 54);
+            this.tableLayoutPanel3.TabIndex = 1;
+            // 
+            // label_main_gps_altitude
+            // 
+            this.label_main_gps_altitude.AutoSize = true;
+            this.label_main_gps_altitude.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_main_gps_altitude.Location = new System.Drawing.Point(3, 0);
+            this.label_main_gps_altitude.Name = "label_main_gps_altitude";
+            this.label_main_gps_altitude.Size = new System.Drawing.Size(142, 27);
+            this.label_main_gps_altitude.TabIndex = 0;
+            this.label_main_gps_altitude.Text = "GPS Altitude";
+            this.label_main_gps_altitude.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // textBox_main_gps_altitude
+            // 
+            this.textBox_main_gps_altitude.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_main_gps_altitude.Location = new System.Drawing.Point(3, 30);
+            this.textBox_main_gps_altitude.Name = "textBox_main_gps_altitude";
+            this.textBox_main_gps_altitude.ReadOnly = true;
+            this.textBox_main_gps_altitude.Size = new System.Drawing.Size(142, 20);
+            this.textBox_main_gps_altitude.TabIndex = 1;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 1;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.Controls.Add(this.label_main_gps_latitude, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.textBox_main_gps_latitude, 0, 1);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 123);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 2;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(148, 54);
+            this.tableLayoutPanel4.TabIndex = 2;
+            // 
+            // label_main_gps_latitude
+            // 
+            this.label_main_gps_latitude.AutoSize = true;
+            this.label_main_gps_latitude.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_main_gps_latitude.Location = new System.Drawing.Point(3, 0);
+            this.label_main_gps_latitude.Name = "label_main_gps_latitude";
+            this.label_main_gps_latitude.Size = new System.Drawing.Size(142, 27);
+            this.label_main_gps_latitude.TabIndex = 0;
+            this.label_main_gps_latitude.Text = "GPS Latitude";
+            this.label_main_gps_latitude.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // textBox_main_gps_latitude
+            // 
+            this.textBox_main_gps_latitude.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_main_gps_latitude.Location = new System.Drawing.Point(3, 30);
+            this.textBox_main_gps_latitude.Name = "textBox_main_gps_latitude";
+            this.textBox_main_gps_latitude.ReadOnly = true;
+            this.textBox_main_gps_latitude.Size = new System.Drawing.Size(142, 20);
+            this.textBox_main_gps_latitude.TabIndex = 1;
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 1;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel5.Controls.Add(this.label_main_gps_longitude, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.textBox_main_gps_longitude, 0, 1);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 183);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 2;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(148, 54);
+            this.tableLayoutPanel5.TabIndex = 3;
+            // 
+            // label_main_gps_longitude
+            // 
+            this.label_main_gps_longitude.AutoSize = true;
+            this.label_main_gps_longitude.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_main_gps_longitude.Location = new System.Drawing.Point(3, 0);
+            this.label_main_gps_longitude.Name = "label_main_gps_longitude";
+            this.label_main_gps_longitude.Size = new System.Drawing.Size(142, 27);
+            this.label_main_gps_longitude.TabIndex = 0;
+            this.label_main_gps_longitude.Text = "GPS Longitude";
+            this.label_main_gps_longitude.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // textBox_main_gps_longitude
+            // 
+            this.textBox_main_gps_longitude.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_main_gps_longitude.Location = new System.Drawing.Point(3, 30);
+            this.textBox_main_gps_longitude.Name = "textBox_main_gps_longitude";
+            this.textBox_main_gps_longitude.ReadOnly = true;
+            this.textBox_main_gps_longitude.Size = new System.Drawing.Size(142, 20);
+            this.textBox_main_gps_longitude.TabIndex = 1;
+            // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.ColumnCount = 1;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel6.Controls.Add(this.label_main_velocityV, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.textBox_main_velocityV, 0, 1);
+            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 243);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 2;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(148, 54);
+            this.tableLayoutPanel6.TabIndex = 4;
+            // 
+            // label_main_velocityV
+            // 
+            this.label_main_velocityV.AutoSize = true;
+            this.label_main_velocityV.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_main_velocityV.Location = new System.Drawing.Point(3, 0);
+            this.label_main_velocityV.Name = "label_main_velocityV";
+            this.label_main_velocityV.Size = new System.Drawing.Size(142, 27);
+            this.label_main_velocityV.TabIndex = 0;
+            this.label_main_velocityV.Text = "Velocity (Vertical)";
+            this.label_main_velocityV.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // textBox_main_velocityV
+            // 
+            this.textBox_main_velocityV.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_main_velocityV.Location = new System.Drawing.Point(3, 30);
+            this.textBox_main_velocityV.Name = "textBox_main_velocityV";
+            this.textBox_main_velocityV.ReadOnly = true;
+            this.textBox_main_velocityV.Size = new System.Drawing.Size(142, 20);
+            this.textBox_main_velocityV.TabIndex = 1;
+            // 
+            // tableLayoutPanel31
+            // 
+            this.tableLayoutPanel31.ColumnCount = 1;
+            this.tableLayoutPanel31.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel31.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel31.Controls.Add(this.label_main_gyroX, 0, 0);
+            this.tableLayoutPanel31.Controls.Add(this.textBox_main_gyroX, 0, 1);
+            this.tableLayoutPanel31.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel31.Location = new System.Drawing.Point(3, 303);
+            this.tableLayoutPanel31.Name = "tableLayoutPanel31";
+            this.tableLayoutPanel31.RowCount = 2;
+            this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel31.Size = new System.Drawing.Size(148, 54);
+            this.tableLayoutPanel31.TabIndex = 5;
+            // 
+            // label_main_gyroX
+            // 
+            this.label_main_gyroX.AutoSize = true;
+            this.label_main_gyroX.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_main_gyroX.Location = new System.Drawing.Point(3, 0);
+            this.label_main_gyroX.Name = "label_main_gyroX";
+            this.label_main_gyroX.Size = new System.Drawing.Size(142, 27);
+            this.label_main_gyroX.TabIndex = 0;
+            this.label_main_gyroX.Text = "Gyroscope X";
+            this.label_main_gyroX.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // textBox_main_gyroX
+            // 
+            this.textBox_main_gyroX.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_main_gyroX.Location = new System.Drawing.Point(3, 30);
+            this.textBox_main_gyroX.Name = "textBox_main_gyroX";
+            this.textBox_main_gyroX.ReadOnly = true;
+            this.textBox_main_gyroX.Size = new System.Drawing.Size(142, 20);
+            this.textBox_main_gyroX.TabIndex = 1;
+            // 
+            // tableLayoutPanel32
+            // 
+            this.tableLayoutPanel32.ColumnCount = 1;
+            this.tableLayoutPanel32.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel32.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel32.Controls.Add(this.label_main_gyroY, 0, 0);
+            this.tableLayoutPanel32.Controls.Add(this.textBox_main_gyroY, 0, 1);
+            this.tableLayoutPanel32.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel32.Location = new System.Drawing.Point(3, 363);
+            this.tableLayoutPanel32.Name = "tableLayoutPanel32";
+            this.tableLayoutPanel32.RowCount = 2;
+            this.tableLayoutPanel32.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel32.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel32.Size = new System.Drawing.Size(148, 54);
+            this.tableLayoutPanel32.TabIndex = 6;
+            // 
+            // label_main_gyroY
+            // 
+            this.label_main_gyroY.AutoSize = true;
+            this.label_main_gyroY.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_main_gyroY.Location = new System.Drawing.Point(3, 0);
+            this.label_main_gyroY.Name = "label_main_gyroY";
+            this.label_main_gyroY.Size = new System.Drawing.Size(142, 27);
+            this.label_main_gyroY.TabIndex = 0;
+            this.label_main_gyroY.Text = "Gyroscope Y";
+            this.label_main_gyroY.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // textBox_main_gyroY
+            // 
+            this.textBox_main_gyroY.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_main_gyroY.Location = new System.Drawing.Point(3, 30);
+            this.textBox_main_gyroY.Name = "textBox_main_gyroY";
+            this.textBox_main_gyroY.ReadOnly = true;
+            this.textBox_main_gyroY.Size = new System.Drawing.Size(142, 20);
+            this.textBox_main_gyroY.TabIndex = 1;
+            // 
             // tableLayoutPanel11
             // 
-            this.tableLayoutPanel11.ColumnCount = 2;
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 85F));
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel11.ColumnCount = 1;
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel11.Controls.Add(this.panel_unity, 0, 0);
-            this.tableLayoutPanel11.Controls.Add(this.tableLayoutPanel12, 1, 0);
             this.tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel11.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel11.Name = "tableLayoutPanel11";
@@ -993,334 +1408,49 @@ namespace Lavira_Merkut
             this.tableLayoutPanel11.Size = new System.Drawing.Size(611, 334);
             this.tableLayoutPanel11.TabIndex = 2;
             // 
-            // panel_unity
-            // 
-            this.panel_unity.Controls.Add(this.textBox1);
-            this.panel_unity.Controls.Add(this.button_open3DRocket);
-            this.panel_unity.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_unity.Location = new System.Drawing.Point(0, 0);
-            this.panel_unity.Margin = new System.Windows.Forms.Padding(0);
-            this.panel_unity.Name = "panel_unity";
-            this.panel_unity.Size = new System.Drawing.Size(519, 334);
-            this.panel_unity.TabIndex = 0;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(21, 71);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(476, 243);
-            this.textBox1.TabIndex = 1;
-            // 
             // button_open3DRocket
             // 
-            this.button_open3DRocket.Location = new System.Drawing.Point(204, 23);
+            this.button_open3DRocket.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button_open3DRocket.Location = new System.Drawing.Point(0, 0);
             this.button_open3DRocket.Name = "button_open3DRocket";
-            this.button_open3DRocket.Size = new System.Drawing.Size(122, 23);
+            this.button_open3DRocket.Size = new System.Drawing.Size(611, 334);
             this.button_open3DRocket.TabIndex = 0;
             this.button_open3DRocket.Text = "Open 3D Rocket";
             this.button_open3DRocket.UseVisualStyleBackColor = true;
             this.button_open3DRocket.Click += new System.EventHandler(this.button_open3DRocket_Click);
             // 
-            // tableLayoutPanel12
+            // panel_unity
             // 
-            this.tableLayoutPanel12.ColumnCount = 1;
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel12.Controls.Add(this.tableLayoutPanel19, 0, 6);
-            this.tableLayoutPanel12.Controls.Add(this.tableLayoutPanel18, 0, 5);
-            this.tableLayoutPanel12.Controls.Add(this.tableLayoutPanel17, 0, 4);
-            this.tableLayoutPanel12.Controls.Add(this.tableLayoutPanel16, 0, 3);
-            this.tableLayoutPanel12.Controls.Add(this.tableLayoutPanel15, 0, 2);
-            this.tableLayoutPanel12.Controls.Add(this.tableLayoutPanel14, 0, 1);
-            this.tableLayoutPanel12.Controls.Add(this.tableLayoutPanel13, 0, 0);
-            this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel12.Location = new System.Drawing.Point(522, 3);
-            this.tableLayoutPanel12.Name = "tableLayoutPanel12";
-            this.tableLayoutPanel12.RowCount = 7;
-            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel12.Size = new System.Drawing.Size(86, 328);
-            this.tableLayoutPanel12.TabIndex = 1;
+            this.panel_unity.Controls.Add(this.button_open3DRocket);
+            this.panel_unity.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_unity.Location = new System.Drawing.Point(0, 0);
+            this.panel_unity.Margin = new System.Windows.Forms.Padding(0);
+            this.panel_unity.Name = "panel_unity";
+            this.panel_unity.Size = new System.Drawing.Size(611, 334);
+            this.panel_unity.TabIndex = 0;
             // 
-            // tableLayoutPanel19
+            // label_log
             // 
-            this.tableLayoutPanel19.ColumnCount = 1;
-            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel19.Controls.Add(this.textBox_angle, 0, 1);
-            this.tableLayoutPanel19.Controls.Add(this.label_angle, 0, 0);
-            this.tableLayoutPanel19.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel19.Location = new System.Drawing.Point(3, 279);
-            this.tableLayoutPanel19.Name = "tableLayoutPanel19";
-            this.tableLayoutPanel19.RowCount = 2;
-            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel19.Size = new System.Drawing.Size(80, 46);
-            this.tableLayoutPanel19.TabIndex = 6;
+            this.label_log.AutoSize = true;
+            this.label_log.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_log.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label_log.ForeColor = System.Drawing.Color.White;
+            this.label_log.Location = new System.Drawing.Point(3, 189);
+            this.label_log.Name = "label_log";
+            this.label_log.Size = new System.Drawing.Size(436, 18);
+            this.label_log.TabIndex = 3;
+            this.label_log.Text = "Logs";
+            this.label_log.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBox_angle
+            // textBox_logs
             // 
-            this.textBox_angle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_angle.Location = new System.Drawing.Point(3, 26);
-            this.textBox_angle.Name = "textBox_angle";
-            this.textBox_angle.ReadOnly = true;
-            this.textBox_angle.Size = new System.Drawing.Size(74, 20);
-            this.textBox_angle.TabIndex = 2;
-            // 
-            // label_angle
-            // 
-            this.label_angle.AutoSize = true;
-            this.label_angle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_angle.ForeColor = System.Drawing.Color.White;
-            this.label_angle.Location = new System.Drawing.Point(3, 0);
-            this.label_angle.Name = "label_angle";
-            this.label_angle.Size = new System.Drawing.Size(74, 23);
-            this.label_angle.TabIndex = 1;
-            this.label_angle.Text = "Angle";
-            this.label_angle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label_angle.UseCompatibleTextRendering = true;
-            // 
-            // tableLayoutPanel18
-            // 
-            this.tableLayoutPanel18.ColumnCount = 1;
-            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel18.Controls.Add(this.textBox_acceleration_Z, 0, 1);
-            this.tableLayoutPanel18.Controls.Add(this.label_acceleration_Z, 0, 0);
-            this.tableLayoutPanel18.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel18.Location = new System.Drawing.Point(3, 233);
-            this.tableLayoutPanel18.Name = "tableLayoutPanel18";
-            this.tableLayoutPanel18.RowCount = 2;
-            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel18.Size = new System.Drawing.Size(80, 40);
-            this.tableLayoutPanel18.TabIndex = 5;
-            // 
-            // textBox_acceleration_Z
-            // 
-            this.textBox_acceleration_Z.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_acceleration_Z.Location = new System.Drawing.Point(3, 23);
-            this.textBox_acceleration_Z.Name = "textBox_acceleration_Z";
-            this.textBox_acceleration_Z.ReadOnly = true;
-            this.textBox_acceleration_Z.Size = new System.Drawing.Size(74, 20);
-            this.textBox_acceleration_Z.TabIndex = 2;
-            // 
-            // label_acceleration_Z
-            // 
-            this.label_acceleration_Z.AutoSize = true;
-            this.label_acceleration_Z.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_acceleration_Z.ForeColor = System.Drawing.Color.White;
-            this.label_acceleration_Z.Location = new System.Drawing.Point(3, 0);
-            this.label_acceleration_Z.Name = "label_acceleration_Z";
-            this.label_acceleration_Z.Size = new System.Drawing.Size(74, 20);
-            this.label_acceleration_Z.TabIndex = 1;
-            this.label_acceleration_Z.Text = "Acceleration Z";
-            this.label_acceleration_Z.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label_acceleration_Z.UseCompatibleTextRendering = true;
-            // 
-            // tableLayoutPanel17
-            // 
-            this.tableLayoutPanel17.ColumnCount = 1;
-            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel17.Controls.Add(this.textBox_acceleration_Y, 0, 1);
-            this.tableLayoutPanel17.Controls.Add(this.label_acceleration_Y, 0, 0);
-            this.tableLayoutPanel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel17.Location = new System.Drawing.Point(3, 187);
-            this.tableLayoutPanel17.Name = "tableLayoutPanel17";
-            this.tableLayoutPanel17.RowCount = 2;
-            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel17.Size = new System.Drawing.Size(80, 40);
-            this.tableLayoutPanel17.TabIndex = 4;
-            // 
-            // textBox_acceleration_Y
-            // 
-            this.textBox_acceleration_Y.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_acceleration_Y.Location = new System.Drawing.Point(3, 23);
-            this.textBox_acceleration_Y.Name = "textBox_acceleration_Y";
-            this.textBox_acceleration_Y.ReadOnly = true;
-            this.textBox_acceleration_Y.Size = new System.Drawing.Size(74, 20);
-            this.textBox_acceleration_Y.TabIndex = 2;
-            // 
-            // label_acceleration_Y
-            // 
-            this.label_acceleration_Y.AutoSize = true;
-            this.label_acceleration_Y.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_acceleration_Y.ForeColor = System.Drawing.Color.White;
-            this.label_acceleration_Y.Location = new System.Drawing.Point(3, 0);
-            this.label_acceleration_Y.Name = "label_acceleration_Y";
-            this.label_acceleration_Y.Size = new System.Drawing.Size(74, 20);
-            this.label_acceleration_Y.TabIndex = 1;
-            this.label_acceleration_Y.Text = "Acceleration Y";
-            this.label_acceleration_Y.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label_acceleration_Y.UseCompatibleTextRendering = true;
-            // 
-            // tableLayoutPanel16
-            // 
-            this.tableLayoutPanel16.ColumnCount = 1;
-            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel16.Controls.Add(this.textBox_acceleration_X, 0, 1);
-            this.tableLayoutPanel16.Controls.Add(this.label_acceleration_X, 0, 0);
-            this.tableLayoutPanel16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel16.Location = new System.Drawing.Point(3, 141);
-            this.tableLayoutPanel16.Name = "tableLayoutPanel16";
-            this.tableLayoutPanel16.RowCount = 2;
-            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel16.Size = new System.Drawing.Size(80, 40);
-            this.tableLayoutPanel16.TabIndex = 3;
-            // 
-            // textBox_acceleration_X
-            // 
-            this.textBox_acceleration_X.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_acceleration_X.Location = new System.Drawing.Point(3, 23);
-            this.textBox_acceleration_X.Name = "textBox_acceleration_X";
-            this.textBox_acceleration_X.ReadOnly = true;
-            this.textBox_acceleration_X.Size = new System.Drawing.Size(74, 20);
-            this.textBox_acceleration_X.TabIndex = 2;
-            // 
-            // label_acceleration_X
-            // 
-            this.label_acceleration_X.AutoSize = true;
-            this.label_acceleration_X.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_acceleration_X.ForeColor = System.Drawing.Color.White;
-            this.label_acceleration_X.Location = new System.Drawing.Point(3, 0);
-            this.label_acceleration_X.Name = "label_acceleration_X";
-            this.label_acceleration_X.Size = new System.Drawing.Size(74, 20);
-            this.label_acceleration_X.TabIndex = 1;
-            this.label_acceleration_X.Text = "Acceleration X";
-            this.label_acceleration_X.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label_acceleration_X.UseCompatibleTextRendering = true;
-            // 
-            // tableLayoutPanel15
-            // 
-            this.tableLayoutPanel15.ColumnCount = 1;
-            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel15.Controls.Add(this.textBox_gyroscope_Z, 0, 1);
-            this.tableLayoutPanel15.Controls.Add(this.label_gyroscope_Z, 0, 0);
-            this.tableLayoutPanel15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel15.Location = new System.Drawing.Point(3, 95);
-            this.tableLayoutPanel15.Name = "tableLayoutPanel15";
-            this.tableLayoutPanel15.RowCount = 2;
-            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel15.Size = new System.Drawing.Size(80, 40);
-            this.tableLayoutPanel15.TabIndex = 2;
-            // 
-            // textBox_gyroscope_Z
-            // 
-            this.textBox_gyroscope_Z.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_gyroscope_Z.Location = new System.Drawing.Point(3, 23);
-            this.textBox_gyroscope_Z.Name = "textBox_gyroscope_Z";
-            this.textBox_gyroscope_Z.ReadOnly = true;
-            this.textBox_gyroscope_Z.Size = new System.Drawing.Size(74, 20);
-            this.textBox_gyroscope_Z.TabIndex = 2;
-            // 
-            // label_gyroscope_Z
-            // 
-            this.label_gyroscope_Z.AutoSize = true;
-            this.label_gyroscope_Z.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_gyroscope_Z.ForeColor = System.Drawing.Color.White;
-            this.label_gyroscope_Z.Location = new System.Drawing.Point(3, 0);
-            this.label_gyroscope_Z.Name = "label_gyroscope_Z";
-            this.label_gyroscope_Z.Size = new System.Drawing.Size(74, 20);
-            this.label_gyroscope_Z.TabIndex = 1;
-            this.label_gyroscope_Z.Text = "Gyroscope Z";
-            this.label_gyroscope_Z.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label_gyroscope_Z.UseCompatibleTextRendering = true;
-            // 
-            // tableLayoutPanel14
-            // 
-            this.tableLayoutPanel14.ColumnCount = 1;
-            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel14.Controls.Add(this.textBox_gyroscope_Y, 0, 1);
-            this.tableLayoutPanel14.Controls.Add(this.label__gyroscope_Y, 0, 0);
-            this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel14.Location = new System.Drawing.Point(3, 49);
-            this.tableLayoutPanel14.Name = "tableLayoutPanel14";
-            this.tableLayoutPanel14.RowCount = 2;
-            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel14.Size = new System.Drawing.Size(80, 40);
-            this.tableLayoutPanel14.TabIndex = 1;
-            // 
-            // textBox_gyroscope_Y
-            // 
-            this.textBox_gyroscope_Y.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_gyroscope_Y.Location = new System.Drawing.Point(3, 23);
-            this.textBox_gyroscope_Y.Name = "textBox_gyroscope_Y";
-            this.textBox_gyroscope_Y.ReadOnly = true;
-            this.textBox_gyroscope_Y.Size = new System.Drawing.Size(74, 20);
-            this.textBox_gyroscope_Y.TabIndex = 2;
-            // 
-            // label__gyroscope_Y
-            // 
-            this.label__gyroscope_Y.AutoSize = true;
-            this.label__gyroscope_Y.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label__gyroscope_Y.ForeColor = System.Drawing.Color.White;
-            this.label__gyroscope_Y.Location = new System.Drawing.Point(3, 0);
-            this.label__gyroscope_Y.Name = "label__gyroscope_Y";
-            this.label__gyroscope_Y.Size = new System.Drawing.Size(74, 20);
-            this.label__gyroscope_Y.TabIndex = 1;
-            this.label__gyroscope_Y.Text = "Gyroscope Y";
-            this.label__gyroscope_Y.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label__gyroscope_Y.UseCompatibleTextRendering = true;
-            // 
-            // tableLayoutPanel13
-            // 
-            this.tableLayoutPanel13.ColumnCount = 1;
-            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel13.Controls.Add(this.textBox_gyroscope_X, 0, 1);
-            this.tableLayoutPanel13.Controls.Add(this.label__gyroscope_X, 0, 0);
-            this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel13.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel13.Name = "tableLayoutPanel13";
-            this.tableLayoutPanel13.RowCount = 2;
-            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel13.Size = new System.Drawing.Size(80, 40);
-            this.tableLayoutPanel13.TabIndex = 0;
-            // 
-            // textBox_gyroscope_X
-            // 
-            this.textBox_gyroscope_X.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_gyroscope_X.Location = new System.Drawing.Point(3, 23);
-            this.textBox_gyroscope_X.Name = "textBox_gyroscope_X";
-            this.textBox_gyroscope_X.ReadOnly = true;
-            this.textBox_gyroscope_X.Size = new System.Drawing.Size(74, 20);
-            this.textBox_gyroscope_X.TabIndex = 2;
-            // 
-            // label__gyroscope_X
-            // 
-            this.label__gyroscope_X.AutoSize = true;
-            this.label__gyroscope_X.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label__gyroscope_X.ForeColor = System.Drawing.Color.White;
-            this.label__gyroscope_X.Location = new System.Drawing.Point(3, 0);
-            this.label__gyroscope_X.Name = "label__gyroscope_X";
-            this.label__gyroscope_X.Size = new System.Drawing.Size(74, 20);
-            this.label__gyroscope_X.TabIndex = 0;
-            this.label__gyroscope_X.Text = "Gyroscope X";
-            this.label__gyroscope_X.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label__gyroscope_X.UseCompatibleTextRendering = true;
-            // 
-            // panel1
-            // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 343);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(611, 334);
-            this.panel1.TabIndex = 3;
+            this.textBox_logs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_logs.Location = new System.Drawing.Point(3, 210);
+            this.textBox_logs.Multiline = true;
+            this.textBox_logs.Name = "textBox_logs";
+            this.textBox_logs.ReadOnly = true;
+            this.textBox_logs.Size = new System.Drawing.Size(436, 57);
+            this.textBox_logs.TabIndex = 4;
             // 
             // Form1
             // 
@@ -1346,17 +1476,6 @@ namespace Lavira_Merkut
             this.panel_buttons.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel6.ResumeLayout(false);
-            this.tableLayoutPanel6.PerformLayout();
-            this.tableLayoutPanel5.ResumeLayout(false);
-            this.tableLayoutPanel5.PerformLayout();
-            this.tableLayoutPanel4.ResumeLayout(false);
-            this.tableLayoutPanel4.PerformLayout();
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel3.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel8.ResumeLayout(false);
@@ -1369,30 +1488,48 @@ namespace Lavira_Merkut
             this.tableLayoutPanel20.PerformLayout();
             this.tableLayoutPanel21.ResumeLayout(false);
             this.tableLayoutPanel21.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
             this.panel_charts.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart_altitude)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart_velocity)).EndInit();
             this.panel_stateControls.ResumeLayout(false);
             this.panel_stateControls.PerformLayout();
             this.panel_3dMap.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.tableLayoutPanel22.ResumeLayout(false);
+            this.tableLayoutPanel23.ResumeLayout(false);
+            this.tableLayoutPanel23.PerformLayout();
+            this.tableLayoutPanel24.ResumeLayout(false);
+            this.tableLayoutPanel24.PerformLayout();
+            this.tableLayoutPanel25.ResumeLayout(false);
+            this.tableLayoutPanel25.PerformLayout();
+            this.tableLayoutPanel26.ResumeLayout(false);
+            this.tableLayoutPanel26.PerformLayout();
+            this.tableLayoutPanel27.ResumeLayout(false);
+            this.tableLayoutPanel27.PerformLayout();
+            this.tableLayoutPanel28.ResumeLayout(false);
+            this.tableLayoutPanel28.PerformLayout();
+            this.tableLayoutPanel29.ResumeLayout(false);
+            this.tableLayoutPanel29.PerformLayout();
+            this.tableLayoutPanel30.ResumeLayout(false);
+            this.tableLayoutPanel30.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel4.PerformLayout();
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
+            this.tableLayoutPanel6.ResumeLayout(false);
+            this.tableLayoutPanel6.PerformLayout();
+            this.tableLayoutPanel31.ResumeLayout(false);
+            this.tableLayoutPanel31.PerformLayout();
+            this.tableLayoutPanel32.ResumeLayout(false);
+            this.tableLayoutPanel32.PerformLayout();
             this.tableLayoutPanel11.ResumeLayout(false);
             this.panel_unity.ResumeLayout(false);
-            this.panel_unity.PerformLayout();
-            this.tableLayoutPanel12.ResumeLayout(false);
-            this.tableLayoutPanel19.ResumeLayout(false);
-            this.tableLayoutPanel19.PerformLayout();
-            this.tableLayoutPanel18.ResumeLayout(false);
-            this.tableLayoutPanel18.PerformLayout();
-            this.tableLayoutPanel17.ResumeLayout(false);
-            this.tableLayoutPanel17.PerformLayout();
-            this.tableLayoutPanel16.ResumeLayout(false);
-            this.tableLayoutPanel16.PerformLayout();
-            this.tableLayoutPanel15.ResumeLayout(false);
-            this.tableLayoutPanel15.PerformLayout();
-            this.tableLayoutPanel14.ResumeLayout(false);
-            this.tableLayoutPanel14.PerformLayout();
-            this.tableLayoutPanel13.ResumeLayout(false);
-            this.tableLayoutPanel13.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1415,77 +1552,78 @@ namespace Lavira_Merkut
         private System.Windows.Forms.DataVisualization.Charting.Chart chart_altitude;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart_velocity;
         private System.Windows.Forms.TableLayoutPanel panel_stateControls;
-        private System.Windows.Forms.Label label_controlsText;
         private System.Windows.Forms.Label label_stateText;
         private System.Windows.Forms.TextBox textBox_state;
-        private System.Windows.Forms.TextBox textBox_controls;
         private System.Windows.Forms.TableLayoutPanel panel_top;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox_settings;
         private System.Windows.Forms.TableLayoutPanel panel_3dMap;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
-        private System.Windows.Forms.Panel panel_unity;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel19;
-        private System.Windows.Forms.Label label_angle;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel18;
-        private System.Windows.Forms.Label label_acceleration_Z;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel17;
-        private System.Windows.Forms.Label label_acceleration_Y;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel16;
-        private System.Windows.Forms.Label label_acceleration_X;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
-        private System.Windows.Forms.Label label_gyroscope_Z;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
-        private System.Windows.Forms.Label label__gyroscope_Y;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
-        private System.Windows.Forms.Label label__gyroscope_X;
-        private System.Windows.Forms.TextBox textBox_angle;
-        private System.Windows.Forms.TextBox textBox_acceleration_Z;
-        private System.Windows.Forms.TextBox textBox_acceleration_Y;
-        private System.Windows.Forms.TextBox textBox_acceleration_X;
-        private System.Windows.Forms.TextBox textBox_gyroscope_Z;
-        private System.Windows.Forms.TextBox textBox_gyroscope_Y;
-        private System.Windows.Forms.TextBox textBox_gyroscope_X;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button_open3DRocket;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private System.Windows.Forms.Label label_airPressure;
-        private System.Windows.Forms.TextBox textBox_air_pressure;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.Label label_gps_longitude;
-        private System.Windows.Forms.TextBox textBox_gps_longitude;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.Label label_gps_latitude;
-        private System.Windows.Forms.TextBox textBox_gps_latitude;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.Label label_gps_altitude;
-        private System.Windows.Forms.TextBox textBox_gps_altitude;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Label label_altitue;
-        private System.Windows.Forms.TextBox textBox_altitude;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
-        private System.Windows.Forms.Label label_secondAvionic_gps_longitude;
-        private System.Windows.Forms.TextBox textBox_secondAvionic_gps_longitude;
+        private System.Windows.Forms.Label label_spare_gps_longitude;
+        private System.Windows.Forms.TextBox textBox_spare_gps_longitude;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
-        private System.Windows.Forms.Label label_secondAvionic_gps_latitude;
-        private System.Windows.Forms.TextBox textBox_secondAvionic_gps_latitude;
+        private System.Windows.Forms.Label label_spare_gps_latitude;
+        private System.Windows.Forms.TextBox textBox_spare_gps_latitude;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
-        private System.Windows.Forms.Label label_secondAvionic_gps_altitude;
-        private System.Windows.Forms.TextBox textBox_seconAvionic_gps_altitude;
+        private System.Windows.Forms.Label label_spare_gps_altitude;
+        private System.Windows.Forms.TextBox textBox_spare_gps_altitude;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel20;
-        private System.Windows.Forms.Label label_pressure2;
-        private System.Windows.Forms.TextBox textBox_pressure2;
+        private System.Windows.Forms.Label label_spare_pressure2;
+        private System.Windows.Forms.TextBox textBox_spare_pressure2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel21;
-        private System.Windows.Forms.Label label_pressure1;
-        private System.Windows.Forms.TextBox textBox_pressure1;
+        private System.Windows.Forms.Label label_spare_pressure1;
+        private System.Windows.Forms.TextBox textBox_spare_pressure1;
+        private System.Windows.Forms.Button button_openMAP;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel22;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel30;
+        private System.Windows.Forms.TextBox textBox_payload_pressure;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel29;
+        private System.Windows.Forms.TextBox textBox_payload_temperature;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel28;
+        private System.Windows.Forms.TextBox textBox_payload_moisture;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel27;
+        private System.Windows.Forms.TextBox textBox_payload_velocityV;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel26;
+        private System.Windows.Forms.TextBox textBox_gps_payload_longitude;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel25;
+        private System.Windows.Forms.TextBox textBox_gps_payload_latitude;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel24;
+        private System.Windows.Forms.TextBox textBox_gps_payload_altitude;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel23;
+        private System.Windows.Forms.TextBox textBox_payload_altitude;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel32;
+        private System.Windows.Forms.Label label_main_gyroY;
+        private System.Windows.Forms.TextBox textBox_main_gyroY;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel31;
+        private System.Windows.Forms.Label label_main_gyroX;
+        private System.Windows.Forms.TextBox textBox_main_gyroX;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
+        private System.Windows.Forms.Label label_main_velocityV;
+        private System.Windows.Forms.TextBox textBox_main_velocityV;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.Label label_main_gps_longitude;
+        private System.Windows.Forms.TextBox textBox_main_gps_longitude;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.Label label_main_gps_latitude;
+        private System.Windows.Forms.TextBox textBox_main_gps_latitude;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Label label_main_gps_altitude;
+        private System.Windows.Forms.TextBox textBox_main_gps_altitude;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Label label_main_altitude;
+        private System.Windows.Forms.TextBox textBox_main_altitude;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
+        private System.Windows.Forms.Panel panel_unity;
+        private System.Windows.Forms.Button button_open3DRocket;
+        private System.Windows.Forms.Label label_log;
+        private System.Windows.Forms.TextBox textBox_logs;
     }
 }
 

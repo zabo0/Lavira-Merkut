@@ -39,10 +39,9 @@ namespace Lavira_Merkut
                 settings.IncomingDataPortInfo = savedSettings[1];
                 settings.RocketSimulationPortInfo = savedSettings[3];
                 settings.SendingDataPortInfo = savedSettings[5];
-                settings.SendDataAutomatic = Convert.ToBoolean(savedSettings[7]);
-                settings.IsSendDataToRocket = Convert.ToBoolean(savedSettings[9]);
-                settings.IsSendDataToHYI = Convert.ToBoolean(savedSettings[11]);
-                settings.TeamID = Convert.ToByte(savedSettings[13]);
+                settings.IsSendDataToRocket = Convert.ToBoolean(savedSettings[7]);
+                settings.IsSendDataToHYI = Convert.ToBoolean(savedSettings[9]);
+                settings.TeamID = Convert.ToByte(savedSettings[11]);
             }
 
             comboBox_incomingDataComPort.Text = settings.IncomingDataPortInfo;
@@ -50,7 +49,7 @@ namespace Lavira_Merkut
             comboBox_sendingDataComPort.Text = settings.SendingDataPortInfo;
 
             checkBox_isSend.Checked = settings.IsSendDataToHYI;
-            checkBox_sendDataAutomatic.Checked = settings.SendDataAutomatic;
+            //checkBox_sendDataAutomatic.Checked = settings.SendDataAutomatic;
             checkBox_sendDataToRocket.Checked = settings.IsSendDataToRocket;
 
             textBox_teamID.Text = settings.TeamID.ToString();
@@ -156,14 +155,14 @@ namespace Lavira_Merkut
                 settings.IsSendDataToHYI = false;
             }
 
-            if (checkBox_sendDataAutomatic.Checked)
-            {
-                settings.SendDataAutomatic = true;
-            }
-            else
-            {
-                settings.SendDataAutomatic = false;
-            }
+            //if (checkBox_sendDataAutomatic.Checked)
+            //{
+            //    settings.SendDataAutomatic = true;
+            //}
+            //else
+            //{
+            //    settings.SendDataAutomatic = false;
+            //}
 
             if (checkBox_sendDataToRocket.Checked)
             {
@@ -209,8 +208,8 @@ namespace Lavira_Merkut
                 writer.WriteLine(comboBox_3dRocketSimulationComPort.Text);
                 writer.WriteLine("sendToHYIPort");
                 writer.WriteLine(comboBox_sendingDataComPort.Text);
-                writer.WriteLine("getDataAutomaticCheckBox");
-                writer.WriteLine(checkBox_sendDataAutomatic.Checked.ToString());
+                //writer.WriteLine("getDataAutomaticCheckBox");
+                //writer.WriteLine(checkBox_sendDataAutomatic.Checked.ToString());
                 writer.WriteLine("sendToRocketCheckBox");
                 writer.WriteLine(checkBox_sendDataToRocket.Checked.ToString());
                 writer.WriteLine("sendDataToHYICheckBox");

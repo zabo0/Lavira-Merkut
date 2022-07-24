@@ -16,15 +16,15 @@ namespace Lavira_Merkut
 {
     public partial class Form1 : Form
     {
-        int counterTime = 0;
         TimeSpan currentTime;
         TimeSpan startTime;
         TimeSpan finishTime;
-        TimeSpan elapsedTime;
+        TimeSpan elapsedTime; // gecen sure
 
         static SettingsSingleton settings;
 
-        bool state = false;
+        private bool state = false;
+        private bool isMapOpen = false;
 
         public static bool resizableWindow;
         SerialPort stream_getIncomingData = new SerialPort();
@@ -38,6 +38,7 @@ namespace Lavira_Merkut
 
         //private byte TEAM_ID = settings.TeamID;
         private byte counter = 0;
+        private int logCounter = 0;
 
         //saved settings to txt
         static string fullPath = "C:\\Users\\Sabahattin\\Desktop\\Lavira Rocket\\Lavira Merkut Program\\Lavira Merkut\\Lavira Merkut\\settings.txt";
@@ -91,40 +92,28 @@ namespace Lavira_Merkut
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
-            //tabControl1.Appearance = TabAppearance.FlatButtons;
-            //tabControl1.ItemSize = new Size(0, 1);
-            //tabControl1.SizeMode = TabSizeMode.Fixed;
+            textBox_logs.ScrollBars = ScrollBars.Vertical;
+            textBox_state.ScrollBars = ScrollBars.Vertical;
 
             settings = SettingsSingleton.GetInstance();
 
-            if (savedSettings.Length == 14)
+            if (savedSettings.Length == 12)
             {
                 if(savedSettings[1] != "" && savedSettings[1] != "none")
                 {
                     settings.IncomingDataPort = savedSettings[1].Split('(')[1].TrimEnd(')');
                 }
-                if (savedSettings[3] != "" && savedSettings[1] != "none")
+                if (savedSettings[3] != "" && savedSettings[3] != "none")
                 {
                     settings.RocketSimulationPort = savedSettings[3].Split('(')[1].TrimEnd(')');
                 }
-                if (savedSettings[5] != "" && savedSettings[1] != "none")
+                if (savedSettings[5] != "" && savedSettings[5] != "none")
                 {
                     settings.SendingDataPort = savedSettings[5].Split('(')[1].TrimEnd(')');
                 }
-                settings.SendDataAutomatic = Convert.ToBoolean(savedSettings[7]);
-                settings.IsSendDataToRocket = Convert.ToBoolean(savedSettings[9]);
-                settings.IsSendDataToHYI = Convert.ToBoolean(savedSettings[11]);
-                settings.TeamID = Convert.ToByte(savedSettings[13]);
-            }
-
-            settings.WhichAcionic = Prompt.ShowDialog("Select An Avionic System", "Avionic System");
-
-            switch (settings.WhichAcionic)
-            {
-                case 0: label1.Text = "Lavira Merkut (Main Avionic)"; tabControl1.SelectedTab = tabPage1; break;
-                case 1: label1.Text = "Lavira Merkut (Second Avionic)"; tabControl1.SelectedTab = tabPage2; break;
-                case 2: label1.Text = "Lavira Merkut (Payload)"; tabControl1.SelectedTab = tabPage3; break;
+                settings.IsSendDataToRocket = Convert.ToBoolean(savedSettings[7]);
+                settings.IsSendDataToHYI = Convert.ToBoolean(savedSettings[9]);
+                settings.TeamID = Convert.ToByte(savedSettings[11]);
             }
 
             float f = 44.54321f;
@@ -150,13 +139,6 @@ namespace Lavira_Merkut
         public void startProcess()
         {
             ////butun sureci baslatacak fonksiyon
-            
-            startTime = DateTime.Now.TimeOfDay;
-            label_timeText.Text = "Time";
-            timer.Start();
-            textBox_state.AppendText(elapsedTime.ToString(@"hh\:mm\:ss\.ff") + "-" + startTime.ToString(@"hh\:mm\:ss\.ff") + "\t=====GOREV BASLATILDI=====" + Environment.NewLine);
-            InitBrowser();
-
             try
             {
                 openPortToIncomingData(settings.IncomingDataPort);
@@ -168,17 +150,29 @@ namespace Lavira_Merkut
                 {
                     openPortToSendData(settings.SendingDataPort);
                 }
-                if (settings.SendDataAutomatic)
-                {
-                    getDataFromCOMportLoop();
-                }
+
+                startTime = DateTime.Now.TimeOfDay;
+                label_timeText.Text = "Time";
+                timer.Start();
+                textBox_state.AppendText(elapsedTime.ToString(@"hh\:mm\:ss\.ff") + " - " + startTime.ToString(@"hh\:mm\:ss\.ff") + "\t=====GOREV BASLATILDI=====" + Environment.NewLine);
+                //InitBrowser();
+
+                getDataFromCOMportLoop();
             }
-            catch(Exception error)
+            catch (Exception error)
             {
-                MessageBox.Show(error.Message);
+                textBox_logs.AppendText(logCounter++ + " - " + "startProcess: " + error.ToString() + Environment.NewLine + Environment.NewLine);
+                MessageBox.Show("startProcess: " + error.Message);
                 return;
             }
 
+        }
+
+        private void button_openMAP_Click(object sender, EventArgs e)
+        {
+            button_openMAP.Visible = false;
+            InitBrowser();
+            isMapOpen = true;
             
         }
 
@@ -187,7 +181,7 @@ namespace Lavira_Merkut
             //butun sureci bitirecek fonksiyon
             finishTime = DateTime.Now.TimeOfDay;
             timer.Stop();
-            textBox_state.AppendText(elapsedTime.ToString(@"hh\:mm\:ss\.ff") +"-"+ finishTime.ToString(@"hh\:mm\:ss\.ff") + "\t=====GOREV BITIRILDI=====" + Environment.NewLine);
+            textBox_state.AppendText(elapsedTime.ToString(@"hh\:mm\:ss\.ff") +" - "+ finishTime.ToString(@"hh\:mm\:ss\.ff") + "\t=====GOREV BITIRILDI=====" + Environment.NewLine);
             closePort_incomingData();
             closePort_sendData();
             closePort_3DRocketSim();
@@ -196,7 +190,6 @@ namespace Lavira_Merkut
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            counterTime++;
             currentTime = DateTime.Now.TimeOfDay;
             elapsedTime = currentTime.Subtract(startTime);
             label_timer.Text = elapsedTime.ToString(@"hh\:mm\:ss\.ff");
@@ -205,6 +198,7 @@ namespace Lavira_Merkut
         private void button_start_Click_1(object sender, EventArgs e)
         {
             startProcess();
+            button_start.Enabled = false;
         }
 
         private void button_finish_Click_1(object sender, EventArgs e)
@@ -213,6 +207,7 @@ namespace Lavira_Merkut
             if (dialogResult == DialogResult.Yes)
             {
                 finishProcess();
+                button_finish.Enabled = false;
             }
             else if (dialogResult == DialogResult.No)
             {
@@ -266,63 +261,81 @@ namespace Lavira_Merkut
         start:
             if (state)
             {
-             try{
-                read:
-                    strReceived = stream_getIncomingData.ReadLine().TrimEnd('\r');
-
-                    string data = stringConvert(strReceived);
-
-                    await Task.Delay(200);
-
-                    strData = data.Split('_');
-
-                    while (strData.Length != 18) {goto read;}
-
-                   
-                    if (settings.IsSendDataToHYI)
-                    {
-                        byte[] package = createPackage(strData);
-                        stream_sendDataToHYI.Write(package, 0, package.Length);
-                    }
-
-                    if (settings.IsSendDataToRocket)
-                    {
-                        byte[] package = createPackageTo3DRocket(strData);
-                        stream_get3DRocketSimData.Write(package, 0, package.Length);
-                    }
-
-                    textBox_altitude.Text = strData[0];
-                    textBox_gps_altitude.Text = strData[1];
-                    textBox_gps_latitude.Text = strData[2];
-                    textBox_gps_longitude.Text = strData[3];
-                    //textBox_payload_gps_altidue.Text = strData[4];
-                    //textBox_payload_gps_latitude.Text = strData[5];
-                    //textBox_payload_gps_longitude.Text = strData[6];
-                    textBox_gyroscope_X.Text = strData[7];
-                    textBox_gyroscope_Y.Text = strData[8];
-                    textBox_gyroscope_Z.Text = strData[9];
-                    textBox_acceleration_X.Text = strData[10];
-                    textBox_acceleration_Y.Text = strData[11];
-                    textBox_acceleration_Z.Text = strData[12];
-                    textBox_pressure1.Text = strData[13];
-                    textBox_pressure2.Text = strData[14];
-                    textBox_angle.Text = strData[15];
-                    chart_velocity.Series["Velocity"].Points.AddXY(elapsedTime.ToString(@"hh\:mm\:ss\.ff"), strData[16]);
-                    chart_altitude.Series["Altitude"].Points.AddXY(elapsedTime.ToString(@"hh\:mm\:ss\.ff"), strData[1]);
-
-                    browser.EvaluateScriptAsync("setmark(" + strData[2] + "," + strData[3] + ");");
-
-                    //CreatePointShapefile(axMap1, 0, Convert.ToDouble(strData[3]), Convert.ToDouble(strData[2]));
-
-                 }
-                catch (IndexOutOfRangeException e)
+                if (stream_getIncomingData.IsOpen)
                 {
-                    Console.WriteLine("Exception must have been handled");
+                    try
+                    {
+                    read:
+                        strReceived = stream_getIncomingData.ReadLine().TrimEnd('\r');
+
+                        string data = stringConvert(strReceived);
+
+                        await Task.Delay(200);
+
+                        strData = data.Split('_');
+
+                        while (strData.Length != 18) { goto read; }
+
+
+                        if (settings.IsSendDataToHYI)
+                        {
+                            byte[] package = createPackage(strData);
+                            stream_sendDataToHYI.Write(package, 0, package.Length);
+                        }
+
+                        if (settings.IsSendDataToRocket)
+                        {
+                            byte[] package = createPackageTo3DRocket(strData);
+                            stream_get3DRocketSimData.Write(package, 0, package.Length);
+                        }
+
+                        textBox_main_altitude.Text = strData[0];
+                        textBox_main_gps_altitude.Text = strData[1];
+                        textBox_main_gps_latitude.Text = strData[2];
+                        textBox_main_gps_longitude.Text = strData[3];
+                        //textBox_payload_gps_altidue.Text = strData[4];
+                        //textBox_payload_gps_latitude.Text = strData[5];
+                        //textBox_payload_gps_longitude.Text = strData[6];
+                        textBox_main_gyroX.Text = strData[7];
+                        textBox_main_gyroY.Text = strData[8];
+                        //textBox_gyroscope_Z.Text = strData[9];
+                        //textBox_acceleration_X.Text = strData[10];
+                        //textBox_acceleration_Y.Text = strData[11];
+                        //textBox_acceleration_Z.Text = strData[12];
+                        textBox_spare_pressure1.Text = strData[13];
+                        textBox_spare_pressure2.Text = strData[14];
+                        //textBox_angle.Text = strData[15];
+                        textBox_main_velocityV.Text = strData[16];
+                        chart_velocity.Series["Velocity"].Points.AddXY(elapsedTime.ToString(@"hh\:mm\:ss\.ff"), strData[16]);
+                        chart_altitude.Series["Altitude"].Points.AddXY(elapsedTime.ToString(@"hh\:mm\:ss\.ff"), strData[1]);
+
+                        if (isMapOpen)
+                        {
+                            browser.EvaluateScriptAsync("setmark(" + strData[2] + "," + strData[3] + ");");
+                        }
+
+                    }
+                    catch (IndexOutOfRangeException e)
+                    {
+                        textBox_logs.AppendText(logCounter++ + " - " + "getDataFromCOMportLoop: " + e.Message + Environment.NewLine + Environment.NewLine);
+                    }
+                    catch (ArgumentOutOfRangeException e)
+                    {
+                        textBox_logs.AppendText(logCounter++ + " - " + "getDataFromCOMportLoop: " + e.Message + Environment.NewLine + Environment.NewLine);
+                    }
+                    catch (Exception e)
+                    {
+                        textBox_logs.AppendText(logCounter++ + " - " + "getDataFromCOMportLoop: " + e.ToString() + Environment.NewLine + Environment.NewLine);
+                        MessageBox.Show("getDataFromCOMportLoop: " + e.ToString());
+                    }
                 }
-                catch (Exception e) {
-                     
-                    MessageBox.Show(e.Message);
+                else
+                {
+                    MessageBox.Show("Please select COM port in senttings.");
+                    state = false;
+                    return;
                 }
+           
             }
             else
             {
@@ -418,6 +431,9 @@ namespace Lavira_Merkut
 
         private byte[] createPackage(string[] data)
         {
+
+            //HYI e gondermek icin paket olustur
+
             String[] newData = new String[data.Length];
 
             for(int i=0; i<data.Length; i++)
@@ -533,6 +549,9 @@ namespace Lavira_Merkut
 
         public byte[] createPackageTo3DRocket(string[] data)
         {
+
+            //3d roket icin paket olustur
+
             String[] newData = new String[data.Length];
 
             for (int i = 0; i < data.Length; i++)
@@ -659,10 +678,6 @@ namespace Lavira_Merkut
         }
 
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void panel_infoText_Paint(object sender, PaintEventArgs e)
         {
@@ -709,5 +724,6 @@ namespace Lavira_Merkut
             }
         }
 
+        
     }
 }
