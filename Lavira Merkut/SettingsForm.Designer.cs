@@ -29,8 +29,6 @@ namespace Lavira_Merkut
         /// </summary>
         private void InitializeComponent()
         {
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.checkBox_sendDataToRocket = new System.Windows.Forms.CheckBox();
             this.checkBox_isSend = new System.Windows.Forms.CheckBox();
             this.comboBox_sendingDataComPort = new System.Windows.Forms.ComboBox();
@@ -39,209 +37,159 @@ namespace Lavira_Merkut
             this.comboBox_3dRocketSimulationComPort = new System.Windows.Forms.ComboBox();
             this.comboBox_incomingDataComPort = new System.Windows.Forms.ComboBox();
             this.label_incomingDataComPort = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.button_save = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.textBox_teamID = new System.Windows.Forms.TextBox();
             this.label_teamID = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.button_save = new System.Windows.Forms.Button();
+            this.checkBox_simulation = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.panel2, 1, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1153, 756);
-            this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.checkBox_sendDataToRocket);
-            this.groupBox1.Controls.Add(this.checkBox_isSend);
-            this.groupBox1.Controls.Add(this.comboBox_sendingDataComPort);
-            this.groupBox1.Controls.Add(this.label_sendingDataComPort);
-            this.groupBox1.Controls.Add(this.label_3dRocketSimulationComPort);
-            this.groupBox1.Controls.Add(this.comboBox_3dRocketSimulationComPort);
-            this.groupBox1.Controls.Add(this.comboBox_incomingDataComPort);
-            this.groupBox1.Controls.Add(this.label_incomingDataComPort);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(3, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(570, 372);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Ports";
             // 
             // checkBox_sendDataToRocket
             // 
             this.checkBox_sendDataToRocket.AutoSize = true;
-            this.checkBox_sendDataToRocket.Location = new System.Drawing.Point(215, 145);
+            this.checkBox_sendDataToRocket.Location = new System.Drawing.Point(215, 166);
             this.checkBox_sendDataToRocket.Name = "checkBox_sendDataToRocket";
             this.checkBox_sendDataToRocket.Size = new System.Drawing.Size(77, 17);
-            this.checkBox_sendDataToRocket.TabIndex = 8;
+            this.checkBox_sendDataToRocket.TabIndex = 18;
             this.checkBox_sendDataToRocket.Text = "Send Data";
             this.checkBox_sendDataToRocket.UseVisualStyleBackColor = true;
-            this.checkBox_sendDataToRocket.CheckedChanged += new System.EventHandler(this.checkBox_sendDataToRocket_CheckedChanged);
             // 
             // checkBox_isSend
             // 
             this.checkBox_isSend.AutoSize = true;
-            this.checkBox_isSend.Location = new System.Drawing.Point(215, 229);
+            this.checkBox_isSend.Location = new System.Drawing.Point(215, 233);
             this.checkBox_isSend.Name = "checkBox_isSend";
             this.checkBox_isSend.Size = new System.Drawing.Size(75, 17);
-            this.checkBox_isSend.TabIndex = 6;
+            this.checkBox_isSend.TabIndex = 17;
             this.checkBox_isSend.Text = "Send data";
             this.checkBox_isSend.UseVisualStyleBackColor = true;
-            this.checkBox_isSend.CheckedChanged += new System.EventHandler(this.checkBox_isSend_CheckedChanged);
             // 
             // comboBox_sendingDataComPort
             // 
             this.comboBox_sendingDataComPort.FormattingEnabled = true;
-            this.comboBox_sendingDataComPort.Location = new System.Drawing.Point(215, 201);
+            this.comboBox_sendingDataComPort.Location = new System.Drawing.Point(215, 205);
             this.comboBox_sendingDataComPort.Name = "comboBox_sendingDataComPort";
             this.comboBox_sendingDataComPort.Size = new System.Drawing.Size(349, 21);
-            this.comboBox_sendingDataComPort.TabIndex = 5;
-            this.comboBox_sendingDataComPort.SelectedIndexChanged += new System.EventHandler(this.comboBox_sendingDataComPort_SelectedIndexChanged);
+            this.comboBox_sendingDataComPort.TabIndex = 16;
             // 
             // label_sendingDataComPort
             // 
             this.label_sendingDataComPort.AutoSize = true;
-            this.label_sendingDataComPort.Location = new System.Drawing.Point(49, 204);
+            this.label_sendingDataComPort.Location = new System.Drawing.Point(12, 208);
             this.label_sendingDataComPort.Name = "label_sendingDataComPort";
             this.label_sendingDataComPort.Size = new System.Drawing.Size(121, 13);
-            this.label_sendingDataComPort.TabIndex = 4;
+            this.label_sendingDataComPort.TabIndex = 15;
             this.label_sendingDataComPort.Text = "Sending Data COM Port";
             // 
             // label_3dRocketSimulationComPort
             // 
             this.label_3dRocketSimulationComPort.AutoSize = true;
-            this.label_3dRocketSimulationComPort.Location = new System.Drawing.Point(46, 120);
+            this.label_3dRocketSimulationComPort.Location = new System.Drawing.Point(12, 141);
             this.label_3dRocketSimulationComPort.Name = "label_3dRocketSimulationComPort";
             this.label_3dRocketSimulationComPort.Size = new System.Drawing.Size(159, 13);
-            this.label_3dRocketSimulationComPort.TabIndex = 3;
+            this.label_3dRocketSimulationComPort.TabIndex = 14;
             this.label_3dRocketSimulationComPort.Text = "3D Rocket Simulation COM Port";
             // 
             // comboBox_3dRocketSimulationComPort
             // 
             this.comboBox_3dRocketSimulationComPort.FormattingEnabled = true;
-            this.comboBox_3dRocketSimulationComPort.Location = new System.Drawing.Point(215, 117);
+            this.comboBox_3dRocketSimulationComPort.Location = new System.Drawing.Point(215, 138);
             this.comboBox_3dRocketSimulationComPort.Name = "comboBox_3dRocketSimulationComPort";
             this.comboBox_3dRocketSimulationComPort.Size = new System.Drawing.Size(349, 21);
-            this.comboBox_3dRocketSimulationComPort.TabIndex = 2;
-            this.comboBox_3dRocketSimulationComPort.SelectedIndexChanged += new System.EventHandler(this.comboBox_3dRocketSimulationComPort_SelectedIndexChanged);
+            this.comboBox_3dRocketSimulationComPort.TabIndex = 13;
             // 
             // comboBox_incomingDataComPort
             // 
             this.comboBox_incomingDataComPort.FormattingEnabled = true;
-            this.comboBox_incomingDataComPort.Location = new System.Drawing.Point(215, 34);
+            this.comboBox_incomingDataComPort.Location = new System.Drawing.Point(215, 83);
             this.comboBox_incomingDataComPort.Name = "comboBox_incomingDataComPort";
             this.comboBox_incomingDataComPort.Size = new System.Drawing.Size(349, 21);
-            this.comboBox_incomingDataComPort.TabIndex = 1;
-            this.comboBox_incomingDataComPort.SelectedIndexChanged += new System.EventHandler(this.comboBox_incomingDataComPort_SelectedIndexChanged);
+            this.comboBox_incomingDataComPort.TabIndex = 11;
             // 
             // label_incomingDataComPort
             // 
             this.label_incomingDataComPort.AutoSize = true;
-            this.label_incomingDataComPort.Location = new System.Drawing.Point(46, 37);
+            this.label_incomingDataComPort.Location = new System.Drawing.Point(12, 86);
             this.label_incomingDataComPort.Name = "label_incomingDataComPort";
             this.label_incomingDataComPort.Size = new System.Drawing.Size(125, 13);
-            this.label_incomingDataComPort.TabIndex = 0;
+            this.label_incomingDataComPort.TabIndex = 9;
             this.label_incomingDataComPort.Text = "Incoming Data COM Port";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.button_save);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(579, 381);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(571, 372);
-            this.panel1.TabIndex = 1;
-            // 
-            // button_save
-            // 
-            this.button_save.Location = new System.Drawing.Point(487, 340);
-            this.button_save.Name = "button_save";
-            this.button_save.Size = new System.Drawing.Size(75, 23);
-            this.button_save.TabIndex = 0;
-            this.button_save.Text = "Save";
-            this.button_save.UseVisualStyleBackColor = true;
-            this.button_save.Click += new System.EventHandler(this.button_save_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.textBox_teamID);
-            this.panel2.Controls.Add(this.label_teamID);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(579, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(571, 372);
-            this.panel2.TabIndex = 2;
             // 
             // textBox_teamID
             // 
-            this.textBox_teamID.Location = new System.Drawing.Point(156, 34);
+            this.textBox_teamID.Location = new System.Drawing.Point(215, 27);
             this.textBox_teamID.Name = "textBox_teamID";
             this.textBox_teamID.Size = new System.Drawing.Size(122, 20);
-            this.textBox_teamID.TabIndex = 1;
+            this.textBox_teamID.TabIndex = 12;
             this.textBox_teamID.TextChanged += new System.EventHandler(this.textBox_teamID_TextChanged);
             // 
             // label_teamID
             // 
             this.label_teamID.AutoSize = true;
-            this.label_teamID.Location = new System.Drawing.Point(22, 37);
+            this.label_teamID.Location = new System.Drawing.Point(12, 30);
             this.label_teamID.Name = "label_teamID";
             this.label_teamID.Size = new System.Drawing.Size(84, 13);
-            this.label_teamID.TabIndex = 0;
+            this.label_teamID.TabIndex = 10;
             this.label_teamID.Text = "TeamID For HYI";
+            // 
+            // button_save
+            // 
+            this.button_save.Location = new System.Drawing.Point(504, 346);
+            this.button_save.Name = "button_save";
+            this.button_save.Size = new System.Drawing.Size(75, 23);
+            this.button_save.TabIndex = 19;
+            this.button_save.Text = "Save";
+            this.button_save.UseVisualStyleBackColor = true;
+            this.button_save.Click += new System.EventHandler(this.button_save_Click_1);
+            // 
+            // checkBox_simulation
+            // 
+            this.checkBox_simulation.AutoSize = true;
+            this.checkBox_simulation.Location = new System.Drawing.Point(215, 278);
+            this.checkBox_simulation.Name = "checkBox_simulation";
+            this.checkBox_simulation.Size = new System.Drawing.Size(122, 17);
+            this.checkBox_simulation.TabIndex = 21;
+            this.checkBox_simulation.Text = "Simulate saved data";
+            this.checkBox_simulation.UseVisualStyleBackColor = true;
             // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1153, 756);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.ClientSize = new System.Drawing.Size(591, 381);
+            this.Controls.Add(this.checkBox_simulation);
+            this.Controls.Add(this.button_save);
+            this.Controls.Add(this.checkBox_sendDataToRocket);
+            this.Controls.Add(this.checkBox_isSend);
+            this.Controls.Add(this.comboBox_sendingDataComPort);
+            this.Controls.Add(this.label_sendingDataComPort);
+            this.Controls.Add(this.label_3dRocketSimulationComPort);
+            this.Controls.Add(this.comboBox_3dRocketSimulationComPort);
+            this.Controls.Add(this.comboBox_incomingDataComPort);
+            this.Controls.Add(this.label_incomingDataComPort);
+            this.Controls.Add(this.textBox_teamID);
+            this.Controls.Add(this.label_teamID);
             this.Name = "SettingsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SettingsForm";
             this.Load += new System.EventHandler(this.SettingsForm_Load);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.CheckBox checkBox_sendDataToRocket;
+        private System.Windows.Forms.CheckBox checkBox_isSend;
+        private System.Windows.Forms.ComboBox comboBox_sendingDataComPort;
+        private System.Windows.Forms.Label label_sendingDataComPort;
         private System.Windows.Forms.Label label_3dRocketSimulationComPort;
         private System.Windows.Forms.ComboBox comboBox_3dRocketSimulationComPort;
         private System.Windows.Forms.ComboBox comboBox_incomingDataComPort;
         private System.Windows.Forms.Label label_incomingDataComPort;
-        private System.Windows.Forms.ComboBox comboBox_sendingDataComPort;
-        private System.Windows.Forms.Label label_sendingDataComPort;
-        private System.Windows.Forms.CheckBox checkBox_isSend;
-        private System.Windows.Forms.CheckBox checkBox_sendDataToRocket;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button_save;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox textBox_teamID;
         private System.Windows.Forms.Label label_teamID;
+        private System.Windows.Forms.Button button_save;
+        private System.Windows.Forms.CheckBox checkBox_simulation;
     }
 }

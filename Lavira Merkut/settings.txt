@@ -9,4 +9,6 @@ False
 sendDataToHYICheckBox
 False
 teamID
-36
+12
+simulation
+False

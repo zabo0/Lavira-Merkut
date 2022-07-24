@@ -42,6 +42,7 @@ namespace Lavira_Merkut
                 settings.IsSendDataToRocket = Convert.ToBoolean(savedSettings[7]);
                 settings.IsSendDataToHYI = Convert.ToBoolean(savedSettings[9]);
                 settings.TeamID = Convert.ToByte(savedSettings[11]);
+                settings.Simulation = Convert.ToBoolean(savedSettings[13]);
             }
 
             comboBox_incomingDataComPort.Text = settings.IncomingDataPortInfo;
@@ -49,16 +50,11 @@ namespace Lavira_Merkut
             comboBox_sendingDataComPort.Text = settings.SendingDataPortInfo;
 
             checkBox_isSend.Checked = settings.IsSendDataToHYI;
-            //checkBox_sendDataAutomatic.Checked = settings.SendDataAutomatic;
             checkBox_sendDataToRocket.Checked = settings.IsSendDataToRocket;
 
             textBox_teamID.Text = settings.TeamID.ToString();
 
-
-            //tabControl1.Appearance = TabAppearance.FlatButtons;
-            //tabControl1.ItemSize = new Size(0, 1);
-            //tabControl1.SizeMode = TabSizeMode.Fixed;
-            //tabControl1.SelectedTab = tabPage2;
+            checkBox_simulation.Checked = settings.Simulation;
         }
 
         private void setComboBoxItems()
@@ -85,31 +81,9 @@ namespace Lavira_Merkut
             }
         }
 
-        private void comboBox_incomingDataComPort_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
 
-        private void comboBox_3dRocketSimulationComPort_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
 
-        private void comboBox_sendingDataComPort_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void checkBox_isSend_CheckedChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void checkBox_sendDataAutomatic_CheckedChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void checkBox_sendDataToRocket_CheckedChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void button_save_Click(object sender, EventArgs e)
+        private void button_save_Click_1(object sender, EventArgs e)
         {
             if (comboBox_incomingDataComPort.Text != null && comboBox_incomingDataComPort.Text != "" && comboBox_incomingDataComPort.Text != "none")
             {
@@ -121,9 +95,9 @@ namespace Lavira_Merkut
                 settings.IncomingDataPort = null;
                 settings.IncomingDataPortInfo = null;
             }
-            
 
-            if(comboBox_3dRocketSimulationComPort.Text != null && comboBox_3dRocketSimulationComPort.Text != "" && comboBox_3dRocketSimulationComPort.Text != "none")
+
+            if (comboBox_3dRocketSimulationComPort.Text != null && comboBox_3dRocketSimulationComPort.Text != "" && comboBox_3dRocketSimulationComPort.Text != "none")
             {
                 settings.RocketSimulationPort = comboBox_3dRocketSimulationComPort.Text.Split('(')[1].TrimEnd(')');
                 settings.RocketSimulationPortInfo = comboBox_3dRocketSimulationComPort.Text;
@@ -154,16 +128,6 @@ namespace Lavira_Merkut
             {
                 settings.IsSendDataToHYI = false;
             }
-
-            //if (checkBox_sendDataAutomatic.Checked)
-            //{
-            //    settings.SendDataAutomatic = true;
-            //}
-            //else
-            //{
-            //    settings.SendDataAutomatic = false;
-            //}
-
             if (checkBox_sendDataToRocket.Checked)
             {
                 settings.IsSendDataToRocket = true;
@@ -172,7 +136,15 @@ namespace Lavira_Merkut
             {
                 settings.IsSendDataToRocket = false;
             }
-            
+            if (checkBox_simulation.Checked)
+            {
+                settings.Simulation = true;
+            }
+            else
+            {
+                settings.Simulation = false;
+            }
+
 
             settings.TeamID = byte.Parse(textBox_teamID.Text);
 
@@ -180,22 +152,6 @@ namespace Lavira_Merkut
 
             this.Close();
         }
-
-
-        private void textBox_teamID_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                byte.Parse(textBox_teamID.Text);
-            }
-            catch(Exception error)
-            {
-                MessageBox.Show("you can only type numbers between 0 and 255\n" + error.Message);
-                textBox_teamID.Text = "0";
-                textBox_teamID.SelectAll();
-            }
-        }
-
 
         private void saveAllPorts()
         {
@@ -216,11 +172,23 @@ namespace Lavira_Merkut
                 writer.WriteLine(checkBox_isSend.Checked.ToString());
                 writer.WriteLine("teamID");
                 writer.WriteLine(settings.TeamID.ToString());
+                writer.WriteLine("simulation");
+                writer.WriteLine(checkBox_simulation.Checked.ToString());
             }
-            // Read a file  
-            string readText = File.ReadAllText(fullPath);
-            Console.WriteLine(readText);
         }
 
+        private void textBox_teamID_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                byte.Parse(textBox_teamID.Text);
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("you can only type numbers between 0 and 255\n" + error.Message);
+                textBox_teamID.Text = "0";
+                textBox_teamID.SelectAll();
+            }
+        }
     }
 }

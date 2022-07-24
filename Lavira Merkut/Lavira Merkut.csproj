@@ -76,7 +76,6 @@
     <Compile Include="SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Singleton\IncomingDataSingleton.cs" />
     <Compile Include="Singleton\SettingsSingleton.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -146,6 +145,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="incomingData.txt" />
     <Content Include="settings.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

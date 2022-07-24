@@ -41,8 +41,11 @@ namespace Lavira_Merkut
         private int logCounter = 0;
 
         //saved settings to txt
-        static string fullPath = "C:\\Users\\Sabahattin\\Desktop\\Lavira Rocket\\Lavira Merkut Program\\Lavira Merkut\\Lavira Merkut\\settings.txt";
-        string[] savedSettings = File.ReadAllLines(fullPath);
+        static string fullPathToAllData = "C:\\Users\\Sabahattin\\Desktop\\Lavira Rocket\\Lavira Merkut Program\\Lavira Merkut\\Lavira Merkut\\incomingData.txt";
+        static string fullPathToSettings = "C:\\Users\\Sabahattin\\Desktop\\Lavira Rocket\\Lavira Merkut Program\\Lavira Merkut\\Lavira Merkut\\settings.txt";
+
+        string[] savedSettings = File.ReadAllLines(fullPathToSettings);
+        string[] savedIncomingData = File.ReadAllLines(fullPathToAllData);
 
 
         //Simulation sim;
@@ -97,7 +100,7 @@ namespace Lavira_Merkut
 
             settings = SettingsSingleton.GetInstance();
 
-            if (savedSettings.Length == 12)
+            if (savedSettings.Length == 14)
             {
                 if(savedSettings[1] != "" && savedSettings[1] != "none")
                 {
@@ -114,6 +117,7 @@ namespace Lavira_Merkut
                 settings.IsSendDataToRocket = Convert.ToBoolean(savedSettings[7]);
                 settings.IsSendDataToHYI = Convert.ToBoolean(savedSettings[9]);
                 settings.TeamID = Convert.ToByte(savedSettings[11]);
+                settings.Simulation = Convert.ToBoolean(savedSettings[13]);
             }
 
             float f = 44.54321f;
@@ -125,6 +129,7 @@ namespace Lavira_Merkut
         private void button_open3DRocket_Click(object sender, EventArgs e)
         {
             //burasi 3d roket simulasyonunu baslatir
+            button_open3DRocket.Visible = false;
             Process p = Process.Start("C:\\Users\\Sabahattin\\Desktop\\LaviraMerkut3D_2.exe");
             Thread.Sleep(500); // Allow the process to open it's window
             p.WaitForInputIdle();
@@ -136,7 +141,28 @@ namespace Lavira_Merkut
             MoveWindow(p.MainWindowHandle, 0, 0, 900, 480, true);
         }
 
-        public void startProcess()
+
+        private void button_openMAP_Click(object sender, EventArgs e)
+        {
+            button_openMAP.Visible = false;
+            InitBrowser();
+            isMapOpen = true;            
+        }
+
+        public void finishProcess()
+        {
+           
+        }
+
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            currentTime = DateTime.Now.TimeOfDay;
+            elapsedTime = currentTime.Subtract(startTime);
+            label_timer.Text = elapsedTime.ToString(@"hh\:mm\:ss\.ff");
+        }
+
+        private void button_start_Click_1(object sender, EventArgs e)
         {
             ////butun sureci baslatacak fonksiyon
             try
@@ -158,6 +184,7 @@ namespace Lavira_Merkut
                 //InitBrowser();
 
                 getDataFromCOMportLoop();
+                button_start.Enabled = false;
             }
             catch (Exception error)
             {
@@ -165,48 +192,22 @@ namespace Lavira_Merkut
                 MessageBox.Show("startProcess: " + error.Message);
                 return;
             }
-
-        }
-
-        private void button_openMAP_Click(object sender, EventArgs e)
-        {
-            button_openMAP.Visible = false;
-            InitBrowser();
-            isMapOpen = true;
             
-        }
-
-        public void finishProcess()
-        {
-            //butun sureci bitirecek fonksiyon
-            finishTime = DateTime.Now.TimeOfDay;
-            timer.Stop();
-            textBox_state.AppendText(elapsedTime.ToString(@"hh\:mm\:ss\.ff") +" - "+ finishTime.ToString(@"hh\:mm\:ss\.ff") + "\t=====GOREV BITIRILDI=====" + Environment.NewLine);
-            closePort_incomingData();
-            closePort_sendData();
-            closePort_3DRocketSim();
-        }
-
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            currentTime = DateTime.Now.TimeOfDay;
-            elapsedTime = currentTime.Subtract(startTime);
-            label_timer.Text = elapsedTime.ToString(@"hh\:mm\:ss\.ff");
-        }
-
-        private void button_start_Click_1(object sender, EventArgs e)
-        {
-            startProcess();
-            button_start.Enabled = false;
         }
 
         private void button_finish_Click_1(object sender, EventArgs e)
         {
+            //butun sureci bitirecek fonksiyon
+
             DialogResult dialogResult = MessageBox.Show("Are you sure?", "Finish", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if (dialogResult == DialogResult.Yes)
-            {
-                finishProcess();
+            {  
+                finishTime = DateTime.Now.TimeOfDay;
+                timer.Stop();
+                textBox_state.AppendText(elapsedTime.ToString(@"hh\:mm\:ss\.ff") + " - " + finishTime.ToString(@"hh\:mm\:ss\.ff") + "\t=====GOREV BITIRILDI=====" + Environment.NewLine);
+                closePort_incomingData();
+                closePort_sendData();
+                closePort_3DRocketSim();
                 button_finish.Enabled = false;
             }
             else if (dialogResult == DialogResult.No)
@@ -224,6 +225,11 @@ namespace Lavira_Merkut
         private void chart_altitude_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
 
 
@@ -258,68 +264,55 @@ namespace Lavira_Merkut
 
         async void getDataFromCOMportLoop()
         {
-        start:
+            int i = 0;
+
+            start:
             if (state)
             {
                 if (stream_getIncomingData.IsOpen)
                 {
                     try
                     {
-                    read:
-                        strReceived = stream_getIncomingData.ReadLine().TrimEnd('\r');
+                    //read:
+                        string data;
 
-                        string data = stringConvert(strReceived);
+                        if (settings.Simulation)
+                        {
+                            data = savedIncomingData[i++];
+
+                            if(i == savedIncomingData.Length)
+                            {
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            strReceived = stream_getIncomingData.ReadLine().TrimEnd('\r');
+                            data = stringConvert(strReceived);
+                            // Write file using StreamWriter  
+                            using (StreamWriter writer = File.AppendText(fullPathToAllData))
+                            {
+                                writer.WriteLine(data);
+                                //writer.WriteLine(elapsedTime.ToString(@"hh\:mm\:ss\.ff") + "-" + currentTime.ToString(@"hh\:mm\:ss\.ff") + "/" + data);
+                            }
+                        }
+
+                        showDataInUI(data);
 
                         await Task.Delay(200);
 
-                        strData = data.Split('_');
-
-                        while (strData.Length != 18) { goto read; }
-
-
-                        if (settings.IsSendDataToHYI)
-                        {
-                            byte[] package = createPackage(strData);
-                            stream_sendDataToHYI.Write(package, 0, package.Length);
-                        }
-
-                        if (settings.IsSendDataToRocket)
-                        {
-                            byte[] package = createPackageTo3DRocket(strData);
-                            stream_get3DRocketSimData.Write(package, 0, package.Length);
-                        }
-
-                        textBox_main_altitude.Text = strData[0];
-                        textBox_main_gps_altitude.Text = strData[1];
-                        textBox_main_gps_latitude.Text = strData[2];
-                        textBox_main_gps_longitude.Text = strData[3];
-                        //textBox_payload_gps_altidue.Text = strData[4];
-                        //textBox_payload_gps_latitude.Text = strData[5];
-                        //textBox_payload_gps_longitude.Text = strData[6];
-                        textBox_main_gyroX.Text = strData[7];
-                        textBox_main_gyroY.Text = strData[8];
-                        //textBox_gyroscope_Z.Text = strData[9];
-                        //textBox_acceleration_X.Text = strData[10];
-                        //textBox_acceleration_Y.Text = strData[11];
-                        //textBox_acceleration_Z.Text = strData[12];
-                        textBox_spare_pressure1.Text = strData[13];
-                        textBox_spare_pressure2.Text = strData[14];
-                        //textBox_angle.Text = strData[15];
-                        textBox_main_velocityV.Text = strData[16];
-                        chart_velocity.Series["Velocity"].Points.AddXY(elapsedTime.ToString(@"hh\:mm\:ss\.ff"), strData[16]);
-                        chart_altitude.Series["Altitude"].Points.AddXY(elapsedTime.ToString(@"hh\:mm\:ss\.ff"), strData[1]);
-
-                        if (isMapOpen)
-                        {
-                            browser.EvaluateScriptAsync("setmark(" + strData[2] + "," + strData[3] + ");");
-                        }
-
+                        
+                        
                     }
                     catch (IndexOutOfRangeException e)
                     {
                         textBox_logs.AppendText(logCounter++ + " - " + "getDataFromCOMportLoop: " + e.Message + Environment.NewLine + Environment.NewLine);
                     }
                     catch (ArgumentOutOfRangeException e)
+                    {
+                        textBox_logs.AppendText(logCounter++ + " - " + "getDataFromCOMportLoop: " + e.Message + Environment.NewLine + Environment.NewLine);
+                    }
+                    catch (FormatException e)
                     {
                         textBox_logs.AppendText(logCounter++ + " - " + "getDataFromCOMportLoop: " + e.Message + Environment.NewLine + Environment.NewLine);
                     }
@@ -686,41 +679,50 @@ namespace Lavira_Merkut
 
 
 
-        //burasi baslangicta hangi aviyonik secilecegini gosteren kod
-        public static class Prompt
+        private void showDataInUI(string data)
         {
-            public static byte ShowDialog(string text, string caption)
+            strData = data.Split('_');
+
+            if (settings.IsSendDataToHYI)
             {
-                Form prompt = new Form();
-                prompt.Width = 500;
-                prompt.Height = 300;
-                prompt.Text = caption;
-                Label textLabel = new Label() { Left = 50, Top = 20, Text = text };
-                RadioButton radio1 = new RadioButton() { Left = 50, Top = 20, Text = "Main Avionic" , Checked =true};
-                RadioButton radio2 = new RadioButton() { Left = 50, Top = 40, Text = "Second Avionic" , Checked =false};
-                RadioButton radio3 = new RadioButton() { Left = 50, Top = 60, Text = "Payload" , Checked =false};
-                Button confirmation = new Button() { Text = "Ok", Left = 350, Width = 100, Top = 70 };
-                confirmation.Click += (sender, e) => { prompt.Close(); };
-                prompt.Controls.Add(radio1);
-                prompt.Controls.Add(radio2);
-                prompt.Controls.Add(radio3);
-                prompt.Controls.Add(confirmation);
-                prompt.Controls.Add(textLabel);
-                prompt.ShowDialog();
-                byte result = 0;
-                if (radio1.Checked)
+                byte[] package = createPackage(strData);
+                stream_sendDataToHYI.Write(package, 0, package.Length);
+            }
+
+            if (settings.IsSendDataToRocket)
+            {
+                byte[] package = createPackageTo3DRocket(strData);
+                stream_get3DRocketSimData.Write(package, 0, package.Length);
+            }
+
+            textBox_main_altitude.Text = strData[0];
+            textBox_main_gps_altitude.Text = strData[1];
+            textBox_main_gps_latitude.Text = strData[2];
+            textBox_main_gps_longitude.Text = strData[3];
+            textBox_payload_gps_altitude.Text = strData[4];
+            textBox_payload_gps_latitude.Text = strData[5];
+            textBox_payload_gps_longitude.Text = strData[6];
+            textBox_main_gyroX.Text = strData[7];
+            textBox_main_gyroY.Text = strData[8];
+            //textBox_gyroscope_Z.Text = strData[9];
+            //textBox_acceleration_X.Text = strData[10];
+            //textBox_acceleration_Y.Text = strData[11];
+            //textBox_acceleration_Z.Text = strData[12];
+            textBox_spare_pressure1.Text = strData[13];
+            textBox_spare_pressure2.Text = strData[14];
+            //textBox_angle.Text = strData[15];
+            textBox_main_velocityV.Text = strData[16];
+            chart_velocity.Series["Velocity"].Points.AddXY(elapsedTime.ToString(@"hh\:mm\:ss\.ff"), strData[16]);
+            chart_altitude.Series["Altitude"].Points.AddXY(elapsedTime.ToString(@"hh\:mm\:ss\.ff"), strData[1]);
+
+            if (isMapOpen)
+            {
+                switch (tabControl1.SelectedIndex)
                 {
-                    result = 0;
+                    case 0: { browser.EvaluateScriptAsync("setmark(" + strData[2] + "," + strData[3] + ");"); break; } //ana aviyonik
+                    case 1: { browser.EvaluateScriptAsync("setmark(" + strData[2] + "," + strData[3] + ");"); break; } //yedek aviyonik
+                    case 2: { browser.EvaluateScriptAsync("setmark(" + strData[2] + "," + strData[3] + ");"); break; } //payload
                 }
-                if (radio2.Checked)
-                {
-                    result = 1;
-                }
-                if (radio3.Checked)
-                {
-                    result = 2;
-                }
-                return result;
             }
         }
 
